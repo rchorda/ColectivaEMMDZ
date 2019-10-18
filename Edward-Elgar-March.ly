@@ -83,31 +83,31 @@ viola = \new Voice \relative do' {
   fas,4\f-- sol-- la-- dos--
   re8-. fas-. mis-. mi-. re re\rest la\upbow la16 la 
   si4-. mi-. re-. fas-.
-  %\break
+  \break
   \set Score.currentBarNumber = #4
-  fa2( mi8) mi\rest la,4
+  fa2( mi8) r la,4
   sol-- la-- si-- res--
-  mi8-. sol-. sol-. fas-. mi mi\rest si si16 si
+  mi8-. sol-. sol-. fas-. mi r si si16 si
   si4-. la'-. sol-. mi-.
-  %\break
-  sol2->( fas4) do\rest 
+  \break
+  sol2->( fas4) r 
   \bar ":.|.:"
-    \repeat volta 2 { 
-  la'2\p--(la--)
-  sols(mi)
-  re4 mi--(mi--) mi
-  fas mi4 do r
-  %\break
-  sols'2( la)
-  si( sols)
-  do,8\rest dos\upbow dos4 do8\rest re fas4
-    }
+  \repeat volta 2 { 
+    la2\p--(la--)
+    sols(mi)
+    re4 mi--(mi--) mi
+    fas mi4 do r
+    \break
+    sols'2( la)
+    si( sols)
+    r8 dos,\upbow dos4 r8 re fas4
+  }
   \alternative {
-  {do8\rest re( mi4) mi do\rest}
-  {}
+    {r8 re( mi4) mi do\rest}
+    {r8 re\upbow( re4) dos sol\rtoe\f}
   }
   %\break
-  do8\rest re\upbow( re4) dos sol\rtoe\f
+  
   fas-- sol-- la-- dos--
   re8-. fas-. fa-. mi-. re do\rest la\upbow la16 la
   %\break

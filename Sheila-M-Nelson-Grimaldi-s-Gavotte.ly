@@ -26,32 +26,32 @@ violinTwo = \new Voice \relative do' {
   \set Staff.instrumentName = #"Violin 2 "
   \set Staff.midiInstrument = "violin"
   
-		\bar ".|:" 
-		\partial 2 sib'4 \p \downbow do8-. ( do-.) |
-		sib2 mib,4-. (sol-.)
-		\tuplet 3/2 { fas8 mib! re } \tuplet 3/2 { do sib la } sol4 sol'
-		do sol r8 sol4 sol8
-		%\break
-		sol4 (fas) sib do8-. do-. 
-		sib2 mib,4-. sol-. 
-		fas2 r8 mib'4 \< \downbow re8
-		do8 ( sib) la (sib) \! r  sib \pp(la) la-.
-		sib2 
-		
-		\bar ":|." 
-		%\break
-		\bar ".|:" 
-		re8 \upbow \mf (mib) re do
-		sib la \< sol fa \! mib4 fa
-		sol \> sol \! \tuplet 3/2 {mib'8 re do} \tuplet 3/2 { sib la sol}
-		fa4 fa sol sol
-		%\break
-		la2 \> sib4 \mp do8-. do-.
-		sib2 mib,4 sol
-		fas2 \tuplet 3/2 {mib'8  \< re do} \tuplet 3/2 { sib la sol}
-		\tuplet 3/2 { fas sol la} \tuplet 3/2 {sib do mib} re8 \f re dos re
-		sib2
-		\bar ":|." 
+  \bar ".|:" 
+  \partial 2 sib'4 \p \downbow do8-. ( do-.) |
+  sib2 mib,4-. (sol-.)
+  \tuplet 3/2 { fas8 mib! re } \tuplet 3/2 { do sib la } sol4 sol'
+  do sol r8 sol4 sol8
+  %\break
+  sol4 (fas) sib do8-. do-. 
+  sib2 mib,4-. sol-. 
+  fas2 r8 mib'4 \< \downbow re8
+  do8 ( sib) la (sib) \! r  sib \pp(la) la-.
+  sib2 
+  
+  \bar ":|." 
+  %\break
+  \bar ".|:" 
+  re8 \upbow \mf (mib) re do
+  sib la \< sol fa \! mib4 fa
+  sol \> sol \! \tuplet 3/2 {mib'8 re do} \tuplet 3/2 { sib la sol}
+  fa4 fa sol sol
+  %\break
+  la2 \> sib4 \mp do8-. do-.
+  sib2 mib,4 sol
+  fas2 \tuplet 3/2 {mib'8  \< re do} \tuplet 3/2 { sib la sol}
+  \tuplet 3/2 { fas sol la} \tuplet 3/2 {sib do mib} re8 \f re dos re
+  sib2
+  \bar ":|." 
 
 }
 
@@ -61,8 +61,8 @@ viola = \new Voice \relative do' {
   \clef alto
 
  
-   %la2\bar ":..:" 
-   sol'4\p\downbow la8(-. la8)-. | %compass 18
+  %la2\bar ":..:" 
+  sol'4\p\downbow la8(-. la8)-. | %compass 18
   la2 fa8 mib8 \tuplet 3/2 { re8 mib8 fa8 } | %compass 19 ctrl+3 tresillos
   re2 do\rest
   \break
@@ -76,15 +76,15 @@ viola = \new Voice \relative do' {
   \break
   sol2 \bar ":..:"
   \bar ":..:" sib8\mf(\upbow do) sib la | % compass 26
- sol8 fa\< mib re\! do4 re
- mib\> re\! do2\rest
- \tuplet 3/2 { fa8 mib re } \tuplet 3/2 { do sib la } sol4 mib'
- \break
- \tuplet 3/2 { re8-> mib re } \tuplet 3/2 { do sib la\! } sol4\mp la8(-. la)-.
- sol4.  sol8 \tuplet 3/2 { sol' fa mib } \tuplet 3/2 { re do sib }
- \tuplet 3/2 { re8 mib re } \tuplet 3/2 { do sib la } \tuplet 3/2 { sol\< la sib } \tuplet 3/2 { do re fa }
- \tuplet 3/2 { mib re do } \tuplet 3/2 { sib la sol\! } sol'\f sol, sol' la
- mib2%\bar "|."
+  sol8 fa\< mib re\! do4 re
+  mib\> re\! do2\rest
+  \tuplet 3/2 { fa8 mib re } \tuplet 3/2 { do sib la } sol4 mib'
+  \break
+  \tuplet 3/2 { re8-> mib re } \tuplet 3/2 { do sib la\! } sol4\mp la8(-. la)-.
+  sol4.  sol8 \tuplet 3/2 { sol' fa mib } \tuplet 3/2 { re do sib }
+  \tuplet 3/2 { re8 mib re } \tuplet 3/2 { do sib la } \tuplet 3/2 { sol\< la sib } \tuplet 3/2 { do re fa }
+  \tuplet 3/2 { mib re do } \tuplet 3/2 { sib la sol\! } sol'\f sol, sol' la
+  mib2%\bar "|."
 }
 
 cello = \new Voice \relative do' {
