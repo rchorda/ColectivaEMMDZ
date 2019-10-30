@@ -23,6 +23,36 @@ global= {
 
 violinOne = \new Voice \relative do'' {
   \set Staff.instrumentName = #"Violin 1 "
+  \set Staff.midiInstrument = "violin"
+  
+  si16(do)re(mi) re8 do si16(do)re(mi)re8 do
+  si8 do16(re) mi(re)do(si) la8 re, r4
+  re'16(do)si(do)re8 re  re16(fas)sol(fas)mi(re)do(si)
+  
+  do(si)la(si) do8 do do16(la)fas'(mi)re(do)si(la)
+  si8 si16 do la8.sol16 sol4 r
+  r1
+  si16(do)re(mi)re8 do si16(do)re(mi) re8 do
+  
+  si4 r r2
+  r1
+  r8 do16 (si)la (si 32 do) si16 la (si4) r
+  r1 
+  r1
+  si16(la)sol(la)si8 si si mi16(re)do(si)la(sols)
+  
+  la16(si)do(si) la8 la8 la res16(dos) si(la)sol(fas)
+  sol8. (la16) fas8. (mi16) mi4 r
+  sol16(la)si(do)si8 la sol4 r
+  r2 si16(do)re(mi) re8 do
+
+  si4 r r2 
+  r1 r1
+  re16(do)si(do) re8 re re4 r
+  
+  do16(si)la(si) do8 do do4 r
+  si16(do)re(mi) re8 do si16(do)re(mi)re8 do
+  si8. do16 la8.sol16 sol2
 
  
 }
@@ -83,7 +113,7 @@ viola = \new Voice \relative do' {
 
 \score {
   \new StaffGroup <<
-    %\new Staff << \global \violinOne >>
+    \new Staff << \global \violinOne >>
     \new Staff << \global \violinTwo >>
     %\new Staff << \global \viola >>
     %\new Staff << \global \cello >>
