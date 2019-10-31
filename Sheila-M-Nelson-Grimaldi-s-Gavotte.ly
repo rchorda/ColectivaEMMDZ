@@ -58,6 +58,7 @@ violinTwo = \new Voice \relative do' {
 viola = \new Voice \relative do' {
   \set Staff.instrumentName = #"Viola "
   \set Staff.midiInstrument = "viola"
+  \set Staff.midiPanPosition = -1
   \clef alto
 
  
