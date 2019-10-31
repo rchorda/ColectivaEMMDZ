@@ -17,13 +17,15 @@ rallpoco =
 global= {
   \time 4/4
   \key sol \major
-  \tempo "Andante"
+  %\tempo "Andante"
+  \tempo 4 = 60 
 
 }
 
 violinOne = \new Voice \relative do'' {
   \set Staff.instrumentName = #"Violin 1 "
   \set Staff.midiInstrument = "violin"
+  \set Staff.midiPanPosition = 1
   
   si16(do)re(mi) re8 do si16(do)re(mi)re8 do
   si8 do16(re) mi(re)do(si) la8 re, r4
@@ -60,6 +62,7 @@ violinOne = \new Voice \relative do'' {
 violinTwo = \new Voice \relative do' {
   \set Staff.instrumentName = #"Violin 2 "
   \set Staff.midiInstrument = "violin"
+  \set Staff.midiPanPosition = -1
 
  sol'16 (la) si (do) si8 la sol16 (la) si (do) si8 la
   sol la16 (si) do (si) la (sol) sol8 fas16 (sol) la (si) do (la)
