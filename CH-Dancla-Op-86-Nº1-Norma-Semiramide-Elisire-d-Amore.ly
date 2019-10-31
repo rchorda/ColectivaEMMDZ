@@ -15,6 +15,9 @@ rallpoco =
 
 
 global= {
+  
+  \tempo "Maestoso"
+  %\tempo 4 = 50 
 
 }
 
@@ -22,7 +25,6 @@ violinOne = \new Voice \relative do' {
   %\set Staff.instrumentName = #"Violin 1 "
   \set Staff.midiInstrument = "violin"
 
-  \tempo "Maestoso"
   \key sol \major
   sol'2 \downbow la4-0 \upbow ( do)
   si2 do4 (mi-4)
@@ -37,6 +39,7 @@ violinOne = \new Voice \relative do' {
   \break
   
   \key re \major
+  \tempo 4 = 70
   re4 \downbow re,16 \upbow (fas la-0 si) la4 re,16 (fas la si) 
   la4 fas8. (sol16) la8. (si16) dos8. (re16)
   dos4 la16 (dos mi-0 fas) mi4-0 la,16 (dos mi-0 fas) 
@@ -44,11 +47,13 @@ violinOne = \new Voice \relative do' {
   \break
   re4 re dos! si mi-4 ( re8. dos16) 
   si4 \( \slashedGrace {dos16 (si las-1 si-1)} re8.\) (do16))
-  la4 la8. (la'16) sol4\rallpoco la,8. (sol'16)
+  la4 la8. (la'16) \tempo 4 = 65 sol4\rallpoco  la,8. (sol'16)
+  \tempo 4 = 60
   fas4 la,8. (fas'16) mi4-0 la,8. (mi'16-4) \!
   \break
   
   \time 6/8
+  \tempo 4. = 65
   re4 r8 r4 r8
   fas4. \downbow \slashedGrace {sol8} fas-. \upbow (mi-. fas-.)
   la4. fas4.
@@ -76,6 +81,7 @@ violinOne = \new Voice \relative do' {
   
   \key sol \major
   \time 2/4
+  \tempo 4 = 65
   re4 \downbow re,8-.-0 \upbow (re-.)
   re (do') sib-. (la-.-0)
   la-4 (sol) re'-. (re-.)
@@ -92,6 +98,7 @@ violinOne = \new Voice \relative do' {
   \pageBreak
   
   \time 3/8
+  \tempo 4. = 55
   sol4 r8
   r r sol16 si
   re4-> (dos16 re)
