@@ -57,7 +57,7 @@ violinOne = \new Voice \relative do'' {
   
   \break
   fas,2 sol!8(re')
-  re(do) do(la sol fas) 
+  re(do) do\((la) sol (fas)\) 
   sol4 r r 
   \bar ":..:"
   si2 \downbow (do4)
