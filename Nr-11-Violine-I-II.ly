@@ -32,7 +32,7 @@ violinOne = \new Voice \relative do'' {
   si do8(re mi re)
   \break
   dos(la) do4.(si8)
-  si-3 (la) la (sol la si)
+  si-3 (la) la\( (sol) la (si)\)
   sol4 r r
   \bar ":..:"
   
