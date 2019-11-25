@@ -25,28 +25,77 @@ violinOne = \new Voice \relative do'' {
   \set Staff.instrumentName = #"Violin 1 "
   \set Staff.midiInstrument = "violin"
   \set Staff.midiPanPosition = 1
-  
+   
+  \repeat volta 2 { 
   \partial 8
   re8
   re( si) sol-.~ sol-.
-  
-  
-  \bar ":..:"
-  
-  
-  \bar ":..:"
-  %\key do \major 
-  
+  sol4.sols8
+  la(sols) la-.-0(re-.-3)
+  do4 (si8)re-1
+  re(si) sol-. sol-.
+  sol sol'4 fas8
   \break
   
-  \break
+  \slashedGrace {fas8} mi re mi fas
+  }
+  \alternative{
+    {	re4 r}
+    { 	re}
+  }
   
-  \bar ":..:"
   
-  \break
  
 
-  \bar ":|."
+  \bar ".|:"
+  \repeat volta 2 { 
+  re8-.-3 \downbow re-. 
+  mi8 r si-. \upbow \p si-.
+  do r la-. la-.
+  do16 (si la si)do8 si
+  sols(la) si \f si
+  \break
+  mi8 r si \p si 
+  do r la la 
+  si si la la
+  si si dos dos 
+  re16-2(mi) re dos re(mi)fas re
+  dos-2(re) dos si dos(re)mi dos
+  \break
+  re16-2(mi) re dos re(mi)fas re
+  dos-2(re) dos si dos(re)mi dos
+  re4 r8 re-1
+  re(si) sol-.(sol-.)
+  sol4. sols8
+  \slashedGrace {si8} la(sols) la-.-0(re-.-3)
+  \break
+  do4(si8) re-1
+  re(si)sol-.(sol-.)
+  sol4. sols8
+  \slashedGrace{ si8} la8 sol! la si 
+  sol4 r8 sol8-1 \p \upbow
+  \slashedGrace {re'}do si do re
+  \slashedGrace {do} si la si do
+  \slashedGrace {si} la sol la re
+  \break
+  si4 r8 si
+  \slashedGrace {re8} do si do re
+  \slashedGrace {do8} si la si do
+  \slashedGrace {si8} la sol la si 
+  sol4 r
+  la-2 \f \downbow la
+  si r
+  la2 \upbow \p
+  }
+  \alternative{
+    {	sol4 }
+    { 	sol4 r}
+  }
+  
+  
+
+  \bar "|."
+  
 }
 
 violinTwo = \new Voice \relative do' {
@@ -54,21 +103,9 @@ violinTwo = \new Voice \relative do' {
   \set Staff.midiInstrument = "violin"
   \set Staff.midiPanPosition = -1
   
-  \partial 8
-  r8
-  
-  \bar ":..:"
-  
-  \bar ":..:"
-  %\key do \major 
-  
-  \bar ":..:"
-  \tuplet 3/2 { sol8(si)re }  fa4(mi)
-  si2(do4)
-  \break
+ 
   
   
-  \bar ":|." 
 }
 
 
