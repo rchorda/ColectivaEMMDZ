@@ -49,6 +49,7 @@ violinOne = \new Voice \relative do'' {
   \key do \major 
   
   \break
+  \tempo "Trio"
   sol2.
   sols8(la)la4.(re8)
   do (si la-0 sol!-1 la si)
@@ -88,14 +89,14 @@ violinTwo = \new Voice \relative do' {
   
   mi(la mi fas) sol4
   sol8(re) r4 re
-  sol,8(sol') re la sol4
+  sol,8(sol') re si sol4
   \bar ":..:"
   fas'8(re fas re fas re)
   sol (re sol re sol re)
   sol(re) si' (re, sol re)
-  si'(sol) fas4 re
+  si'-1 (sol) fas4 re
   r sol, sol'(sol) fas8(mi)fas4
-  sol la, re
+  sol si, re
   sol re sol,
   \bar ":..:"
   \key do \major 
@@ -103,8 +104,8 @@ violinTwo = \new Voice \relative do' {
   fa r fa 
   re sol fa
   mi r r
-  r8 re-2(mi re dos4)
-  r8 do!-3(re do si4)
+  r8 re-2 \downbow (mi re dos4)
+  r8 do!-1(re do si4)
   do r re 
   sol,8(sol') re si sol4
   \bar ":..:"
