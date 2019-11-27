@@ -38,13 +38,12 @@ rallpoco =
       \break
   
   
-      \slashedGrace {fas8} mi re mi fas
+      \acciaccatura {fas8} mi re mi fas
     }
     \alternative{
       {	re4 r}
       { 	re}
     }
-  
   
  
 
@@ -68,21 +67,21 @@ rallpoco =
       re4 r8 re-1
       re(si) sol-.(sol-.)
       sol4. sols8
-      \slashedGrace {si8} la(sols) la-.-0(re-.-3)
+      \acciaccatura si la (sols) la-.-0(re-.-3)
       \break
       do4(si8) re-1
       re(si)sol-.(sol-.)
       sol4. sols8
-      \slashedGrace{ si8} la8 sol! la si 
+      \acciaccatura{ si8} la8 sol! la si 
       sol4 r8 sol8-1 \p \upbow
-      \slashedGrace {re'}do si do re
-      \slashedGrace {do} si la si do
-      \slashedGrace {si} la sol la re
+      \acciaccatura {re'}do si do re
+      \acciaccatura {do} si la si do
+      \acciaccatura {si} la sol la re
       \break
       si4 r8 si
-      \slashedGrace {re8} do si do re
-      \slashedGrace {do8} si la si do
-      \slashedGrace {si8} la sol la si 
+      \acciaccatura {re8} do si do re
+      \acciaccatura {do8} si la si do
+      \acciaccatura {si8} la sol la si 
       sol4 r
       la-2 \f \downbow la
       si r

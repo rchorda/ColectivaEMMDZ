@@ -34,7 +34,7 @@ violinOne = \new Voice \relative do' {
   si,4 \( \grace {dos16 (si la)} si8. do16\) la4 r4
   mi'2-4~ mi8 res (mi-0 fas)
   \break
-  sol4 \(\slashedGrace {la16 (sol fas)} sol8. la16 \) fas4 (si,)
+  sol4 \(\acciaccatura {la16 (sol fas)} sol8. la16 \) fas4 (si,)
   do2~ do8 las-1 (si la-0) 
   fas8 (sol16) r \< las8-1 (si16-1) r res8 (mi16-4) r fas8 (sol16) r
   la4 \f (sols16 la sols la) si (la sol fas la sol fas mi-4)
@@ -48,7 +48,7 @@ violinOne = \new Voice \relative do' {
   mi4-0 sol8. (fas16) la8. (sol16) fas8. (mi16-4)
   \break
   re4 re dos! si mi-4 ( re8. dos16) 
-  si4 \( \slashedGrace {dos16 (si las-1 si-1)} re8.\) (do16))
+  si4 \( \acciaccatura {dos16 (si las-1 si-1)} re8.\) (do16))
   la4 la8. (la'16) \tempo 4 = 65 sol4\rallpoco  la,8. (sol'16)
   \tempo 4 = 60
   fas4 la,8. (fas'16) mi4-0 la,8. (mi'16-4) \!
@@ -57,7 +57,7 @@ violinOne = \new Voice \relative do' {
   \time 6/8
   \tempo 4. = 65
   re4 r8 r4 r8
-  fas4. \downbow \slashedGrace {sol8} fas-. \upbow (mi-. fas-.)
+  fas4. \downbow \acciaccatura {sol8} fas-. \upbow (mi-. fas-.)
   la4. fas4.
   re4. mi8-4 ( re mi-0)
   mis4 (fas8) re4.
@@ -71,7 +71,7 @@ violinOne = \new Voice \relative do' {
   fas4. sols8 (la sols)
   fas8 (la sols)
   fas8 (la sol)
-  fas4. \slashedGrace {sol8} fas-. (mi-. fas-.)
+  fas4. \acciaccatura {sol8} fas-. (mi-. fas-.)
   \break
   la4. fas4.
   re4. mi8-4 ( re mi-0)
@@ -140,12 +140,12 @@ violinOne = \new Voice \relative do' {
   re4 \< re16 re 
   res4 res16 res 
   mi4-4  \! mi16-0 mi
-  \slashedGrace {sol8} fas-. mi-. fas-.
+  \acciaccatura {sol8} fas-. mi-. fas-.
   sol4 sol16 \cresc sol
   fas4 fas16 fas 
   sol4  sol16 sol
   \break
-  \slashedGrace {si8} la sol la
+  \acciaccatura {si8} la sol la
   si4.-2 ^\markup { \teeny "III" } ~si4 \! si8 \upbow \!
   \tempo 4. = 60
   do16-3 \p do si si la la
