@@ -84,7 +84,7 @@ violinTwo = \new Voice \relative do' {
   re' r8 re(dos re)
   re4 r re
   
-  sol r8sol8(re la)
+  sol r8sol8(re si)
   sol4 r sol'8(fas)
   
   mi(la mi fas) sol4
