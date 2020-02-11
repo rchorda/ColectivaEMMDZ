@@ -166,6 +166,7 @@ violinOne = \new Voice \relative do' {
   la la si si la la
   \time 6/8
   \break
+  
   sol16 (re sol si mi-4 re)
   re (do la-4 fas mi fas)
   sol16 (re sol si mi-4 re)
