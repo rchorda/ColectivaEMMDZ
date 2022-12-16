@@ -19,6 +19,7 @@ global= {
  
   \key sol \major
   \time 3/4
+  \tempo  "Allegro"
 
 }
 
