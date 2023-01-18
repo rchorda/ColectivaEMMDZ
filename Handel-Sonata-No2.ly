@@ -35,7 +35,7 @@ violinOne = \new Voice \relative do' {
   \mf sib16(do la do sib8) mi16-2_\markup {\bold "III"} (fa) sol8 sib,-1_\markup {\bold "I"}
   (la-0)  \< 	la'16 (sol fa mi re do) si re fa, si
   mi,(sol-1 _\markup {\bold "III"}la si)  \! do8 mi,16-- re-- sol,8-- si'---1 _\markup {\bold "I"}
-  sib8. \p \downbow (do32 re do8)
+  sib!8. \p \downbow (do32 re do8)
   do-1_\markup {\bold "II"} (re mi)
   fa16-3_\markup {\bold "III"} (mi fa sol) fa8 fa,-1_\markup {\bold "II"} \upbow fa (mib')
   
@@ -57,7 +57,7 @@ violinOne = \new Voice \relative do' {
   
   re16-1_\markup {\bold "III"} (mi fa re) sib-2_\markup {\bold "IV"} (do re sib) sol-1_\markup {\bold "III"}(la) sib sol
   mi2-1_\markup {\bold "I"} \> fa16 \mf \upbow (la-4 sol fa)
-  sib(re do sib) sol'-4_\markup {\bold "III"} fa( mi re-3_\markup {\bold "I"} do re) sib do
+  sib(re do sib) sol'-4_\markup {\bold "III"} (fa mi re-3_\markup {\bold "I"} do re) sib do
   \break
   la-0 \<(sib) do re mi-0 fa sol la  \! si,8 \prall la16---4 sol--
   do8 mi, mi (fa16 re) do'8(re16 si) \> 
@@ -70,7 +70,7 @@ violinOne = \new Voice \relative do' {
   dos4-2_\markup {\bold "I"} \downbow\cresc (dos16) la-0( si dos) re-- la (dos re-1_\markup {\bold "III"})
   mi4-2( mi16)la,-0 (re-1 mi) fa-- la,( mi'-2 fa-1 _\markup {\bold "IV"})
   sol4-2 ( sol16) la (sib sol) mi-1_\markup {\bold "IV"}(fa sol mi)
-  dos4-1_\markup {\bold "I"} mi16-2_\markup {\bold "III"} (fa sol mi) dos-1_\markup {\bold "II"}(re mi dos)
+  dos4-2_\markup {\bold "I"} mi16-2_\markup {\bold "III"} (fa sol mi) dos-1_\markup {\bold "II"}(re mi dos)
   sol4-2 \f mi'8---3 dos---1 sib---1_\markup {\bold "I"} \prall la16-- sol--
   fa8-- re'-- mi,4  \acciaccatura re'8 dos4 \trill
   re-1 \> r \! re16-4_\markup {\bold "IV"} \upbow \pp (do si do)
