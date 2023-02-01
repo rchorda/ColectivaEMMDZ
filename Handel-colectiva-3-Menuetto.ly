@@ -8,7 +8,7 @@ rallpoco =
 
 
 \header {
-  title = "3 Menuetto"
+  title = "3 Menuetto - Violin I"
   composer = "G.F. Handel"
   meter = "4"
 }
