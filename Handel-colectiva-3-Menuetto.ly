@@ -29,7 +29,7 @@ violinOne = \new Voice \relative do' {
 la'' \mf la la \upbow
 la2 \mordent la,4
 re re8 fa mi (re)
-dos4 mi8 dos la4
+dos4 si8 dos la4
 fa' fa fa \upbow
   \break
   fa4.  \trill (mi16 fa) sol4

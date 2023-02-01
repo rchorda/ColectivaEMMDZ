@@ -49,7 +49,7 @@ violinOne = \new Voice \relative do' {
   sol4 la sib16(do re8)
   do4. sib8 do4
   sol' \< sol la \upbow
-  do4. \! (fa,8) fa4
+  sib4. \! (fa8) fa4
   r8 sol \> \upbow mib4.(re8)\!
   \break
   re2 sib4\p\upbow
