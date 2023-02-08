@@ -1,4 +1,0 @@
-#!/bin/bash
-file=$1
-fluidsynth -a alsa -m alsa_seq Violin\ STR\ VI\ \(5\,353KB\).sf2 $file.midi -F $file.wav
-

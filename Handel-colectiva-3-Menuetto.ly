@@ -1,5 +1,6 @@
 \version "2.19.83"
 \language "español"
+\include "articulate.ly"
 rallpoco =
 #(make-music 'CrescendoEvent
    'span-direction START
@@ -81,12 +82,16 @@ viola = \new Voice \relative do' {
 
 
 \score {
+  
+  %\unfoldRepeats 
+  %\articulate <<
   \new StaffGroup <<
     \new Staff << \global \violinOne >>
     %\new Staff << \global \violinTwo >>
     %\new Staff << \global \viola >>
     %\new Staff << \global \cello >>
   >>
+  %>>
   %\layout { }
   \layout {
   \context {
