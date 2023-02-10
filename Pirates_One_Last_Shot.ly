@@ -93,7 +93,7 @@ violinOne = \new Voice \relative do'  {
   re4. \accent\downbow r sol,4\accent\downbow _"rit." fa \accent fa8\accent mi\accent
   re1.\accent \fermata
   
- % \bar "|." 
+   \bar "|." 
   }
 }
 
