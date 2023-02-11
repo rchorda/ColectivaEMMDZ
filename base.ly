@@ -26,38 +26,6 @@ global= {
 violinOne = \new Voice \relative do' {
   %\set Staff.instrumentName = #"Violin 1 "
   \set Staff.midiInstrument = "violin"
-\repeat volta 2 {
-la'' \mf la la \upbow
-la2 \mordent la,4
-re re8 fa mi (re)
-dos4 si8 dos la4
-fa' fa fa \upbow
-  \break
-  fa4.  \trill (mi16 fa) sol4
-  \acciaccatura fa8 mi4 re dos\upbow
-   <re re,>2. 
-}
-\repeat volta 2 {
-   fa4 \f \downbow fa fa \upbow fa4. \trill (mi16 fa) sol4
-  \acciaccatura fa8 mi4 re8 do re4
-  \break
-  si4. \trill (  la16 si) do4
-  la' la la \upbow
-  la 4. \trill (sol16 la) sib4
-  \acciaccatura la8 sol4 fa mi \upbow
-  <fa la,> 2.
-  mi8. \p ( fa16 sol4) fa
-  r2.
-  \break
-  mi8. \cresc (fa16 sol8) fa mi re
-   dos4 \trill si8 dos mi4
-   fa \f fa fa \upbow
-   fa4. (mi16 fa) sol4 
-   \acciaccatura fa8 mi4 re dos \upbow 
-   <re re,>2.
-
-
-}
   
  % \bar "|." 
 
