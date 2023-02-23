@@ -6,7 +6,14 @@ rallpoco =
    'span-direction START
    'span-type 'text
    'span-text "rall. poco a poco")
-
+subir = ^\markup \char #8593
+bajar = ^\markup \char #8595
+primera =  _\markup {\bold "I"}
+segunda =  _\markup {\bold "II"}
+tercera =  _\markup {\bold "III"}
+cuarta =  _\markup {\bold "IV"}
+quinta =  _\markup {\bold "V"}
+sexta =  _\markup {\bold "VI"}
 
 \header {
   title = "3 Menuetto - Violin I"
@@ -79,19 +86,19 @@ violinOne = \new Voice \relative do'  {
   la4\accent \downbow la\accent  la \accent  la8\accent  sol\accent  r8 r4.
   sol4\accent \downbow r8 r4. fa4\accent \downbow r8 r4.
   mi4\accent \downbow fa\accent mi \accent re\accent  r8 re-1_\markup {\bold "III"}\upbow mi  fa
-  la4-1 \accent r8 re,-1 mi fa sib4-4 \accent r8 re,-1 mi fa
+  la4-1 \accent r8 re,-1 mi fa sib4-2 \accent r8 re,-1 mi fa
   
   \break
   la4-1\accent \downbow la\accent  do-3 \accent  la8-3_\markup {\bold "I"}\accent  sol-2\accent  r8 r4.
   \mark \markup \box \smaller "205"
-  la,,4-1 \mp \< si dos re mi fa
+  la,,4-1 \primera \mp \< si\subir dos re mi fa
   fas sol sols la si dos
   re mi fa fas sol sols
   \break
   la \accent \downbow \ff r8 r4. sib4 \accent \downbow r8 r4.
   r4. la \accent \downbow sol4 \accent fa\accent fa8\accent\upbow mi\accent\upbow
   re4. \accent\downbow r sol,4\accent\downbow _"rit." fa \accent fa8\accent mi\accent
-  re1.\accent \fermata
+  re1.-2 \tercera\accent \fermata
   
    \bar "|." 
   }

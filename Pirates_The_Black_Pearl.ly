@@ -7,11 +7,19 @@ rallpoco =
    'span-type 'text
    'span-text "rall. poco a poco")
 
+subir = ^\markup \char #8593
+bajar = ^\markup \char #8595
+primera =  _\markup {\bold "I"}
+segunda =  _\markup {\bold "II"}
+tercera =  _\markup {\bold "III"}
+cuarta =  _\markup {\bold "IV"}
+quinta =  _\markup {\bold "V"}
+sexta =  _\markup {\bold "VI"}
 
 \header {
-  title = "3 Menuetto - Violin I"
-  composer = "G.F. Handel"
-  meter = "4"
+  %title = "3 Menuetto - Violin I"
+  %composer = "G.F. Handel"
+  meter = "3"
 }
 
 
@@ -32,7 +40,7 @@ violinOne = \new Voice \relative do'  {
   \mark \markup \box \smaller "96"
   %\mark \markup "One Last Shot" 
   \tempo  "Faster and Driving" 4 = 150
-  re4-. \downbow \mf re8-. \downbow mib-. re8-.  mib-.
+  re4-. \downbow \mf _\markup{\italic "Talón"} re8-. \downbow mib-. re8-.  mib-.
   re4-. \downbow \mf re8-. \downbow mib-. re8-.  mib-.
   re4-. \downbow \mf re8-. \downbow mib-. re8-.  mib-.
  \break
@@ -45,7 +53,7 @@ violinOne = \new Voice \relative do'  {
  
   re4-.  re-.\upbow re-. \downbow
   \break
-   <re re'>2. \<  \accent
+   <re re'>2. \upbow \<  \accent
    <mi mi'> \accent
    <fa fa '> \accent
    <sol sol'>4  <la la'>  <sib! sib'!>
@@ -95,9 +103,37 @@ violinOne = \new Voice \relative do'  {
    
    la,,8\mp \< la si si dos dos 
    re re mi mi fa fa
-   sol la si dos re <do mi>
-   <re fa>\ff
-   
+   sol la si dos re <do mi> ^\markup {\italic div.}
+   \break
+   \mark \markup \box \smaller "142"
+   \tempo  "Molto Marcato"
+   <re fa>4\ff r8 <mi sol> <fa la>4
+   <mi sol> r8 <la, fa'> <mi' sol,>4
+   <do fa> <do sol'> <fa la>
+   <mi sol> r4 <la, fa'>8 <do sol'>
+   <fa la>4 r8 <re sol> <re fa>4
+   <dos mi> <re fa> <dos! mi>
+   <la re> r8 <do! mi> <sol do>4
+   \break
+   <la re>8 \accent <la re>8 \accent <la re>4-. <fa re'>8 <la mi'>
+   \mark \markup \box \smaller "150"
+   <re fa>4 r8 <sib re>8 <re fa>4
+   <do sol'> <la fa'> <mi' sol>
+   <fa la> r8 <mi sol> <do fa>4
+   <sib re> r <sib re>8 <dos mi>
+   <re fa>4 <re sol> <re la'>
+   <re sib'> r8 <sib re> <re sol>4
+   <re fa> r8 <mi sol> <dos mi>4
+   re, r8 re \upbow dos4\upbow
+   \mark \markup \box \smaller "159"
+   la8 \downbow \mp la si \cresc si dos dos
+   re re mi mi fa fa 
+   fas fas sol sol sols sols 
+   la la si\subir si dos\subir dos
+   re \< re mi mi fa fa
+   fas fas sol\bajar sol sols sols \!
+   r4 la\ff \downbow la \downbow 
+   la \downbow r2 \fermata
    
    
    
