@@ -62,8 +62,8 @@ violinOne = \new Voice \relative do'  {
   \mark \markup \box \smaller "110"
   %\mark \markup "One Last Shot" 
   \tempo  "A Little Faster" 4 = 150
-   <re-3 re'-4> \accent \ff \downbow re,8 \downbow\f mi fa re
-   mi4-. re-.\upbow do-.\upbow
+   <re-3 re'-4> \accent \ff \downbow re,8 \upbow\f mi fa re
+   mi4-. re-. do-.
    \break
    re \accent  \downbow re8\upbow mi fa re
    mi4-.\upbow fa-. \downbow sol-.\upbow
@@ -82,7 +82,7 @@ violinOne = \new Voice \relative do'  {
    \break
    mi4-. re-.\upbow do-.\upbow
    re8 \downbow re, fa fa la la 
-   re, \< re fa fa la la 
+   re, \< re fa fa la la  
    
    \mark \markup \box \smaller "127"
    la4\accent \ff r4 \tuplet 3/2 {re,8\upbow (mi fa)}
@@ -117,7 +117,7 @@ violinOne = \new Voice \relative do'  {
    \break
    <la re>8 \accent <la re>8 \accent <la re>4-. <fa re'>8 <la mi'>
    \mark \markup \box \smaller "150"
-   <re fa>4 r8 <sib re>8 <re fa>4
+   <re fa>4 r8 <la mi'>8 <re  fa>4
    <do sol'> <la fa'> <mi' sol>
    <fa la> r8 <mi sol> <do fa>4
    <sib re> r <sib re>8 <dos mi>

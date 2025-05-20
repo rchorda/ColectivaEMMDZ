@@ -54,7 +54,7 @@ violinOne = \new Voice \relative do'  {
   re r16 do re8 mi fa sol
   la\downbow r mi\downbow r do\downbow r
   re \downbow r16 do re8 mi fa r
-  re r16 fa mi8 do re la
+  re\downbow r16 fa mi8 do re la
   re\< r16 do re8 mi fa sol \!
   
   \time 4/4
@@ -83,16 +83,16 @@ violinOne = \new Voice \relative do'  {
   \time 4/4
   \mark \markup \box \smaller "75"
   \tempo  "Forcefully" 4 = 100
-  re'4-2 \quinta \upbow re re do8-1--\bajar re-^-2
+  re' 4-2 \quinta \upbow re re do8-1--\bajar re-^-2
   r re-1 \sexta r fa-3 r sol-4 fa-3-^ r
   \break
   re4-1 \downbow re-1 re-1 do8---4 re-^
-  r  fa-3 r lab-4 \bajar r fa-3 re-1-^ r
+  r  fa-3 r lab-5 \bajar r fa-3 re-1-^ r
   re4-1  \downbow re re do8-4--\bajar re-^-1
   r re-1 r fa-3 r sol-4 fa-3-^ r
   
   re4-1 \downbow re-1 re-1 do8---4 re-^
-  r re-1 r fa-3 r lab-4 fa-3-^ r
+  r re-1 r fa-3 r lab-5 fa-3-^ r
   
   re4-1 \downbow re-1 re-1 do8---4 re-^
   r2sols,8-.-2 \primera \subir \downbow si-.-4 fa-.-1 do-.-2 
