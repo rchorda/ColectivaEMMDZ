@@ -1,5 +1,5 @@
 \version "2.24.4"
-\language "español"
+\language "espanol"
 \include "articulate.ly"
 
 
@@ -77,7 +77,7 @@ r8 la,\downbow (si re) la' (si re, sol)
 la (si re sol) la (si) re,4--
 \break
 r4 r8 re,\downbow  (si'4) re--
-r4 r8 re,\<\downbow(<re re'>2)\!
+r4 r8 re,\<\downbow (<re re'>2)\!
 r4 r8 re\downbow (la' \<si)\> re4 \! 
 r4 r8 re, \dim (la' si)re4 \!
 \break
@@ -119,7 +119,7 @@ dos4:32 \< re:32 mi:32 fas8(sol) \!
 la\f re, mi fas mi re mi8.\accent dos16
 r8 si \upbow dos re dos si re8.\accent\> si16\!
 \break
-la8 (fas) <si re -->\> (<la dos-->) <sol si--> (<fas la-->) \! mi r \fermata
+la8 (fas) <si re>--\> (<la dos>--) <sol si>-- (<fas la>--) \! mi r \fermata
 r8 si \p \downbow re\< (sol) si (re,) sol (si)
 \rit si sol si re sol re sol8. si16 \accent \fermata \! \tempoEnd
 \break 
