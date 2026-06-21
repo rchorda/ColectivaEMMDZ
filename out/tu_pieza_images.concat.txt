@@ -1,0 +1,5 @@
+file 'tu_pieza_000.png'
+duration 90.267573
+file 'tu_pieza_001.png'
+duration 90.267573
+file 'tu_pieza_001.png'
