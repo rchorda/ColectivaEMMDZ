@@ -1,1 +1,13 @@
 Sonatina_Symphonic_Orchestra.sf2
+
+# Metadatos y archivos temporales locales.
+.DS_Store
+__pycache__/
+*.pyc
+/tmp/
+
+# El sitio tiene su propio repositorio y remoto en Sites.
+/sites/entre-cuerdas/
+
+# Render fallido vacío en la raíz; los vídeos válidos se generan en out/.
+/tu_pieza.mp4
