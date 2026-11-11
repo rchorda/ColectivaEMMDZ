@@ -12,7 +12,7 @@ violin = \absolute {
   \clef treble
   % Sin alteraciones en la armadura; no se presupone una tonalidad.
   \time 12/8
-  \tempo "Misterioso" 4 = 120
+  \tempo "Misterioso" 4. = 120
   \autoLineBreaksOff
 
   la''1.\p\upbow(\< ~ |                         % 1
@@ -81,7 +81,7 @@ violin = \absolute {
   \bar "||"
   \time 6/8
   \mark \markup { \box "52" }
-  \tempo "Half time" 4 = 60
+  \tempo "Half time" 4. = 60
   sol''4.\p\downbow sol''8.( fa''32 sol'' fa''16 mi'') | % 52
   re''4( si'8) sol'8( la' si') | % 53
   do''4( la'8) la'8( sols' la') | % 54
@@ -93,7 +93,7 @@ violin = \absolute {
   \bar "||"
   \time 12/8
   \mark \markup { \box "60" }
-  \tempo "Double time" 4 = 120
+  \tempo "Double time" 4. = 120
   do''8\mf\downbow( si' la' mi' la' si') do''-2->( la') re''-3->( la') mi''-4->( la') | % 60
   si'8-1( sol'-3 re' si-2 re' sol'-3) si'-1( sol'-3 si'-1 re''-3 do''-2 si'-1) | \break % 61
   do''8-2( la') re''-3( la') mi''-4( la') la''( mi'' la'') do'''4. | % 62
@@ -170,12 +170,12 @@ tempoFinal = {
   % 51 compases de 12/8, 8 de 6/8 y 50 de 12/8: inicio del 110.
   s4*630
   \set Score.tempoHideNote = ##t
-  \tempo 4 = 120 s2.
-  \tempo 4 = 113 s2.
-  \tempo 4 = 106 s2.
-  \tempo 4 = 98 s2.
-  \tempo 4 = 91 s2.
-  \tempo 4 = 84 s2.
+  \tempo 4. = 120 s2.
+  \tempo 4. = 113 s2.
+  \tempo 4. = 106 s2.
+  \tempo 4. = 98 s2.
+  \tempo 4. = 91 s2.
+  \tempo 4. = 84 s2.
 }
 
 \score {
