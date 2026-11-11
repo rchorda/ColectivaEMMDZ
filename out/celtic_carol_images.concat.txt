@@ -1,0 +1,7 @@
+file 'celtic_carol_000.png'
+duration 108.000000
+file 'celtic_carol_001.png'
+duration 111.000000
+file 'celtic_carol_002.png'
+duration 121.651247
+file 'celtic_carol_002.png'
