@@ -1,0 +1,3 @@
+file 'intermezzo_000.png'
+duration 122.000544
+file 'intermezzo_000.png'
