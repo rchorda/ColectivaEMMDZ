@@ -36,7 +36,7 @@ violin = \absolute {
   do''4.\downbow\mf si'8\upbow-1( do''-2 la'-0) mi'4\downbow la'8\upbow( ~ la') mi'\upbow( la') | \break % 17
   do''8\downbow-2( si'-1 do''-2) re''\upbow-3( do''-2 si'-1) la'4 mi'8 la'4 si'8 | % 18
   do''4.\downbow si'8\upbow( do'' la') mi'4\downbow la'8\upbow( ~ la') la'\upbow( si') | % 19
-  do''8\downbow( si' do'') re''\upbow( \grace { mi''16 re'' } do''8 si') la'4.\downbow la'4.\upbow | % 20
+  do''8\downbow( si' do'') re''\upbow( \grace { mi''16 re'' } do''8 si') la'4.\downbow\tenuto la'4.\upbow\tenuto | % 20
   do''4.\downbow si'8\upbow( do'' la') mi'4\downbow la'8\upbow( ~ la' mi'4\upbow) | \break % 21
   do''8\downbow( si' do'') re''\upbow( do'' si') la'4.\downbow la'8\upbow( do'' mi'') | % 22
   % Dos ligaduras de arco y dos indicaciones de arco arriba, según la interpretación indicada.
@@ -85,7 +85,7 @@ violin = \absolute {
   sol''4.\p\downbow sol''8.( fa''32 sol'' fa''16 mi'') | % 52
   re''4( si'8) sol'8( la' si') | % 53
   do''4( la'8) la'8( sols' la') | % 54
-  si'4( sols'8) mi'4.\< | % 55
+  si'4\glissando( sols'8) mi'4.\< | % 55
   sol''!4.\mp\downbow sol''4( fa''16 mi'') | \break % 56
   re''4( si'8) sol'8( la' si') | % 57
   do''8( si' la') sols'( fas' sols') | % 58
@@ -106,7 +106,7 @@ violin = \absolute {
   la''8\f-^ la'-. la''-^ fa''16\upbow->( sol'' fa'' mi'' re''8-.) mi''4-> re''8-> ~ re'' do''4\upbow-> | % 68
   do''8\downbow-. la'-. re''-. la'-. mi''-. la'-. do''16( re'' do'' la' mi'8-.) do'8( si la) | % 69
   la''8-^ la'-. la''-^ fa''16\upbow->( sol'' fa'' mi'' re''8-.) mi''4-> re''8-> ~ re'' do''4\upbow-> | \break % 70
-  do''8\downbow-. la'-. re''-. la'-. mi''-. la'-. fas''( re'' la'') sol''4-> r8 | % 71
+  do''8\downbow-. la'-. re''-. la'-. mi''-. la'-. sols''( mi'' si'') la''4-> r8 | % 71
   do''4.\mf\downbow si'8( do'' la') mi'4 la'8\upbow ~ la' mi'\upbow-. ( la'\upbow-.) | % 72
   do''8( si' do'') re''( \grace { do''16 re'' } do''8 si') la'4( mi'8) la'4( si'8) | \pageBreak % 73
 
@@ -125,13 +125,14 @@ violin = \absolute {
   \once \omit DynamicText
   mi'''8\f\<->( re''' mi''') do'''4. mi'''8->( re''' mi''') \once \omit DynamicText do'''4.\ff | % 83
   \mark \markup { \box "84" }
-  mi''4.\mp\downbow->( ~ mi''4 re''8) do''4.\upbow->( ~ do''4 la'8\upbow) | \break % 84
+  % El arco abajo en re indica retoma; no es una ligadura mi–re.
+  mi''4.-\tweak text \markup { \dynamic "mp" \normal-text \italic \fontsize #-2 " sub." } \mp\downbow-> ~ mi''4 re''8\downbow^\markup { \tiny \italic "retoma" } do''4.\upbow->( ~ do''4 la'8\upbow) | \break % 84
   si'4 do''8 ~ do'' si'4 do''4.\mf\upbow( si'8\upbow do'' la') | % 85
   la'4\mp( mi''8) mi''4( re''8) do''4( \grace { re''16 do'' } si'8) la'4( sol'8) | % 86
-  sol'4( la'8) si'4\<( do''8) re''2.\mf | % 87
+  sol'4( la'8) si'4\<\glissando( do''8) re''2.\mf | % 87
   do''4.\mp\downbow ~ do''4 do''8 re''4. sol''4. | \break % 88
-  fa''4. mi''4. sol''8\upbow-- r8 fa''8-- r8 mi''8-. r8 | % 89
-  re''4\downbow( si'8 ~ si' la'4\downbow) sols'4\upbow( fas'8 ~ fas' sols'4) | % 90
+  fa''4. mi''4. sol''8\upbow-- r8 fa''8-- r8 mi''8-.\tenuto r8 | % 89
+  re''4\downbow( si'8 ~ si' la'4\downbow) sols'4\upbow( fas'8 ~ fas' sols'4)\glissando | % 90
   la'2.\downbow la'2.\upbow-> | % 91
   \once \omit Hairpin
   si'1.\downbow\<_\markup { \italic "cresc. poco a poco" } | % 92
@@ -141,7 +142,7 @@ violin = \absolute {
   la''2.\f\downbow-> mi'''2.-> | % 95
   re'''4.->( do'''4.) si''4.->( do'''4.) | % 96
   la''2.( ~ la''4. ~ la''8 si'' do''') | % 97
-  la''4.\upbow\< ~ la''8 si''\downbow( do''') re'''2.\upbow-> | % 98
+  la''4.\upbow\< ~ la''8 si''\downbow( do''') mi'''2.\upbow-> | % 98
   la''2.\ff\downbow mi'''2.\upbow | % 99
   mi'''4\downbow-> re'''8\upbow ~ re''' do'''4\downbow re'''4.\upbow-> si''4.\downbow-> | \break % 100
   la''2.\upbow( ~ la''4. ~ la''8 si'' do''') | % 101
