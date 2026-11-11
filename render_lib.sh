@@ -41,6 +41,14 @@ render_is_wav_file() {
   [[ "$head4" == "RIFF" ]]
 }
 
+# Normalización de pico: una ganancia uniforme conserva las dinámicas.
+render_normalize_wav() {
+  local input="$1"
+  local output="$2"
+
+  sox "$input" -t wav "$output" gain -n -3
+}
+
 render_find_midi() {
   local outdir="$1"
   local base="$2"
@@ -58,7 +66,7 @@ render_wav() {
   local input="$1"
   local outdir="${2:-out}"
   local sf2="${3:-$RENDER_DEFAULT_SF2}"
-  local filename ext base midi wav raw fs_rc
+  local filename ext base midi wav raw fs_rc normalized_wav
 
   if [[ ! -f "$input" ]]; then
     echo "No existe el archivo de entrada: $input" >&2
@@ -119,6 +127,15 @@ render_wav() {
     rm -f "$raw"
   fi
 
+  echo ">> Normalizando el pico del WAV a -3 dBFS..."
+  normalized_wav="$(mktemp "$outdir/.${base}.normalized.XXXXXX")" || return 1
+  if ! render_normalize_wav "$wav" "$normalized_wav"; then
+    rm -f "$normalized_wav"
+    echo "No se pudo normalizar el WAV: $wav" >&2
+    return 1
+  fi
+  mv -f "$normalized_wav" "$wav" || return 1
+
   echo "OK -> $wav"
 }
 
@@ -127,7 +144,7 @@ render_mp4() {
   local outdir="${2:-out}"
   local sf2="${3:-$RENDER_DEFAULT_SF2}"
   local t_spec="${4:-}"
-  local filename ext base pdf midi wav mp4 concat
+  local filename ext base pdf midi wav mp4 concat normalized_wav
   local line page_count wav_dur wav_dur_c per oldifs
   local k sum_fixed remain neg left per_rest i p p_esc dur last last_esc
   local -a pages durations fixed
@@ -156,6 +173,7 @@ render_mp4() {
   wav="$outdir/$base.wav"
   mp4="$outdir/$base.mp4"
   concat="$outdir/${base}_images.concat.txt"
+  normalized_wav=""
 
   if [[ "$ext" == "ly" ]]; then
     render_need_cmd lilypond "lilypond" || return 1
@@ -317,6 +335,19 @@ render_mp4() {
   last_esc="$(render_escape_for_ffconcat "$last")"
   echo "file '$last_esc'" >> "$concat"
 
+  # Al partir de un PDF, el WAV existente puede no estar normalizado.
+  # Preparar una copia evita modificar el audio original del usuario.
+  if [[ "$ext" == "pdf" ]]; then
+    render_need_cmd sox "sox" || return 1
+    normalized_wav="$(mktemp "$outdir/.${base}.normalized.XXXXXX")" || return 1
+    if ! render_normalize_wav "$wav" "$normalized_wav"; then
+      rm -f "$normalized_wav"
+      echo "No se pudo normalizar el WAV para el MP4: $wav" >&2
+      return 1
+    fi
+    wav="$normalized_wav"
+  fi
+
   rm -f "$mp4"
   echo ">> Creando MP4 con pase de hojas..."
 
@@ -329,11 +360,16 @@ render_mp4() {
   else
     echo ">> libx264 fallo; probando h264_videotoolbox..."
     rm -f "$mp4"
-    ffmpeg -y -f concat -safe 0 -i "$concat" -i "$wav" \
+    if ! ffmpeg -y -f concat -safe 0 -i "$concat" -i "$wav" \
       -vf "scale=trunc(iw/2)*2:trunc(ih/2)*2" \
       -c:v h264_videotoolbox -b:v 4000k -pix_fmt yuv420p -r 30 \
-      -c:a aac -b:a 192k -shortest -movflags +faststart "$mp4" || return 1
+      -c:a aac -b:a 192k -shortest -movflags +faststart "$mp4"; then
+      [[ -z "$normalized_wav" ]] || rm -f "$normalized_wav"
+      return 1
+    fi
   fi
+
+  [[ -z "$normalized_wav" ]] || rm -f "$normalized_wav"
 
   echo "OK -> $mp4"
 }

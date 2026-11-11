@@ -8,6 +8,13 @@
   arranger = "Adaptación: Sean O'Loughlin"
 }
 
+% Contraste dinámico para MIDI, sin alterar las indicaciones impresas.
+#(define (celtic-dynamic-volume name)
+  (or (assoc-ref '(("ppp" . 0.20) ("pp" . 0.30) ("p" . 0.42)
+                   ("mp" . 0.54) ("mf" . 0.68) ("f" . 0.92)
+                   ("ff" . 0.96)) name)
+      (default-dynamic-absolute-volume name)))
+
 violin = \absolute {
   \clef treble
   % Sin alteraciones en la armadura; no se presupone una tonalidad.
@@ -184,5 +191,10 @@ tempoFinal = {
     \new NullVoice { \tempoFinal }
   >>
   \layout { }
-  \midi { }
+  \midi {
+    \context {
+      \Score
+      dynamicAbsoluteVolumeFunction = #celtic-dynamic-volume
+    }
+  }
 }

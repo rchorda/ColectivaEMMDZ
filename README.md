@@ -3,13 +3,17 @@
 ## Renderizado
 
 Los comandos de renderizado comparten la biblioteca `render_lib.sh`.
+El WAV generado se normaliza a un pico de −3 dBFS con una ganancia uniforme,
+por lo que conserva los contrastes dinámicos de la interpretación MIDI. El MP4
+utiliza ese audio; al partir de un PDF y un WAV existentes, normaliza una copia
+temporal para el vídeo sin modificar el WAV original.
 
 Uso directo:
 
 ```bash
 ./render_wav.sh pieza.ly out
 ./render_mp4.sh pieza.ly out
-./render_mp4.sh pieza.ly out "" 20,40
+./render_mp4.sh pieza.ly out "$PWD/Violin STR VI (5,353KB).sf2" 20,40
 ```
 
 Uso como biblioteca desde otro script:
