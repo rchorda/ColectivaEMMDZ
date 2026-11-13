@@ -1,0 +1,139 @@
+{
+  "schemaVersion": 1,
+  "workSource": "../verano.ly",
+  "notes": "Ejercicios preparados mediante copias controladas. Si cambia la obra completa, hay que revisar los fragmentos antes de regenerarlos.",
+  "segments": [
+    {
+      "id": "c010-c019",
+      "startBar": 10,
+      "endBarExclusive": 20,
+      "part": "Violín",
+      "meter": "3/4",
+      "tempo": {
+        "bpm": 160,
+        "unit": "negra"
+      },
+      "preparation": "Un compás de entrada con tres pulsos de claqueta.",
+      "pickup": "",
+      "notes": [
+        "El tempo negra = 160 es orientativo para la reproducción; la fuente indica Presto."
+      ],
+      "videos": [
+        {
+          "suffix": "",
+          "ratio": 1
+        }
+      ]
+    },
+    {
+      "id": "c021-c028",
+      "startBar": 21,
+      "endBarExclusive": 29,
+      "part": "Violín",
+      "meter": "3/4",
+      "tempo": {
+        "bpm": 160,
+        "unit": "negra"
+      },
+      "preparation": "Un compás de entrada con tres pulsos de claqueta.",
+      "pickup": "",
+      "notes": [
+        "El tempo negra = 160 es orientativo para la reproducción; la fuente indica Presto."
+      ],
+      "videos": [
+        {
+          "suffix": "",
+          "ratio": 1
+        }
+      ]
+    },
+    {
+      "id": "c038-c040",
+      "startBar": 38,
+      "endBarExclusive": 41,
+      "part": "Violín",
+      "meter": "3/4",
+      "tempo": {
+        "bpm": 160,
+        "unit": "negra"
+      },
+      "preparation": "Un compás de entrada con tres pulsos de claqueta.",
+      "pickup": "",
+      "notes": [
+        "El tempo negra = 160 es orientativo para la reproducción; la fuente indica Presto."
+      ],
+      "videos": [
+        {
+          "suffix": "",
+          "ratio": 1
+        }
+      ]
+    },
+    {
+      "id": "c064-c066",
+      "startBar": 64,
+      "endBarExclusive": 67,
+      "part": "Violín",
+      "meter": "3/4",
+      "tempo": {
+        "bpm": 160,
+        "unit": "negra"
+      },
+      "preparation": "Un compás de entrada con tres pulsos de claqueta.",
+      "pickup": "",
+      "notes": [
+        "El tempo negra = 160 es orientativo para la reproducción; la fuente indica Presto."
+      ],
+      "videos": [
+        {
+          "suffix": "",
+          "ratio": 1
+        }
+      ]
+    },
+    {
+      "id": "c101-c108",
+      "startBar": 101,
+      "endBarExclusive": 109,
+      "part": "Violín",
+      "meter": "3/4",
+      "tempo": {
+        "bpm": 160,
+        "unit": "negra"
+      },
+      "preparation": "Un compás de entrada con tres pulsos de claqueta.",
+      "pickup": "",
+      "notes": [
+        "El tempo negra = 160 es orientativo para la reproducción; la fuente indica Presto."
+      ],
+      "videos": [
+        {
+          "suffix": "",
+          "ratio": 1
+        }
+      ]
+    },
+    {
+      "id": "c113-c114",
+      "startBar": 113,
+      "endBarExclusive": 115,
+      "part": "Violín",
+      "meter": "3/4",
+      "tempo": {
+        "bpm": 160,
+        "unit": "negra"
+      },
+      "preparation": "Un compás de entrada con tres pulsos de claqueta.",
+      "pickup": "",
+      "notes": [
+        "El tempo negra = 160 es orientativo para la reproducción; la fuente indica Presto."
+      ],
+      "videos": [
+        {
+          "suffix": "",
+          "ratio": 1
+        }
+      ]
+    }
+  ]
+}

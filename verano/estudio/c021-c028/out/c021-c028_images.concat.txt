@@ -1,0 +1,3 @@
+file 'c021-c028_000.png'
+duration 12.843537
+file 'c021-c028_000.png'
