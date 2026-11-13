@@ -1,0 +1,4 @@
+interface:
+  display_name: "LilyPond: segmentos de estudio"
+  short_description: "Maestro, fragmentos con claqueta y PDF, WAV y MP4"
+  default_prompt: "Usa $lilypond-estudio para generar un segmento de Celtic Carol desde el compás 52 hasta el 60, excluido, con un compás de claqueta, PDF, WAV y MP4."

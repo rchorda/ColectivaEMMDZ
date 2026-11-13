@@ -84,6 +84,142 @@ reparte por igual entre páginas; no se calcula seguimiento por notas.
 El comando antiguo `b.midi2wav` delega en `render_wav.sh` y acepta tanto una
 ruta base sin extensión como un archivo `.mid` o `.midi`.
 
+## Transcripción y revisión con fotografías en Codex
+
+La skill [lilypond-transcripcion](skills/lilypond-transcripcion/SKILL.md)
+organiza la lectura de fotografías y escaneos, la escritura en LilyPond y el
+cotejo con los originales. También permite revisar una partitura existente con
+nuevas fotos, detalles ampliados o anotaciones añadidas. Usa LilyPond Maestro como apoyo para notación y
+revisión; añade las convenciones de archivos y renderizado de este proyecto.
+Su fuente se mantiene en `skills/lilypond-transcripcion/` y se descubre mediante
+el enlace `.agents/skills/lilypond-transcripcion`.
+
+Ejemplo de petición:
+
+> Usa $lilypond-transcripcion para continuar esta obra con las fotografías:
+> primero notas y duraciones, después anotaciones a lápiz. Indica las dudas,
+> conserva los bloques musicales y actualiza LilyPond, PDF, MIDI, WAV y MP4.
+
+Para revisar una fuente existente:
+
+> Usa $lilypond-transcripcion para revisar verano/verano.ly con estas nuevas
+> fotografías. Localiza los compases, compara notas y anotaciones y señala las
+> discrepancias y dudas. Aplica las correcciones confirmadas y actualiza los
+> archivos manteniendo las tres páginas y los bloques musicales.
+
+Si se pide solo revisar, entrega los hallazgos; si se pide corregir, aplica
+los cambios confirmados. Una nueva fotografía no sustituye automáticamente
+las decisiones interpretativas anteriores ni la maquetación acordada.
+
+La skill distingue errores confirmados, lecturas pendientes y diferencias
+entre ediciones. Es un procedimiento de trabajo, no un OCR automático.
+Para preparar ejercicios desde una fuente ya transcrita, usa `lilypond-estudio`.
+
+## Segmentos de estudio con Codex
+
+La skill [lilypond-estudio](skills/lilypond-estudio/SKILL.md) combina las
+instrucciones del complemento **LilyPond Maestro (notación española)** con
+el flujo de preparación de fragmentos, claqueta y renderizado PDF/WAV/MP4.
+Su fuente se mantiene en `skills/lilypond-estudio/`; el registro de proyecto
+en `.agents/skills/lilypond-estudio` enlaza a esa carpeta.
+
+Ejemplo de petición:
+
+> Usa $lilypond-estudio para generar Celtic Carol desde el compás 52 hasta el
+> 60, excluido, con un compás de claqueta, PDF, WAV y MP4.
+
+La selección usa límites `[inicio, fin)` y los nombres indican los compases
+realmente incluidos: este ejemplo se guarda en `celtic_carol/estudio/c052-c059/`.
+La fuente, PDF y MIDI quedan en esa carpeta; WAV y MP4, en su `out/`.
+La skill contiene instrucciones reutilizables y un caso de referencia;
+no incorpora todavía un extractor automático general.
+Requiere tener disponible Maestro para aplicar sus instrucciones originales;
+si falta, debe indicarlo y trabajar con las fuentes y herramientas locales.
+
+El primer ejercicio generado es [Celtic Carol, compases 52–59](celtic_carol/estudio/c052-c059/c052-c059.pdf),
+con [WAV](celtic_carol/estudio/c052-c059/out/c052-c059.wav) y
+[MP4](celtic_carol/estudio/c052-c059/out/c052-c059.mp4). Incluye las dos últimas
+corcheas del 51 (mi–fa), reescritas como semicorcheas dentro de la preparación
+en 6/8, a negra con puntillo = 60. La claqueta prepara el pulso de destino:
+seis corcheas con acentos en 1 y 4; mi–fa ocupa la última corchea.
+Esta reescritura conserva la duración real de las dos corcheas originales
+a negra con puntillo = 120. Las 38 notas mantienen sus alturas, tiempos reales
+y velocidades MIDI. La preparación ocupa 2 s,
+la música termina a los 18 s y el WAV dura 20,91 s con la cola de sonido.
+El vídeo muestra la partitura completa en una página, sin cursor por notas.
+
+Para regenerar todos sus medios, incluida la mezcla de claqueta:
+
+```bash
+python3 celtic_carol/estudio/c052-c059/render.py
+```
+
+La fuente del ejercicio es una copia controlada: este comando no vuelve a
+extraer las notas de la obra. La revisión inicial verificó compilación,
+correspondencia MIDI, pulsos, duraciones y presentación visual; la escucha
+queda pendiente.
+
+También están preparados estos ejercicios en 12/8, a negra con puntillo = 120,
+con un compás de claqueta de cuatro pulsos subdivididos en corcheas:
+
+| Selección | Compases incluidos | PDF | WAV | MP4 |
+| --- | --- | --- | --- | --- |
+| `[29,33)` | 29–32 | [Partitura](celtic_carol/estudio/c029-c032/c029-c032.pdf) | [Audio](celtic_carol/estudio/c029-c032/out/c029-c032.wav) | [Vídeo](celtic_carol/estudio/c029-c032/out/c029-c032.mp4) |
+| `[60,64)` | 60–63 | [Partitura](celtic_carol/estudio/c060-c063/c060-c063.pdf) | [Audio](celtic_carol/estudio/c060-c063/out/c060-c063.wav) | [Vídeo](celtic_carol/estudio/c060-c063/out/c060-c063.mp4) |
+| `[64,68)` | 64–67 | [Partitura](celtic_carol/estudio/c064-c067/c064-c067.pdf) | [Audio](celtic_carol/estudio/c064-c067/out/c064-c067.wav) | [Vídeo](celtic_carol/estudio/c064-c067/out/c064-c067.mp4) |
+
+En los ejercicios 60–63 y 64–67 se comprobaron respectivamente 41 y 38 notas frente al MIDI de la fuente,
+con igualdad de alturas, tiempos y velocidades. Ambos tienen 2 s de entrada,
+8 s de música y una duración WAV de 12,906 s incluida la cola. El segundo
+cierra el crescendo del 67 hacia el `f` del límite final, sin añadir notas
+del 68; la adaptación se indica en la partitura. PDF y fotogramas del vídeo
+revisados visualmente; escucha pendiente.
+
+El ejercicio 29–32 conserva sus cambios `ff`–`f`, arcos y articulaciones;
+se cotejaron 46 notas con igualdad de alturas, tiempos y velocidades MIDI.
+Su WAV dura 12,739 s, incluida la cola; el 32 termina con un silencio de
+corchea. PDF y fotograma de vídeo revisados; escucha pendiente.
+
+Para regenerar los tres ejercicios en 12/8, o uno indicando su nombre:
+
+```bash
+python3 celtic_carol/estudio/render_12_8.py
+python3 celtic_carol/estudio/render_12_8.py c029-c032
+python3 celtic_carol/estudio/render_12_8.py c064-c067
+```
+
+### Vídeos a tempo reducido
+
+Cada segmento dispone de vídeos al 50 % (`_t050.mp4`) y 75 % (`_t075.mp4`).
+Se recompila la partitura con el tempo visible correcto y se vuelve a
+sintetizar el MIDI, conservando alturas, articulaciones y velocidades.
+La claqueta y la entrada anacrúsica se escalan junto con el pasaje.
+Los valores de la tabla corresponden a la negra con puntillo:
+
+| Compases | 1/2 del tempo original | 3/4 del tempo original |
+| --- | --- | --- |
+| 29–32 | [60](celtic_carol/estudio/c029-c032/out/c029-c032_t050.mp4) | [90](celtic_carol/estudio/c029-c032/out/c029-c032_t075.mp4) |
+| 52–59, con entrada del 51 | [30](celtic_carol/estudio/c052-c059/out/c052-c059_t050.mp4) | [45](celtic_carol/estudio/c052-c059/out/c052-c059_t075.mp4) |
+| 60–63 | [60](celtic_carol/estudio/c060-c063/out/c060-c063_t050.mp4) | [90](celtic_carol/estudio/c060-c063/out/c060-c063_t075.mp4) |
+| 64–67 | [60](celtic_carol/estudio/c064-c067/out/c064-c067_t050.mp4) | [90](celtic_carol/estudio/c064-c067/out/c064-c067_t075.mp4) |
+
+Regeneración de los ocho vídeos, o de las dos velocidades de un segmento:
+
+```bash
+python3 celtic_carol/estudio/render_tempos.py
+python3 celtic_carol/estudio/render_tempos.py c052-c059
+```
+
+El script genera PDF/MIDI/WAV intermedios en una carpeta temporal y conserva
+los MP4 en `out/`. Requiere los MIDI originales actualizados: compara todos
+los eventos de canal antes de renderizar. Verifica el tempo en microsegundos
+por negra y corrige el redondeo observado en LilyPond 2.24.4 para negra con
+puntillo = 45 (negra = 67,5), sin cambiar los eventos musicales.
+Los ocho vídeos tienen comprobación de pistas y duración, golpes de claqueta
+en audio decodificado y revisión visual del tempo y la partitura. Escucha
+pendiente. Las colas de sonido se sintetizan de nuevo y no se estiran con
+el tempo, por lo que la duración total no es un múltiplo exacto del MP4 original.
+
 ## Biblioteca web: Entre cuerdas
 
 El sitio de partituras se mantiene en un repositorio independiente, situado localmente en `sites/entre-cuerdas/`. Su README contiene el detalle del sitio. Reúne PDF, audio de estudio, fuentes LilyPond e inclusiones, además de un cuaderno de trucos y una guía para seguir editando con Codex y LilyPond Maestro.

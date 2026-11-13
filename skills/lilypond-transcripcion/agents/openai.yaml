@@ -1,0 +1,4 @@
+interface:
+  display_name: "LilyPond: transcripción y revisión con fotos"
+  short_description: "Transcribe fotografías o revisa partituras con nuevas fotos"
+  default_prompt: "Usa $lilypond-transcripcion para revisar la partitura existente con estas nuevas fotografías, comparar notas y anotaciones y señalar por compás las discrepancias y dudas."
