@@ -10,12 +10,14 @@ Uso:
   render_wav.sh <archivo.ly|archivo.mid|archivo.midi> [outdir] [sf2_path]
 
 Ejemplos:
-  ./render_wav.sh pieza.ly
-  ./render_wav.sh pieza.midi out
-  ./render_wav.sh pieza.ly out "/ruta/a/otro.sf2"
+  ./render_wav.sh celtic_carol/celtic_carol.ly
+  ./render_wav.sh "The First Noel/The First Noel.midi"
+  ./render_wav.sh celtic_carol/celtic_carol.ly "" "/ruta/a/otro.sf2"
 
 Salida:
-  outdir/<base>.wav
+  <carpeta de la partitura>/out/<base>.wav por defecto.
+  PDF y MIDI compilados junto al .ly. Un outdir explícito es relativo al cwd.
+  Si la entrada ya está en out/, se reutiliza ese directorio.
 EOF
 }
 
@@ -25,7 +27,7 @@ if [[ $# -lt 1 || "${1:-}" == "-h" || "${1:-}" == "--help" ]]; then
 fi
 
 INPUT="$1"
-OUTDIR="${2:-out}"
+OUTDIR="${2:-}"
 SF2="${3:-$RENDER_DEFAULT_SF2}"
 
 render_wav "$INPUT" "$OUTDIR" "$SF2"

@@ -1,7 +1,27 @@
 #!/usr/bin/env bash
 
 # Funciones compartidas para renderizar partituras LilyPond a audio y video.
-: "${RENDER_DEFAULT_SF2:=/Users/usuario/DocuLocal/Casa/ColectivaEMMDZ/Violin STR VI (5,353KB).sf2}"
+: "${RENDER_DEFAULT_SF2:=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/Violin STR VI (5,353KB).sf2}"
+
+# Los PDF/MIDI que ya estén en out/ reutilizan esa carpeta.
+render_default_outdir() {
+  local input_dir
+  input_dir="$(cd "$(dirname "$1")" && pwd)" || return 1
+  if [[ "$(basename "$input_dir")" == "out" ]]; then
+    printf '%s\n' "$input_dir"
+  else
+    printf '%s/out\n' "$input_dir"
+  fi
+}
+
+render_compile_score() {
+  local input="$1"
+  local score_dir base
+  score_dir="$(cd "$(dirname "$input")" && pwd)" || return 1
+  base="$(basename "$input" .ly)"
+  # PDF y MIDI junto a la fuente; -I permite inclusiones locales desde cualquier cwd.
+  lilypond -I "$score_dir" -o "$score_dir/$base" "$input"
+}
 
 render_need_cmd() {
   local cmd="$1"
@@ -64,7 +84,7 @@ render_find_midi() {
 
 render_wav() {
   local input="$1"
-  local outdir="${2:-out}"
+  local outdir="${2:-}"
   local sf2="${3:-$RENDER_DEFAULT_SF2}"
   local filename ext base midi wav raw fs_rc normalized_wav
 
@@ -72,6 +92,7 @@ render_wav() {
     echo "No existe el archivo de entrada: $input" >&2
     return 1
   fi
+  outdir="${outdir:-$(render_default_outdir "$input")}" || return 1
   if [[ ! -f "$sf2" ]]; then
     echo "No existe el SoundFont SF2: $sf2" >&2
     echo "Pasalo como 3er argumento si la ruta cambio." >&2
@@ -91,10 +112,10 @@ render_wav() {
   if [[ "$ext" == "ly" ]]; then
     render_need_cmd lilypond "lilypond" || return 1
     echo ">> Compilando LilyPond: $input"
-    lilypond -o "$outdir/$base" "$input" || return 1
+    render_compile_score "$input" || return 1
 
-    if ! midi="$(render_find_midi "$outdir" "$base")"; then
-      echo "No encontre MIDI generado en $outdir para base '$base'." >&2
+    if ! midi="$(render_find_midi "$(dirname "$input")" "$base")"; then
+      echo "No encontre MIDI generado junto a $input para base '$base'." >&2
       return 1
     fi
   elif [[ "$ext" == "midi" || "$ext" == "mid" ]]; then
@@ -141,7 +162,7 @@ render_wav() {
 
 render_mp4() {
   local input="$1"
-  local outdir="${2:-out}"
+  local outdir="${2:-}"
   local sf2="${3:-$RENDER_DEFAULT_SF2}"
   local t_spec="${4:-}"
   local filename ext base pdf midi wav mp4 concat normalized_wav
@@ -149,13 +170,14 @@ render_mp4() {
   local k sum_fixed remain neg left per_rest i p p_esc dur last last_esc
   local -a pages durations fixed
 
-  export LC_ALL=C
-  export LANG=C
+  # Mantener UTF-8 para rutas con acentos e inclusiones de LilyPond.
+  # Las operaciones numéricas usan LC_ALL=C de forma explícita más abajo.
 
   if [[ ! -f "$input" ]]; then
     echo "No existe el archivo de entrada: $input" >&2
     return 1
   fi
+  outdir="${outdir:-$(render_default_outdir "$input")}" || return 1
 
   render_need_cmd ffmpeg "ffmpeg" || return 1
   render_need_cmd ffprobe "ffmpeg" || return 1
@@ -184,11 +206,11 @@ render_mp4() {
     fi
 
     echo ">> Compilando LilyPond: $input"
-    lilypond -o "$outdir/$base" "$input" || return 1
+    render_compile_score "$input" || return 1
 
-    pdf="$outdir/$base.pdf"
-    if ! midi="$(render_find_midi "$outdir" "$base")"; then
-      echo "No encontre MIDI en $outdir para base '$base'." >&2
+    pdf="$(dirname "$input")/$base.pdf"
+    if ! midi="$(render_find_midi "$(dirname "$input")" "$base")"; then
+      echo "No encontre MIDI junto a $input para base '$base'." >&2
       return 1
     fi
 
@@ -198,6 +220,8 @@ render_mp4() {
     pdf="$input"
     if [[ -f "$outdir/$base.wav" ]]; then
       wav="$outdir/$base.wav"
+    elif [[ -f "$(dirname "$input")/out/$base.wav" ]]; then
+      wav="$(dirname "$input")/out/$base.wav"
     elif [[ -f "$(dirname "$input")/$base.wav" ]]; then
       wav="$(dirname "$input")/$base.wav"
     else

@@ -1,4 +1,16 @@
-#!/bin/bash
-file=$1
-fluidsynth -a alsa -m alsa_seq Violin\ STR\ VI\ \(5\,353KB\).sf2 $file.midi -F $file.wav
+#!/usr/bin/env bash
+set -euo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+if [[ $# -lt 1 || "$1" == "-h" || "$1" == "--help" ]]; then
+  echo 'Uso: b.midi2wav <ruta/base|archivo.mid|archivo.midi> [outdir] [sf2_path]'
+  exit 0
+fi
+input="$1"
+shift
+case "$input" in
+  *.mid|*.midi) ;;
+  *) input="$input.midi" ;;
+esac
+exec "$SCRIPT_DIR/render_wav.sh" "$input" "$@"
 

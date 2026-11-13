@@ -9,5 +9,5 @@ __pycache__/
 # El sitio tiene su propio repositorio y remoto en Sites.
 /sites/entre-cuerdas/
 
-# Render fallido vacío en la raíz; los vídeos válidos se generan en out/.
-/tu_pieza.mp4
+# Render fallido vacío conservado durante la reorganización.
+/tu_pieza/out/legacy-root/tu_pieza.mp4

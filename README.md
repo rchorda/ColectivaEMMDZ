@@ -1,5 +1,37 @@
 # ColectivaEMMDZ
 
+## Organización de las partituras
+
+Cada obra tiene una carpeta en la raíz. Incluye las fuentes LilyPond, las
+inclusiones locales, el PDF, el MIDI y los documentos relacionados. Las variantes
+de una misma obra, como `hey_jude`, `verano` y `Compendio`, comparten carpeta.
+La plantilla `base.ly`, los scripts y los SoundFonts son recursos comunes y
+permanecen en la raíz.
+
+```text
+celtic_carol/
+  celtic_carol.ly
+  celtic_carol.pdf
+  celtic_carol.midi
+  out/
+    celtic_carol.wav
+    celtic_carol.mp4
+    ... imágenes y tiempos del pase de hojas
+```
+
+Los resultados del antiguo `out/` común se conservan en el `out/` de cada obra,
+incluidos sus PDF y MIDI históricos. En `tu_pieza/out/legacy-root/` se conservan
+el WAV y las imágenes que estaban en la raíz, además del MP4 vacío de un intento
+fallido, para evitar sobrescribir archivos del mismo nombre. Los nuevos
+renderizados actualizan PDF y MIDI junto al `.ly` y guardan el audio, el vídeo y
+los archivos auxiliares del vídeo en `out/`.
+
+Los movimientos de archivos versionados se han realizado con `git mv`.
+Git conserva el historial en los commits anteriores y reconoce los cambios de
+ruta al comparar versiones; para seguir una fuente puede usarse, por ejemplo,
+`git log --follow -- celtic_carol/celtic_carol.ly`.
+Los directorios `out/` vacíos se crean al renderizar y no necesitan versionarse.
+
 ## Renderizado
 
 Los comandos de renderizado comparten la biblioteca `render_lib.sh`.
@@ -11,9 +43,10 @@ temporal para el vídeo sin modificar el WAV original.
 Uso directo:
 
 ```bash
-./render_wav.sh pieza.ly out
-./render_mp4.sh pieza.ly out
-./render_mp4.sh pieza.ly out "$PWD/Violin STR VI (5,353KB).sf2" 20,40
+./render_wav.sh celtic_carol/celtic_carol.ly
+./render_mp4.sh celtic_carol/celtic_carol.ly
+./render_mp4.sh celtic_carol/celtic_carol.ly "" "" 20,40
+./render_wav.sh "The First Noel/The First Noel.midi"
 ```
 
 Uso como biblioteca desde otro script:
@@ -21,14 +54,35 @@ Uso como biblioteca desde otro script:
 ```bash
 source ./render_lib.sh
 
-render_wav "pieza.ly" "out"
-render_mp4 "pieza.ly" "out" "$RENDER_DEFAULT_SF2" "20,40"
+render_wav "celtic_carol/celtic_carol.ly"
+render_mp4 "celtic_carol/celtic_carol.ly" "" "$RENDER_DEFAULT_SF2" "20,40"
 ```
 
 Funciones principales:
 
 - `render_wav <archivo.ly|archivo.mid|archivo.midi> [outdir] [sf2_path]`
 - `render_mp4 <archivo.ly|archivo.pdf> [outdir] [sf2_path] [T]`
+
+Sin `outdir` (o pasando `""`), la salida es `out/` junto a la entrada. Si la
+entrada ya está en una carpeta llamada `out`, se reutiliza esa carpeta. Un
+`outdir` explícito sigue siendo relativo al directorio de trabajo, o puede ser
+una ruta absoluta. El SoundFont predeterminado se localiza junto a los scripts,
+sin depender de la ubicación del repositorio ni del directorio de trabajo.
+
+Los scripts pueden invocarse también desde dentro de una obra:
+
+```bash
+cd celtic_carol
+../render_wav.sh celtic_carol.ly
+../render_mp4.sh celtic_carol.pdf
+```
+
+Para generar el vídeo a partir de un PDF, se busca su WAV en la salida elegida,
+en el `out/` junto al PDF o junto al propio PDF. El parámetro `T` conserva el
+control de los tiempos del pase de hojas: sin él, la duración del audio se
+reparte por igual entre páginas; no se calcula seguimiento por notas.
+El comando antiguo `b.midi2wav` delega en `render_wav.sh` y acepta tanto una
+ruta base sin extensión como un archivo `.mid` o `.midi`.
 
 ## Biblioteca web: Entre cuerdas
 
@@ -44,6 +98,10 @@ python3 scripts/sync-library.py
 ```
 
 La actualización del catálogo es local. Para que aparezca en la web, pedir a Codex que publique el sitio existente con Sites, conservando su configuración y permisos. Los detalles del flujo y sus comprobaciones están en el README del sitio.
+
+El importador admite las carpetas por obra, busca el audio en su `out/` y
+conserva los identificadores de las fichas existentes. La reorganización local
+no modifica el catálogo publicado.
 
 ## Organización de Git
 

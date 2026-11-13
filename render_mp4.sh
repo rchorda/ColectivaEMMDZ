@@ -21,14 +21,15 @@ Notas:
   - Si la suma de tiempos fijos supera la duración del WAV => error.
 
 Ejemplos:
-  ./render_mp4.sh pieza.ly
-  ./render_mp4.sh pieza.ly out "/ruta/Violin STR VI (5,353KB).sf2"
-  ./render_mp4.sh pieza.ly out "/ruta/Violin STR VI (5,353KB).sf2" 6
-  ./render_mp4.sh pieza.ly out "/ruta/Violin STR VI (5,353KB).sf2" 20,40
-  ./render_mp4.sh pieza.pdf out "" 10
+  ./render_mp4.sh celtic_carol/celtic_carol.ly
+  ./render_mp4.sh celtic_carol/celtic_carol.ly "" "/ruta/otro.sf2" 20,40
+  ./render_mp4.sh celtic_carol/celtic_carol.pdf "" "" 10
+  ./render_mp4.sh celtic_carol/celtic_carol.ly /tmp/video
 
 Salida:
-  outdir/<base>.mp4
+  <carpeta de la partitura>/out/<base>.mp4 por defecto, junto al WAV.
+  PDF y MIDI compilados junto al .ly. Un outdir explícito es relativo al cwd.
+  Si la entrada ya está en out/, se reutiliza ese directorio.
 EOF
 }
 
@@ -38,7 +39,7 @@ if [[ $# -lt 1 || "${1:-}" == "-h" || "${1:-}" == "--help" ]]; then
 fi
 
 INPUT="$1"
-OUTDIR="${2:-out}"
+OUTDIR="${2:-}"
 SF2="${3:-$RENDER_DEFAULT_SF2}"
 T_SPEC="${4:-}"   # vacío => AUTO
 
