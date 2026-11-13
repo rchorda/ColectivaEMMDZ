@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "workSource": "../celtic_carol.ly",
+  "notes": "Ejercicios preparados mediante copias controladas. Si cambia la obra completa, hay que revisar los fragmentos antes de regenerarlos.",
+  "segments": [
+    {
+      "id": "c029-c032",
+      "startBar": 29,
+      "endBarExclusive": 33,
+      "part": "Violín 1",
+      "meter": "12/8",
+      "tempo": {
+        "bpm": 120,
+        "unit": "negra con puntillo"
+      },
+      "preparation": "Un compás de claqueta con subdivisión en corcheas y acento en cada pulso de negra con puntillo.",
+      "pickup": "",
+      "notes": [
+        "Se conservan los cambios de dinámica de los compases 29 y 31."
+      ],
+      "videos": [
+        {
+          "suffix": "_t050",
+          "ratio": 0.5
+        },
+        {
+          "suffix": "_t075",
+          "ratio": 0.75
+        },
+        {
+          "suffix": "",
+          "ratio": 1
+        }
+      ]
+    },
+    {
+      "id": "c052-c059",
+      "startBar": 52,
+      "endBarExclusive": 60,
+      "part": "Violín 1",
+      "meter": "6/8",
+      "tempo": {
+        "bpm": 60,
+        "unit": "negra con puntillo"
+      },
+      "preparation": "Un compás de preparación en 6/8: seis corcheas de claqueta, acentuadas en 1 y 4. La entrada mi–fa ocupa el final de la preparación.",
+      "pickup": "Incluye las dos últimas corcheas del compás 51 (mi–fa), reescritas como semicorcheas al tempo de destino.",
+      "notes": [
+        "El crescendo del 59 se cierra para el ejercicio; el MIDI alcanza mf en el límite final, sin añadir notas del 60."
+      ],
+      "videos": [
+        {
+          "suffix": "_t050",
+          "ratio": 0.5
+        },
+        {
+          "suffix": "_t075",
+          "ratio": 0.75
+        },
+        {
+          "suffix": "",
+          "ratio": 1
+        }
+      ]
+    },
+    {
+      "id": "c060-c063",
+      "startBar": 60,
+      "endBarExclusive": 64,
+      "part": "Violín 1",
+      "meter": "12/8",
+      "tempo": {
+        "bpm": 120,
+        "unit": "negra con puntillo"
+      },
+      "preparation": "Un compás de claqueta con subdivisión en corcheas y acento en cada pulso de negra con puntillo.",
+      "pickup": "",
+      "notes": [],
+      "videos": [
+        {
+          "suffix": "_t050",
+          "ratio": 0.5
+        },
+        {
+          "suffix": "_t075",
+          "ratio": 0.75
+        },
+        {
+          "suffix": "",
+          "ratio": 1
+        }
+      ]
+    },
+    {
+      "id": "c064-c067",
+      "startBar": 64,
+      "endBarExclusive": 68,
+      "part": "Violín 1",
+      "meter": "12/8",
+      "tempo": {
+        "bpm": 120,
+        "unit": "negra con puntillo"
+      },
+      "preparation": "Un compás de claqueta con subdivisión en corcheas y acento en cada pulso de negra con puntillo.",
+      "pickup": "",
+      "notes": [
+        "El crescendo del 67 alcanza f al final del ejercicio, tomando como referencia el compás 68 excluido; no se añaden sus notas."
+      ],
+      "videos": [
+        {
+          "suffix": "_t050",
+          "ratio": 0.5
+        },
+        {
+          "suffix": "_t075",
+          "ratio": 0.75
+        },
+        {
+          "suffix": "",
+          "ratio": 1
+        }
+      ]
+    }
+  ]
+}
