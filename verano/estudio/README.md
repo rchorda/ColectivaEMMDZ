@@ -35,3 +35,23 @@ comparado con el MIDI de `verano.ly`. Se han revisado los PDF, un fotograma de
 cada vídeo, los flujos de audio y vídeo y los pulsos de entrada. No se ha hecho
 una comprobación auditiva. Los ejercicios se describen también en
 `segments.json` para su posible importación posterior al sitio.
+
+## Vídeos a tempo reducido
+
+Cada ejercicio dispone de una versión al **50 % (negra = 80)** y otra al
+**75 % (negra = 120)**, junto a la versión original (negra = 160). En cada
+vídeo se indica el tempo correspondiente y la claqueta conserva un compás de
+preparación: 2,25 s al 50 % y 1,5 s al 75 %. La fuente y el MIDI se vuelven
+a compilar en una carpeta temporal y se sintetiza de nuevo el audio; no se
+estira la grabación. Se comprueban los eventos MIDI, el tempo y la claqueta.
+
+Para regenerar los doce vídeos o únicamente uno de los ejercicios:
+
+```bash
+python3 verano/estudio/render_tempos.py
+python3 verano/estudio/render_tempos.py c010-c019
+```
+
+Los vídeos se guardan en `out/` con los sufijos `_t050.mp4` y `_t075.mp4`.
+La comparación de eventos MIDI y las comprobaciones de pistas y claqueta no
+sustituyen a la escucha: la revisión auditiva sigue pendiente.

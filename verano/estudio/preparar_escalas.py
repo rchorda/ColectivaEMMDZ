@@ -17,10 +17,10 @@ def run(*cmd):
  if p.returncode: raise RuntimeError(' '.join(map(str,cmd))+'\n'+p.stdout[-6000:])
  return p.stdout
 
-def click(path):
- samples=array('h',[0])*(round(3*60/160*RATE)*2)
+def click(path, bpm=160):
+ samples=array('h',[0])*(round(3*60/bpm*RATE)*2)
  for beat in range(3):
-  start=round(beat*60/160*RATE)
+  start=round(beat*60/bpm*RATE)
   for i in range(round(.05*RATE)):
    t=i/RATE
    val=round(32767*(.35 if beat==0 else .22)*min(t/.0015,1)*math.exp(-80*t)*math.sin(2*math.pi*(1500 if beat==0 else 1050)*t))

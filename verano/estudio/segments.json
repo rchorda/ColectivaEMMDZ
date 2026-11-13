@@ -20,6 +20,14 @@
       ],
       "videos": [
         {
+          "suffix": "_t050",
+          "ratio": 0.5
+        },
+        {
+          "suffix": "_t075",
+          "ratio": 0.75
+        },
+        {
           "suffix": "",
           "ratio": 1
         }
@@ -41,6 +49,14 @@
         "El tempo negra = 160 es orientativo para la reproducción; la fuente indica Presto."
       ],
       "videos": [
+        {
+          "suffix": "_t050",
+          "ratio": 0.5
+        },
+        {
+          "suffix": "_t075",
+          "ratio": 0.75
+        },
         {
           "suffix": "",
           "ratio": 1
@@ -64,6 +80,14 @@
       ],
       "videos": [
         {
+          "suffix": "_t050",
+          "ratio": 0.5
+        },
+        {
+          "suffix": "_t075",
+          "ratio": 0.75
+        },
+        {
           "suffix": "",
           "ratio": 1
         }
@@ -85,6 +109,14 @@
         "El tempo negra = 160 es orientativo para la reproducción; la fuente indica Presto."
       ],
       "videos": [
+        {
+          "suffix": "_t050",
+          "ratio": 0.5
+        },
+        {
+          "suffix": "_t075",
+          "ratio": 0.75
+        },
         {
           "suffix": "",
           "ratio": 1
@@ -108,6 +140,14 @@
       ],
       "videos": [
         {
+          "suffix": "_t050",
+          "ratio": 0.5
+        },
+        {
+          "suffix": "_t075",
+          "ratio": 0.75
+        },
+        {
           "suffix": "",
           "ratio": 1
         }
@@ -129,6 +169,14 @@
         "El tempo negra = 160 es orientativo para la reproducción; la fuente indica Presto."
       ],
       "videos": [
+        {
+          "suffix": "_t050",
+          "ratio": 0.5
+        },
+        {
+          "suffix": "_t075",
+          "ratio": 0.75
+        },
         {
           "suffix": "",
           "ratio": 1
