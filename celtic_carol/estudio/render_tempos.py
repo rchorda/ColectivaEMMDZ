@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""Crea MP4 al 50 % y 75 % desde las fuentes de los cuatro ejercicios.
+"""Crea MP4 al 50 % y 75 % desde las fuentes de los cinco ejercicios.
 
-Uso: python3 render_tempos.py [c029-c032 c052-c059 c060-c063 c064-c067]
+Uso: python3 render_tempos.py [c029-c032 c052-c059 c060-c063 c064-c067 c068-c075]
 Recompila y sintetiza cada tempo: mantiene alturas, dinámicas y articulaciones.
 PDF, MIDI y WAV intermedios son temporales. Los MP4 se guardan en out/.
 Requiere los MIDI originales vigentes para verificar la equivalencia musical.
@@ -25,6 +25,7 @@ ROOT = HERE.parents[1]
 SEGMENTS = {
     "c029-c032": (120, 12), "c052-c059": (60, 6),
     "c060-c063": (120, 12), "c064-c067": (120, 12),
+    "c068-c075": (120, 12),
 }
 RATIOS = ((Fraction(1, 2), "t050"), (Fraction(3, 4), "t075"))
 RATE = 44100

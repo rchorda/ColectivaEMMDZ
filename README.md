@@ -167,6 +167,7 @@ con un compás de claqueta de cuatro pulsos subdivididos en corcheas:
 | `[29,33)` | 29–32 | [Partitura](celtic_carol/estudio/c029-c032/c029-c032.pdf) | [Audio](celtic_carol/estudio/c029-c032/out/c029-c032.wav) | [Vídeo](celtic_carol/estudio/c029-c032/out/c029-c032.mp4) |
 | `[60,64)` | 60–63 | [Partitura](celtic_carol/estudio/c060-c063/c060-c063.pdf) | [Audio](celtic_carol/estudio/c060-c063/out/c060-c063.wav) | [Vídeo](celtic_carol/estudio/c060-c063/out/c060-c063.mp4) |
 | `[64,68)` | 64–67 | [Partitura](celtic_carol/estudio/c064-c067/c064-c067.pdf) | [Audio](celtic_carol/estudio/c064-c067/out/c064-c067.wav) | [Vídeo](celtic_carol/estudio/c064-c067/out/c064-c067.mp4) |
+| `[68,76)` | 68–75 | [Partitura](celtic_carol/estudio/c068-c075/c068-c075.pdf) | [Audio](celtic_carol/estudio/c068-c075/out/c068-c075.wav) | [Vídeo](celtic_carol/estudio/c068-c075/out/c068-c075.mp4) |
 
 En los ejercicios 60–63 y 64–67 se comprobaron respectivamente 41 y 38 notas frente al MIDI de la fuente,
 con igualdad de alturas, tiempos y velocidades. Ambos tienen 2 s de entrada,
@@ -180,12 +181,20 @@ se cotejaron 46 notas con igualdad de alturas, tiempos y velocidades MIDI.
 Su WAV dura 12,739 s, incluida la cola; el 32 termina con un silencio de
 corchea. PDF y fotograma de vídeo revisados; escucha pendiente.
 
-Para regenerar los tres ejercicios en 12/8, o uno indicando su nombre:
+El ejercicio 68–75 conserva `f` en el 68, `mf` en el 72 y las notas de
+adorno del 73. Se cotejaron sus 85 notas con la obra completa: alturas,
+duraciones y velocidades MIDI idénticas. Tiene 2 s de claqueta y 16 s de
+música; WAV de 20,907 s incluida la cola, normalizado a −3 dBFS. El PDF
+ocupa una página A4 horizontal. Se revisaron el PDF y los tres vídeos,
+con doce golpes de claqueta y cuatro pulsos acentuados; escucha pendiente.
+
+Para regenerar los cuatro ejercicios en 12/8, o uno indicando su nombre:
 
 ```bash
 python3 celtic_carol/estudio/render_12_8.py
 python3 celtic_carol/estudio/render_12_8.py c029-c032
 python3 celtic_carol/estudio/render_12_8.py c064-c067
+python3 celtic_carol/estudio/render_12_8.py c068-c075
 ```
 
 ### Vídeos a tempo reducido
@@ -202,8 +211,9 @@ Los valores de la tabla corresponden a la negra con puntillo:
 | 52–59, con entrada del 51 | [30](celtic_carol/estudio/c052-c059/out/c052-c059_t050.mp4) | [45](celtic_carol/estudio/c052-c059/out/c052-c059_t075.mp4) |
 | 60–63 | [60](celtic_carol/estudio/c060-c063/out/c060-c063_t050.mp4) | [90](celtic_carol/estudio/c060-c063/out/c060-c063_t075.mp4) |
 | 64–67 | [60](celtic_carol/estudio/c064-c067/out/c064-c067_t050.mp4) | [90](celtic_carol/estudio/c064-c067/out/c064-c067_t075.mp4) |
+| 68–75 | [60](celtic_carol/estudio/c068-c075/out/c068-c075_t050.mp4) | [90](celtic_carol/estudio/c068-c075/out/c068-c075_t075.mp4) |
 
-Regeneración de los ocho vídeos, o de las dos velocidades de un segmento:
+Regeneración de los diez vídeos, o de las dos velocidades de un segmento:
 
 ```bash
 python3 celtic_carol/estudio/render_tempos.py
@@ -215,7 +225,7 @@ los MP4 en `out/`. Requiere los MIDI originales actualizados: compara todos
 los eventos de canal antes de renderizar. Verifica el tempo en microsegundos
 por negra y corrige el redondeo observado en LilyPond 2.24.4 para negra con
 puntillo = 45 (negra = 67,5), sin cambiar los eventos musicales.
-Los ocho vídeos tienen comprobación de pistas y duración, golpes de claqueta
+Los diez vídeos tienen comprobación de pistas y duración, golpes de claqueta
 en audio decodificado y revisión visual del tempo y la partitura. Escucha
 pendiente. Las colas de sonido se sintetizan de nuevo y no se estiran con
 el tempo, por lo que la duración total no es un múltiplo exacto del MP4 original.

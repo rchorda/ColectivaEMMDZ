@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Regenera los ejercicios 29–32, 60–63 y 64–67, en 12/8 y 4. = 120.
+"""Regenera los ejercicios 29–32, 60–63, 64–67 y 68–75, en 12/8 y 4. = 120.
 
-Uso: python3 render_12_8.py [c029-c032] [c060-c063] [c064-c067]
-Sin argumentos genera los tres. Reutiliza el renderizado común del proyecto.
+Uso: python3 render_12_8.py [c029-c032] [c060-c063] [c064-c067] [c068-c075]
+Sin argumentos genera los cuatro. Reutiliza el renderizado común del proyecto.
 No extrae ni actualiza notas; las fuentes contienen un silencio inicial de 2 s.
 """
 
@@ -18,7 +18,7 @@ import wave
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[1]
 RATE = 44100
-SEGMENTS = ("c029-c032", "c060-c063", "c064-c067")
+SEGMENTS = ("c029-c032", "c060-c063", "c064-c067", "c068-c075")
 
 
 def run(*args):

@@ -71,9 +71,9 @@ realizadas y deja la comprobación auditiva como pendiente.
 
 ## Variantes de tempo
 
-Para los cuatro ejercicios actuales de Celtic Carol, `render_tempos.py` en
+Para los cinco ejercicios actuales de Celtic Carol, `render_tempos.py` en
 `celtic_carol/estudio/` genera vídeos al 50 % y 75 %. Sin argumentos procesa
-los cuatro; admite sus nombres de carpeta para limitar la selección.
+los cinco; admite sus nombres de carpeta para limitar la selección.
 Recompila fuentes temporales, modifica el tempo visible, vuelve a sintetizar
 el MIDI y adapta la claqueta, incluida la entrada del 51. Conserva solo los
 MP4 finales, con sufijos `_t050` y `_t075`, junto al vídeo original.
