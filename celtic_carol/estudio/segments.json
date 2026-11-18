@@ -108,6 +108,10 @@
       ],
       "videos": [
         {
+          "suffix": "_t025",
+          "ratio": 0.25
+        },
+        {
           "suffix": "_t050",
           "ratio": 0.5
         },
