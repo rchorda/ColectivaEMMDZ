@@ -1,0 +1,3 @@
+file 'traumerei_violin_i_000.png'
+duration 113.917098
+file 'traumerei_violin_i_000.png'

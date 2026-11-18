@@ -1,0 +1,3 @@
+file 'fragmento_inicial_000.png'
+duration 17.072472
+file 'fragmento_inicial_000.png'
