@@ -2,7 +2,7 @@
 \language "espanol"
 
 % Transcripción del arreglo para cuatro pentagramas del PDF facilitado.
-% Se reproduce el impreso y la digitación 1 a lápiz del violín I en el c. 66.
+% Anotaciones del violín I cotejadas con el original y el usuario, cc. 43, 48 y 66.
 % El croquis al pie de la pág. 6 coincide con el cierre impreso (cc. 82–83).
 
 metroShallow = {
@@ -17,6 +17,8 @@ global = {
     \tempo 4 = 96
   }
 }
+
+tercera = _\markup { \bold "III" }
 
 violinUno = \absolute {
   \global
@@ -79,14 +81,14 @@ violinUno = \absolute {
   sol'2) \breathe r2 | % 42
 
   \barNumberCheck #43
-  do'''8[\f\downbow do'''8 do'''8 do'''8~] do'''8 si''4.^^ | % 43
+  do'''8[\f\downbow do'''8 do'''8 do'''8~] do'''8 si''4.^\markup { \small "½ tono" } | % 43
   la''8[ la''8 si''8 la''8~] la''8 sol''4. | % 44
   si''8[ si''8 si''8 re'''8~] re'''8 sol''4 sol''8\upbow~( | % 45
   sol''8[ la''8)] si''2\downbow \breathe r4 | % 46
   do'''8[\downbow do'''8 do'''8 do'''8~] do'''8 si''4. | % 47
 
   \barNumberCheck #48
-  la''8[ la''8 si''8 la''8~] la''8 sol''4( re''8) | % 48
+  la''8[\downbow la''8 si''8 la''8~] la''8 sol''4( re''8) | % 48
   % El signo de arco sobre el primer si está tachado en el original anotado.
   si''8[ si''8 si''8 re'''8~] re'''8 sol''4 sol''8\upbow~( | % 49
   sol''8[ la''8)] si''2\downbow \breathe r4 | % 50
@@ -111,8 +113,7 @@ violinUno = \absolute {
   \barNumberCheck #64
   fas''4 r8 fas''8\downbow~( fas''8[ sol''8) fas''8\upbow sol''8\downbow] | % 64
   si''1\upbow | % 65
-  % El trazo bajo el final de la escala queda pendiente de interpretación.
-  si''2 si'16-1[\upbow( dos''16 re''16 mi''16] fas''16[ sol''16 la''16 si''16)] | % 66
+  si''2 si'16-1[\upbow( dos''16 re''16 mi''16] fas''16[ sol''16 la''16\tercera si''16)] | % 66
   do'''8[\ff\downbow do'''8 do'''8 do'''8~] do'''8 si''4 do'''16[\upbow( si''16)] | % 67
 
   \barNumberCheck #68
