@@ -84,6 +84,18 @@ reparte por igual entre páginas; no se calcula seguimiento por notas.
 El comando antiguo `b.midi2wav` delega en `render_wav.sh` y acepta tanto una
 ruta base sin extensión como un archivo `.mid` o `.midi`.
 
+### Cuartetos de cuerda
+
+Para los materiales de estudio de cuartetos, la biblioteca estándar es
+[Virtual Playing Orchestra (VPO)](https://virtualplaying.com/virtual-playing-orchestra/).
+Se usan sus instrumentos solistas para violín I, violín II, viola y chelo,
+renderizados con un motor SFZ. Para cada instrumento se preparan tres vistas
+de estudio con la misma claqueta al tempo de la obra.
+
+- Partichela con su audio solista.
+- Partichela con el audio del cuarteto.
+- Partitura general con el audio solista del instrumento.
+
 ## Transcripción y revisión con fotografías en Codex
 
 La skill [lilypond-transcripcion](skills/lilypond-transcripcion/SKILL.md)
