@@ -3,7 +3,7 @@
   "workSource": "../shallow.ly",
   "workMediaSuffix": "-vpo",
   "archiveUrl": "https://github.com/rchorda/ColectivaEMMDZ/tree/develop/shallow",
-  "downloadBase": "https://raw.githubusercontent.com/rchorda/ColectivaEMMDZ/develop/shallow/",
+  "downloadBase": "https://raw.githubusercontent.com/rchorda/ColectivaEMMDZ/7ce85d10d5b4354f64ca3939505f2c488204125a/shallow/",
   "notes": "Materiales de cuarteto con instrumentos solistas de Virtual Playing Orchestra (VPO).",
   "review": [
     "Violín I, c. 43. La marca angular se transcribe como recordatorio de medio tono en el paso escrito de do a si.",
