@@ -1,0 +1,166 @@
+{
+  "schemaVersion": 1,
+  "workSource": "../shallow.ly",
+  "workMediaSuffix": "-vpo",
+  "archiveUrl": "https://github.com/rchorda/ColectivaEMMDZ/tree/develop/shallow",
+  "downloadBase": "https://raw.githubusercontent.com/rchorda/ColectivaEMMDZ/develop/shallow/",
+  "notes": "Materiales de cuarteto con instrumentos solistas de Virtual Playing Orchestra (VPO).",
+  "review": [
+    "Violín I, c. 66. Se incorpora el dedo 1 a lápiz en el si que inicia la escala. El trazo bajo el final de la escala queda pendiente de interpretación.",
+    "Violín I, c. 49. La marca de arco sobre el primer si aparece tachada. El croquis al pie de la página 6 coincide con el cierre impreso (cc. 82–83)."
+  ],
+  "segments": [
+    {
+      "id": "c001-c083-violin-i",
+      "folder": "c001-c083",
+      "startBar": 1,
+      "endBarExclusive": 84,
+      "part": "Violín I",
+      "meter": "4/4",
+      "tempo": {
+        "bpm": 96,
+        "unit": "negra"
+      },
+      "preparation": "Cuatro pulsos de claqueta, con el primero acentuado. La obra comienza a los 2,5 segundos.",
+      "files": {
+        "source": "shallow-estudio.ly",
+        "pdf": "shallow-estudio-violin-i.pdf",
+        "wav": "out/shallow-estudio-violin-i-vpo.wav"
+      },
+      "dependencies": [
+        "../../shallow-musica.ly"
+      ],
+      "videos": [
+        {
+          "ratio": 1,
+          "label": "Partichela con audio solista",
+          "path": "out/shallow-estudio-violin-i-vpo.mp4"
+        },
+        {
+          "ratio": 1,
+          "label": "Partichela con audio del cuarteto",
+          "path": "out/shallow-estudio-violin-i-vpo-conjunto.mp4"
+        },
+        {
+          "ratio": 1,
+          "label": "Partitura general con audio solista",
+          "path": "../../out/shallow-vpo-solo-violin-i.mp4"
+        }
+      ]
+    },
+    {
+      "id": "c001-c083-violin-ii",
+      "folder": "c001-c083",
+      "startBar": 1,
+      "endBarExclusive": 84,
+      "part": "Violín II",
+      "meter": "4/4",
+      "tempo": {
+        "bpm": 96,
+        "unit": "negra"
+      },
+      "preparation": "Cuatro pulsos de claqueta, con el primero acentuado. La obra comienza a los 2,5 segundos.",
+      "files": {
+        "source": "shallow-estudio.ly",
+        "pdf": "shallow-estudio-violin-ii.pdf",
+        "wav": "out/shallow-estudio-violin-ii-vpo.wav"
+      },
+      "dependencies": [
+        "../../shallow-musica.ly"
+      ],
+      "videos": [
+        {
+          "ratio": 1,
+          "label": "Partichela con audio solista",
+          "path": "out/shallow-estudio-violin-ii-vpo.mp4"
+        },
+        {
+          "ratio": 1,
+          "label": "Partichela con audio del cuarteto",
+          "path": "out/shallow-estudio-violin-ii-vpo-conjunto.mp4"
+        },
+        {
+          "ratio": 1,
+          "label": "Partitura general con audio solista",
+          "path": "../../out/shallow-vpo-solo-violin-ii.mp4"
+        }
+      ]
+    },
+    {
+      "id": "c001-c083-viola",
+      "folder": "c001-c083",
+      "startBar": 1,
+      "endBarExclusive": 84,
+      "part": "Viola",
+      "meter": "4/4",
+      "tempo": {
+        "bpm": 96,
+        "unit": "negra"
+      },
+      "preparation": "Cuatro pulsos de claqueta, con el primero acentuado. La obra comienza a los 2,5 segundos.",
+      "files": {
+        "source": "shallow-estudio.ly",
+        "pdf": "shallow-estudio-viola.pdf",
+        "wav": "out/shallow-estudio-viola-vpo.wav"
+      },
+      "dependencies": [
+        "../../shallow-musica.ly"
+      ],
+      "videos": [
+        {
+          "ratio": 1,
+          "label": "Partichela con audio solista",
+          "path": "out/shallow-estudio-viola-vpo.mp4"
+        },
+        {
+          "ratio": 1,
+          "label": "Partichela con audio del cuarteto",
+          "path": "out/shallow-estudio-viola-vpo-conjunto.mp4"
+        },
+        {
+          "ratio": 1,
+          "label": "Partitura general con audio solista",
+          "path": "../../out/shallow-vpo-solo-viola.mp4"
+        }
+      ]
+    },
+    {
+      "id": "c001-c083-chelo",
+      "folder": "c001-c083",
+      "startBar": 1,
+      "endBarExclusive": 84,
+      "part": "Chelo",
+      "meter": "4/4",
+      "tempo": {
+        "bpm": 96,
+        "unit": "negra"
+      },
+      "preparation": "Cuatro pulsos de claqueta, con el primero acentuado. La obra comienza a los 2,5 segundos.",
+      "files": {
+        "source": "shallow-estudio.ly",
+        "pdf": "shallow-estudio-chelo.pdf",
+        "wav": "out/shallow-estudio-chelo-vpo.wav"
+      },
+      "dependencies": [
+        "../../shallow-musica.ly"
+      ],
+      "videos": [
+        {
+          "ratio": 1,
+          "label": "Partichela con audio solista",
+          "path": "out/shallow-estudio-chelo-vpo.mp4"
+        },
+        {
+          "ratio": 1,
+          "label": "Partichela con audio del cuarteto",
+          "path": "out/shallow-estudio-chelo-vpo-conjunto.mp4"
+        },
+        {
+          "ratio": 1,
+          "label": "Partitura general con audio solista",
+          "path": "../../out/shallow-vpo-solo-chelo.mp4"
+        }
+      ]
+    }
+  ]
+}

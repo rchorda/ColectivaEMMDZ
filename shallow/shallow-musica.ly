@@ -2,9 +2,8 @@
 \language "espanol"
 
 % Transcripción del arreglo para cuatro pentagramas del PDF facilitado.
-% Se reproduce el texto musical impreso. Las marcas a lápiz de los
-% compases 49 y 66 de Violín I y el esbozo al pie de la pág. 6 quedan
-% pendientes de interpretar.
+% Se reproduce el impreso y la digitación 1 a lápiz del violín I en el c. 66.
+% El croquis al pie de la pág. 6 coincide con el cierre impreso (cc. 82–83).
 
 metroShallow = {
   \key sol \major
@@ -88,6 +87,7 @@ violinUno = \absolute {
 
   \barNumberCheck #48
   la''8[ la''8 si''8 la''8~] la''8 sol''4( re''8) | % 48
+  % El signo de arco sobre el primer si está tachado en el original anotado.
   si''8[ si''8 si''8 re'''8~] re'''8 sol''4 sol''8\upbow~( | % 49
   sol''8[ la''8)] si''2\downbow \breathe r4 | % 50
   r4 sol''8[\downbow sol''8] sol''8 sol''4. | % 51
@@ -111,7 +111,8 @@ violinUno = \absolute {
   \barNumberCheck #64
   fas''4 r8 fas''8\downbow~( fas''8[ sol''8) fas''8\upbow sol''8\downbow] | % 64
   si''1\upbow | % 65
-  si''2 si'16[\upbow( dos''16 re''16 mi''16] fas''16[ sol''16 la''16 si''16)] | % 66
+  % El trazo bajo el final de la escala queda pendiente de interpretación.
+  si''2 si'16-1[\upbow( dos''16 re''16 mi''16] fas''16[ sol''16 la''16 si''16)] | % 66
   do'''8[\ff\downbow do'''8 do'''8 do'''8~] do'''8 si''4 do'''16[\upbow( si''16)] | % 67
 
   \barNumberCheck #68

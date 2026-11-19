@@ -246,7 +246,7 @@ el tempo, por lo que la duración total no es un múltiplo exacto del MP4 origin
 
 El sitio de partituras se mantiene en un repositorio independiente, situado localmente en `sites/entre-cuerdas/`. Su README contiene el detalle del sitio. Reúne PDF, audio de estudio, fuentes LilyPond e inclusiones, además de un cuaderno de trucos y una guía para seguir editando con Codex y LilyPond Maestro.
 
-Sitio publicado: [Entre cuerdas](https://entre-cuerdas-archivo.rchorda.chatgpt.site). Acceso privado con ChatGPT.
+Sitio publicado: [Entre cuerdas](https://entre-cuerdas-archivo.rchorda.chatgpt.site). El catálogo tiene acceso público.
 
 Los segmentos se consultan desde **Estudio** en el menú del sitio y desde la
 ficha de su obra, mediante el acceso **Segmentos de estudio** y la pestaña
