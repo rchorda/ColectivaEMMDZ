@@ -20,6 +20,13 @@ violin = \absolute {
   % Velocidad orientativa: el original no incluye una cifra metronómica.
   \tempo "Andante sostenuto" 4 = 72
 
+  % Introducción: compases 43–46 de la transcripción, una octava más grave.
+  fa'4.\pp_\markup { \italic "espress." } mi'8( fa' sol') |
+  la'4.( fa'8 la' re'') |
+  re''4. sib'8( re'' fa'') |
+  la''2. | \break
+
+  % Los comentarios siguientes conservan la numeración de la transcripción.
   fa''4\pp\upbow-3_\markup { \italic "espress." }( la'' do''') | % 1
   do'''4.\downbow\(( sib''8) la''( sol'')\) | % 2
   re'''8\upbow( fa'') la''2\downbow | % 3
