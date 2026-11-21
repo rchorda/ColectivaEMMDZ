@@ -1,6 +1,7 @@
 {
   "schemaVersion": 1,
   "workSource": "../verano.ly",
+  "downloadBase": "https://raw.githubusercontent.com/rchorda/ColectivaEMMDZ/df9a71968d2d7e580a6720953c8f03a10979e287/verano/",
   "notes": "Ejercicios preparados mediante copias controladas. Si cambia la obra completa, hay que revisar los fragmentos antes de regenerarlos.",
   "segments": [
     {
