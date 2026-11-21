@@ -168,7 +168,8 @@ render_mp4() {
   local filename ext base pdf midi wav mp4 concat normalized_wav
   local raster_dir raster page_name page_count wav_dur wav_dur_c per oldifs
   local k sum_fixed remain neg left per_rest i p p_esc dur last last_esc
-  local -a pages durations fixed
+  local video_filter video_duration
+  local -a pages durations fixed video_options
 
   # Mantener UTF-8 para rutas con acentos e inclusiones de LilyPond.
   # Las operaciones numéricas usan LC_ALL=C de forma explícita más abajo.
@@ -385,19 +386,32 @@ render_mp4() {
   rm -f "$mp4"
   echo ">> Creando MP4 con pase de hojas..."
 
+  video_filter="scale=trunc(iw/2)*2:trunc(ih/2)*2"
+  video_options=(-r 30 -shortest)
+  if [[ "$page_count" -gt 1 ]]; then
+    # Muestrea los cambios de página por su tiempo de origen y evita una cola
+    # de imagen sin audio al convertir los fotogramas fijos a 30 fps.
+    video_filter="fps=30,$video_filter"
+    video_duration="$(printf '%s\n' "${durations[@]}" | LC_ALL=C awk -v audio="$wav_dur_c" '
+      { total += $1 }
+      END { printf "%.6f", (total < audio ? total : audio) }
+    ')"
+    video_options=(-t "$video_duration")
+  fi
+
   if ffmpeg -y -f concat -safe 0 -i "$concat" -i "$wav" \
-    -vf "scale=trunc(iw/2)*2:trunc(ih/2)*2" \
-    -c:v libx264 -pix_fmt yuv420p -r 30 \
-    -c:a aac -b:a 192k -shortest -movflags +faststart "$mp4"
+    -vf "$video_filter" \
+    -c:v libx264 -pix_fmt yuv420p \
+    -c:a aac -b:a 192k "${video_options[@]}" -movflags +faststart "$mp4"
   then
     :
   else
     echo ">> libx264 fallo; probando h264_videotoolbox..."
     rm -f "$mp4"
     if ! ffmpeg -y -f concat -safe 0 -i "$concat" -i "$wav" \
-      -vf "scale=trunc(iw/2)*2:trunc(ih/2)*2" \
-      -c:v h264_videotoolbox -b:v 4000k -pix_fmt yuv420p -r 30 \
-      -c:a aac -b:a 192k -shortest -movflags +faststart "$mp4"; then
+      -vf "$video_filter" \
+      -c:v h264_videotoolbox -b:v 4000k -pix_fmt yuv420p \
+      -c:a aac -b:a 192k "${video_options[@]}" -movflags +faststart "$mp4"; then
       [[ -z "$normalized_wav" ]] || rm -f "$normalized_wav"
       return 1
     fi

@@ -39,8 +39,8 @@ musica = \absolute {
   % Dos bemoles, como en la fotografía.
   \key sib \major
   \time 3/4
-  % Cifra orientativa para la reproducción; el original solo indica Presto.
-  \tempo "Presto" 4 = 160
+  % El original solo indica Presto. Tempo de la versión base de estudio.
+  \tempo "Presto" 4 = 120
   \autoLineBreaksOff
 
   \mark \markup \column {

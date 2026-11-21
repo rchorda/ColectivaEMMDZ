@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Copia controlada de seis pasajes concretos de verano.ly; no es extractor universal.
-Compila los ejercicios y mezcla una claqueta de 3/4, solo durante la entrada.
+Compila los ejercicios y mezcla una claqueta de 3/4 subdividida en semicorcheas.
 """
 from pathlib import Path
 from array import array
@@ -11,25 +11,62 @@ ROOT=HERE.parents[1]
 SOURCE=HERE.parent/'verano.ly'
 RANGES=[(10,19),(21,28),(38,40),(64,66),(101,108),(113,114)]
 RATE=44100
+PULSOS = 3
+SUBDIVISIONES = 4
+GOLPE = 0.05
 
 def run(*cmd):
  p=subprocess.run([str(c) for c in cmd],stdout=subprocess.PIPE,stderr=subprocess.STDOUT,text=True)
  if p.returncode: raise RuntimeError(' '.join(map(str,cmd))+'\n'+p.stdout[-6000:])
  return p.stdout
 
-def click(path, bpm=160):
- samples=array('h',[0])*(round(3*60/bpm*RATE)*2)
- for beat in range(3):
-  start=round(beat*60/bpm*RATE)
-  for i in range(round(.05*RATE)):
-   t=i/RATE
-   val=round(32767*(.35 if beat==0 else .22)*min(t/.0015,1)*math.exp(-80*t)*math.sin(2*math.pi*(1500 if beat==0 else 1050)*t))
-   samples[2*(start+i)]=samples[2*(start+i)+1]=val
- with wave.open(str(path),'wb') as f:
-  f.setparams((2,2,RATE,0,'NONE','not compressed')); f.writeframes(samples.tobytes())
+def click(path, bpm):
+    step = 60 / bpm / SUBDIVISIONES
+    samples = array('h', [0]) * (round(PULSOS * 60 / bpm * RATE) * 2)
+    for index in range(PULSOS * SUBDIVISIONES):
+        start = round(index * step * RATE)
+        if index == 0:
+            amplitude, frequency = .36, 1600
+        elif index % SUBDIVISIONES == 0:
+            amplitude, frequency = .28, 1350
+        else:
+            amplitude, frequency = .15, 1050
+        for offset in range(round(GOLPE * RATE)):
+            time = offset / RATE
+            envelope = min(time / .0015, 1) * math.exp(-80 * time)
+            sample = round(32767 * amplitude * envelope * math.sin(2 * math.pi * frequency * time))
+            samples[2 * (start + offset)] = samples[2 * (start + offset) + 1] = sample
+    with wave.open(str(path), 'wb') as output:
+        output.setparams((2, 2, RATE, 0, 'NONE', 'not compressed'))
+        output.writeframes(samples.tobytes())
+
+
+def check_click(path, bpm):
+    """Comprueba los 12 golpes y los acentos en el WAV mezclado."""
+    with wave.open(str(path), 'rb') as audio:
+        rate = audio.getframerate()
+        channels = audio.getnchannels()
+        step = rate * 60 / bpm / SUBDIVISIONES
+        samples = array('h', audio.readframes(round(PULSOS * SUBDIVISIONES * step)))
+    peaks = []
+    for index in range(PULSOS * SUBDIVISIONES):
+        start = round(index * step)
+        end = start + round(GOLPE * rate)
+        next_start = round((index + 1) * step)
+        peaks.append(max(map(abs, samples[start * channels:end * channels])))
+        gap = samples[end * channels:next_start * channels]
+        if max(map(abs, gap)) > peaks[-1] * .15:
+            raise ValueError(f'{path}: señal inesperada tras el golpe {index + 1}')
+    strong = peaks[::SUBDIVISIONES]
+    weak = [value for index, value in enumerate(peaks) if index % SUBDIVISIONES]
+    if min(weak) < 1000 or min(strong) <= max(weak) or strong[0] <= max(strong[1:]):
+        raise ValueError(f'{path}: subdivisión o acentos de claqueta incorrectos: {peaks}')
 
 def main():
  original=SOURCE.read_text()
+ tempo=re.search(r'\\tempo\s+"Presto"\s+4\s*=\s*(\d+)',original)
+ if tempo is None: raise ValueError('No se encontró el tempo de Verano')
+ bpm=int(tempo[1])
  lines=original.splitlines()
  bars={}
  for line in lines:
@@ -51,7 +88,7 @@ def main():
  (HERE/'verano_pasajes_marcados.ly').write_text(marked)
  run('lilypond','-o',HERE/'verano_pasajes_marcados',HERE/'verano_pasajes_marcados.ly')
  with tempfile.TemporaryDirectory(prefix='verano-estudio-') as tmp:
-  tmp=Path(tmp); clickfile=tmp/'claqueta.wav'; click(clickfile)
+  tmp=Path(tmp); clickfile=tmp/'claqueta.wav'; click(clickfile,bpm)
   for a,b in RANGES:
    base=f'c{a:03d}-c{b:03d}'; folder=HERE/base; out=folder/'out'; out.mkdir(parents=True,exist_ok=True)
    notes=[]
@@ -63,8 +100,8 @@ def main():
 \\language "espanol"
 % Fuente: ../../verano.ly; voz única de violín; intervalo [{a},{b+1}).
 % Copia controlada: regenerar los medios NO actualiza las notas desde la obra.
-% Clave de sol; si bemol mayor; 3/4; negra = 160 orientativa; dinámica f.
-% Entrada: un compás de 3/4, claqueta sintetizada sobre silencio MIDI, sin anacrusa.
+% Clave de sol, si bemol mayor, 3/4, negra = {bpm} y dinámica f.
+% Entrada: 12 golpes de semicorchea en 3/4 sobre un compás de silencio MIDI.
 % Una pasada. Los extremos han sido revisados para no añadir notas de otros compases.
 % Regenerar desde la raíz: python3 verano/estudio/preparar_escalas.py
 \\header {{ title = "Verano" subtitle = "Estudio · compases {a}–{b}" tagline = ##f }}
@@ -72,10 +109,10 @@ def main():
 \\paper {{ #(set-paper-size "a5landscape") page-count = 1 indent = 0\\mm ragged-last = ##f }}
 \\score {{
   \\new Staff \\with {{ midiInstrument = "violin" }} \\absolute {{
-    \\clef treble \\key sib \\major \\time 3/4 \\tempo "Presto" 4 = 160
+    \\clef treble \\key sib \\major \\time 3/4 \\tempo "Presto" 4 = {bpm}
     \\set Score.currentBarNumber = #{a-1}
     \\once \\omit Score.BarNumber
-    R2.^\\markup {{ \\small \\bold "Entrada · claqueta" }}
+    R2.^\\markup {{ \\small \\bold "Entrada · claqueta en semicorcheas" }}
     \\bar "||"
     \\set Score.currentBarNumber = #{a}
     \\override Score.BarNumber.break-visibility = ##(#t #t #t)
@@ -101,6 +138,7 @@ def main():
    if pages!=1: raise ValueError(f'{base}: {pages} páginas; necesita tiempos por página')
    run('bash',ROOT/'render_wav.sh',folder/(base+'.midi'),tmp)
    run('sox','-m',tmp/(base+'.wav'),clickfile,'-b','16',out/(base+'.wav'),'gain','-n','-3')
+   check_click(out/(base+'.wav'),bpm)
    run('bash',ROOT/'render_mp4.sh',folder/(base+'.pdf'))
    meta=json.loads(run('ffprobe','-v','error','-show_entries','stream=codec_type,duration:format=duration','-of','json',out/(base+'.mp4')))
    assert {s['codec_type'] for s in meta['streams']}=={'audio','video'}

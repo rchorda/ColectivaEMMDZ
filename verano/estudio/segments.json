@@ -10,26 +10,34 @@
       "part": "Violín",
       "meter": "3/4",
       "tempo": {
-        "bpm": 160,
+        "bpm": 120,
         "unit": "negra"
       },
-      "preparation": "Un compás de entrada con tres pulsos de claqueta.",
+      "preparation": "Un compás de entrada en 3/4 con 12 golpes de semicorchea, acentuados en cada negra.",
       "pickup": "",
       "notes": [
-        "El tempo negra = 160 es orientativo para la reproducción; la fuente indica Presto."
+        "Negra = 120 es el tempo base de estudio. La partitura original indica Presto."
       ],
       "videos": [
         {
-          "suffix": "_t050",
-          "ratio": 0.5
+          "suffix": "_t080",
+          "ratio": 0.6666666666666666
         },
         {
-          "suffix": "_t075",
+          "suffix": "_t090",
           "ratio": 0.75
         },
         {
+          "suffix": "_t100",
+          "ratio": 0.8333333333333334
+        },
+        {
+          "suffix": "_t110",
+          "ratio": 0.9166666666666666
+        },
+        {
           "suffix": "",
-          "ratio": 1
+          "ratio": 1.0
         }
       ]
     },
@@ -40,26 +48,34 @@
       "part": "Violín",
       "meter": "3/4",
       "tempo": {
-        "bpm": 160,
+        "bpm": 120,
         "unit": "negra"
       },
-      "preparation": "Un compás de entrada con tres pulsos de claqueta.",
+      "preparation": "Un compás de entrada en 3/4 con 12 golpes de semicorchea, acentuados en cada negra.",
       "pickup": "",
       "notes": [
-        "El tempo negra = 160 es orientativo para la reproducción; la fuente indica Presto."
+        "Negra = 120 es el tempo base de estudio. La partitura original indica Presto."
       ],
       "videos": [
         {
-          "suffix": "_t050",
-          "ratio": 0.5
+          "suffix": "_t080",
+          "ratio": 0.6666666666666666
         },
         {
-          "suffix": "_t075",
+          "suffix": "_t090",
           "ratio": 0.75
         },
         {
+          "suffix": "_t100",
+          "ratio": 0.8333333333333334
+        },
+        {
+          "suffix": "_t110",
+          "ratio": 0.9166666666666666
+        },
+        {
           "suffix": "",
-          "ratio": 1
+          "ratio": 1.0
         }
       ]
     },
@@ -70,26 +86,34 @@
       "part": "Violín",
       "meter": "3/4",
       "tempo": {
-        "bpm": 160,
+        "bpm": 120,
         "unit": "negra"
       },
-      "preparation": "Un compás de entrada con tres pulsos de claqueta.",
+      "preparation": "Un compás de entrada en 3/4 con 12 golpes de semicorchea, acentuados en cada negra.",
       "pickup": "",
       "notes": [
-        "El tempo negra = 160 es orientativo para la reproducción; la fuente indica Presto."
+        "Negra = 120 es el tempo base de estudio. La partitura original indica Presto."
       ],
       "videos": [
         {
-          "suffix": "_t050",
-          "ratio": 0.5
+          "suffix": "_t080",
+          "ratio": 0.6666666666666666
         },
         {
-          "suffix": "_t075",
+          "suffix": "_t090",
           "ratio": 0.75
         },
         {
+          "suffix": "_t100",
+          "ratio": 0.8333333333333334
+        },
+        {
+          "suffix": "_t110",
+          "ratio": 0.9166666666666666
+        },
+        {
           "suffix": "",
-          "ratio": 1
+          "ratio": 1.0
         }
       ]
     },
@@ -100,26 +124,34 @@
       "part": "Violín",
       "meter": "3/4",
       "tempo": {
-        "bpm": 160,
+        "bpm": 120,
         "unit": "negra"
       },
-      "preparation": "Un compás de entrada con tres pulsos de claqueta.",
+      "preparation": "Un compás de entrada en 3/4 con 12 golpes de semicorchea, acentuados en cada negra.",
       "pickup": "",
       "notes": [
-        "El tempo negra = 160 es orientativo para la reproducción; la fuente indica Presto."
+        "Negra = 120 es el tempo base de estudio. La partitura original indica Presto."
       ],
       "videos": [
         {
-          "suffix": "_t050",
-          "ratio": 0.5
+          "suffix": "_t080",
+          "ratio": 0.6666666666666666
         },
         {
-          "suffix": "_t075",
+          "suffix": "_t090",
           "ratio": 0.75
         },
         {
+          "suffix": "_t100",
+          "ratio": 0.8333333333333334
+        },
+        {
+          "suffix": "_t110",
+          "ratio": 0.9166666666666666
+        },
+        {
           "suffix": "",
-          "ratio": 1
+          "ratio": 1.0
         }
       ]
     },
@@ -130,26 +162,34 @@
       "part": "Violín",
       "meter": "3/4",
       "tempo": {
-        "bpm": 160,
+        "bpm": 120,
         "unit": "negra"
       },
-      "preparation": "Un compás de entrada con tres pulsos de claqueta.",
+      "preparation": "Un compás de entrada en 3/4 con 12 golpes de semicorchea, acentuados en cada negra.",
       "pickup": "",
       "notes": [
-        "El tempo negra = 160 es orientativo para la reproducción; la fuente indica Presto."
+        "Negra = 120 es el tempo base de estudio. La partitura original indica Presto."
       ],
       "videos": [
         {
-          "suffix": "_t050",
-          "ratio": 0.5
+          "suffix": "_t080",
+          "ratio": 0.6666666666666666
         },
         {
-          "suffix": "_t075",
+          "suffix": "_t090",
           "ratio": 0.75
         },
         {
+          "suffix": "_t100",
+          "ratio": 0.8333333333333334
+        },
+        {
+          "suffix": "_t110",
+          "ratio": 0.9166666666666666
+        },
+        {
           "suffix": "",
-          "ratio": 1
+          "ratio": 1.0
         }
       ]
     },
@@ -160,26 +200,34 @@
       "part": "Violín",
       "meter": "3/4",
       "tempo": {
-        "bpm": 160,
+        "bpm": 120,
         "unit": "negra"
       },
-      "preparation": "Un compás de entrada con tres pulsos de claqueta.",
+      "preparation": "Un compás de entrada en 3/4 con 12 golpes de semicorchea, acentuados en cada negra.",
       "pickup": "",
       "notes": [
-        "El tempo negra = 160 es orientativo para la reproducción; la fuente indica Presto."
+        "Negra = 120 es el tempo base de estudio. La partitura original indica Presto."
       ],
       "videos": [
         {
-          "suffix": "_t050",
-          "ratio": 0.5
+          "suffix": "_t080",
+          "ratio": 0.6666666666666666
         },
         {
-          "suffix": "_t075",
+          "suffix": "_t090",
           "ratio": 0.75
         },
         {
+          "suffix": "_t100",
+          "ratio": 0.8333333333333334
+        },
+        {
+          "suffix": "_t110",
+          "ratio": 0.9166666666666666
+        },
+        {
           "suffix": "",
-          "ratio": 1
+          "ratio": 1.0
         }
       ]
     }
