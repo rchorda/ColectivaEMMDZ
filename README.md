@@ -40,6 +40,12 @@ por lo que conserva los contrastes dinámicos de la interpretación MIDI. El MP4
 utiliza ese audio; al partir de un PDF y un WAV existentes, normaliza una copia
 temporal para el vídeo sin modificar el WAV original.
 
+Para el flujo completo se necesitan LilyPond, FluidSynth, SoX, FFmpeg
+(`ffmpeg` y `ffprobe`) y Poppler (`pdftoppm`). En Debian y Ubuntu los paquetes
+son `lilypond fluidsynth sox ffmpeg poppler-utils`. En macOS con Homebrew son
+`lilypond fluid-synth sox ffmpeg poppler`. El SoundFont de violín predeterminado
+está versionado en la raíz.
+
 Uso directo:
 
 ```bash
@@ -101,8 +107,8 @@ de estudio con la misma claqueta al tempo de la obra.
 La skill [lilypond-transcripcion](skills/lilypond-transcripcion/SKILL.md)
 organiza la lectura de fotografías y escaneos, la escritura en LilyPond y el
 cotejo con los originales. También permite revisar una partitura existente con
-nuevas fotos, detalles ampliados o anotaciones añadidas. Usa LilyPond Maestro como apoyo para notación y
-revisión; añade las convenciones de archivos y renderizado de este proyecto.
+nuevas fotos, detalles ampliados o anotaciones añadidas. Usa los
+[criterios de notación del proyecto](skills/notacion-lilypond.md).
 Su fuente se mantiene en `skills/lilypond-transcripcion/` y se descubre mediante
 el enlace `.agents/skills/lilypond-transcripcion`.
 
@@ -129,10 +135,9 @@ Para preparar ejercicios desde una fuente ya transcrita, usa `lilypond-estudio`.
 
 ## Segmentos de estudio con Codex
 
-La skill [lilypond-estudio](skills/lilypond-estudio/SKILL.md) combina las
-instrucciones del complemento **LilyPond Maestro (notación española)** con
-el flujo de preparación de fragmentos, claqueta y renderizado PDF/WAV/MP4.
-Su fuente se mantiene en `skills/lilypond-estudio/`; el registro de proyecto
+La skill [lilypond-estudio](skills/lilypond-estudio/SKILL.md) prepara
+fragmentos con claqueta y genera PDF, MIDI, WAV y MP4.
+Su fuente se mantiene en `skills/lilypond-estudio/`. El registro de proyecto
 en `.agents/skills/lilypond-estudio` enlaza a esa carpeta.
 
 Ejemplo de petición:
@@ -145,8 +150,11 @@ realmente incluidos: este ejemplo se guarda en `celtic_carol/estudio/c052-c059/`
 La fuente, PDF y MIDI quedan en esa carpeta; WAV y MP4, en su `out/`.
 La skill contiene instrucciones reutilizables y un caso de referencia;
 no incorpora todavía un extractor automático general.
-Requiere tener disponible Maestro para aplicar sus instrucciones originales;
-si falta, debe indicarlo y trabajar con las fuentes y herramientas locales.
+Las dos skills se descubren desde la raíz del checkout, tanto en el Mac como
+en Codex Cloud. Sus instrucciones y referencias están en el repositorio.
+En Cloud, comprueba los binarios de renderizado en una tarea del entorno
+publicado. Si faltan, instálalos y prueba el flujo en la edición del entorno
+antes de republicarlo. Adjunta al chat de Cloud las fotos que quieras cotejar.
 
 El primer ejercicio generado es [Celtic Carol, compases 52–59](celtic_carol/estudio/c052-c059/c052-c059.pdf),
 con [WAV](celtic_carol/estudio/c052-c059/out/c052-c059.wav) y

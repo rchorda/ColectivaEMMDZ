@@ -5,27 +5,10 @@ description: "Transcribe y continúa partituras desde fotografías, escaneos o P
 
 # LilyPond: transcripción y revisión con fotografías
 
-## Alcance y relación con Maestro
+## Alcance
 
-Esta skill organiza el trabajo de transcripción en el proyecto; no es un OCR
-musical ni garantiza reconocimiento automático. Antes del trabajo musical,
-localiza en el catálogo vigente `gpt-671cf660e9c93379cc42aa9401c9e676:instructions`,
-del complemento **LilyPond Maestro (notación española)**, y lee sus instrucciones
-si todavía no las has leído en la conversación. Maestro aporta criterios de
-notación y revisión; no presupongas una API de compilación ni otro agente.
-No fijes rutas de caché ni versiones del complemento. Si no está disponible,
-indícalo brevemente y continúa con las fuentes locales y la documentación
-oficial de la versión de LilyPond utilizada.
-
-Ajusta el trabajo a la petición: una revisión entrega hallazgos localizados;
-una transcripción, continuación o corrección produce los archivos solicitados.
-No vuelvas a transcribir toda una obra para corregir un compás. La extracción
-de ejercicios, la claqueta y los límites de selección corresponden a la skill
-`lilypond-estudio`; no los añadas a una transcripción por defecto.
-
-Si llegan nuevas fotografías de una obra existente, determina por el contenido
-y la petición si amplían la obra o revisan compases ya escritos. Para el segundo
-caso aplica el flujo de revisión con nuevas fotografías descrito más abajo.
+Lee los [criterios de notación y revisión del proyecto](../notacion-lilypond.md),
+en `skills/notacion-lilypond.md` desde la raíz del repositorio.
 
 ## Identificar las fuentes y la versión de trabajo
 

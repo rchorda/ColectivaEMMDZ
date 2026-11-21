@@ -1,26 +1,14 @@
 ---
 name: lilypond-estudio
-description: "Prepara segmentos de estudio de partituras LilyPond con LilyPond Maestro, claqueta de entrada y salidas PDF, WAV y MP4. Úsala para extraer compases, preparar pasajes de práctica o regenerar sus materiales en ColectivaEMMDZ y proyectos con un flujo equivalente."
+description: "Prepara segmentos de estudio de partituras LilyPond con claqueta de entrada y salidas PDF, MIDI, WAV y MP4. Úsala para extraer compases, preparar pasajes de práctica o regenerar sus materiales en ColectivaEMMDZ y proyectos con un flujo equivalente."
 ---
 
 # LilyPond: segmentos de estudio
 
-## Maestro y alcance
+## Alcance
 
-Antes del trabajo musical, localiza en el catálogo de skills de la sesión
-`gpt-671cf660e9c93379cc42aa9401c9e676:instructions`, del complemento
-**LilyPond Maestro (notación española)**. Lee su `SKILL.md` y aplica sus
-instrucciones de notación y revisión. Usa la ubicación vigente del catálogo;
-no fijes una versión ni una ruta de caché en esta skill. Maestro aporta
-instrucciones: no supongas una API de compilación ni un segundo agente.
-Si no está disponible, indica esa limitación y continúa con las fuentes locales
-y la documentación oficial de LilyPond, sin afirmar que has usado Maestro.
-
-Esta skill añade el flujo de estudio al trabajo musical de Maestro. Conserva
-la versión y el idioma del original; en este proyecto es habitual
-`\language "espanol"`. Si la petición es explorar una idea, revisa y explica;
-si pide generar el segmento, produce los archivos solicitados y compruébalos.
-Crear esta skill no equivale a haber implementado un extractor universal.
+Lee los [criterios de notación y revisión del proyecto](../notacion-lilypond.md),
+en `skills/notacion-lilypond.md` desde la raíz del repositorio.
 
 ## Fuente y selección
 

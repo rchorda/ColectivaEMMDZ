@@ -23,8 +23,8 @@ python3 celtic_carol/estudio/c052-c059/render.py
 ```
 
 La vía `.ly` por sí sola sintetiza el violín, pero no esa claqueta externa.
-Las dependencias actuales incluyen LilyPond, FluidSynth, SoX, FFmpeg/ffprobe,
-ImageMagick (`magick`) y Ghostscript. Comprueba únicamente las necesarias
+Las dependencias incluyen LilyPond, FluidSynth, SoX, FFmpeg/ffprobe y
+Poppler (`pdftoppm`). Comprueba únicamente las necesarias
 para las salidas pedidas y verifica el SoundFont disponible.
 
 ## Claqueta

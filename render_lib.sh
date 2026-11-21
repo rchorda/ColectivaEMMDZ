@@ -28,7 +28,7 @@ render_need_cmd() {
   local package="${2:-$1}"
 
   command -v "$cmd" >/dev/null 2>&1 || {
-    echo "Falta '$cmd'. Instala con: brew install $package" >&2
+    echo "Falta '$cmd'. Instala el paquete correspondiente a tu sistema: $package." >&2
     return 1
   }
 }
@@ -166,7 +166,7 @@ render_mp4() {
   local sf2="${3:-$RENDER_DEFAULT_SF2}"
   local t_spec="${4:-}"
   local filename ext base pdf midi wav mp4 concat normalized_wav
-  local line page_count wav_dur wav_dur_c per oldifs
+  local raster_dir raster page_name page_count wav_dur wav_dur_c per oldifs
   local k sum_fixed remain neg left per_rest i p p_esc dur last last_esc
   local -a pages durations fixed
 
@@ -181,8 +181,7 @@ render_mp4() {
 
   render_need_cmd ffmpeg "ffmpeg" || return 1
   render_need_cmd ffprobe "ffmpeg" || return 1
-  render_need_cmd magick "imagemagick" || return 1
-  render_need_cmd gs "ghostscript" || return 1
+  render_need_cmd pdftoppm "poppler (macOS) o poppler-utils (Debian/Ubuntu)" || return 1
 
   mkdir -p "$outdir"
 
@@ -243,19 +242,30 @@ render_mp4() {
     return 1
   fi
 
-  rm -f "$outdir/${base}_"*.png
-
   echo ">> PDF -> PNGs (multipagina)..."
-  magick -density 200 "$pdf" -quality 95 "$outdir/${base}_%03d.png" || return 1
+  raster_dir="$(mktemp -d "$outdir/.${base}.pages.XXXXXX")" || return 1
+  if ! pdftoppm -r 200 -png -forcenum "$pdf" "$raster_dir/page"; then
+    rm -rf "$raster_dir"
+    return 1
+  fi
 
+  # Poppler numera desde 1. Conserva el nombre histórico y el orden de las hojas.
+  rm -f "$outdir/${base}_"*.png
   pages=()
-  while IFS= read -r line; do
-    pages+=("$(basename "$line")")
-  done < <(ls -1 "$outdir/${base}_"*.png 2>/dev/null | sort)
+  for raster in "$raster_dir"/page-*.png; do
+    [[ -f "$raster" ]] || break
+    printf -v page_name '%s_%03d.png' "$base" "${#pages[@]}"
+    if ! mv "$raster" "$outdir/$page_name"; then
+      rm -rf "$raster_dir"
+      return 1
+    fi
+    pages+=("$page_name")
+  done
+  rm -rf "$raster_dir"
 
   page_count="${#pages[@]}"
   if [[ "$page_count" -lt 1 ]]; then
-    echo "No se generaron PNGs desde el PDF. Revisa ImageMagick/Ghostscript." >&2
+    echo "Poppler no generó imágenes desde el PDF: $pdf" >&2
     return 1
   fi
 
