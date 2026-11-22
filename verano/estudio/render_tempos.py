@@ -7,6 +7,7 @@ from pathlib import Path
 import re
 from runpy import run_path
 import shutil
+import sys
 import tempfile
 
 from preparar_escalas import HERE, ROOT, check_click, click, run
@@ -51,9 +52,8 @@ def render(name, source_bpm, bpm, suffix):
         run('sox', '-m', wav, clickfile, '-b', '16', mix, 'gain', '-n', '-3')
         mix.replace(wav)
         check_click(wav, bpm)
-        run('bash', ROOT / 'render_mp4.sh', pdf, work)
-
         video = work / f'{stem}.mp4'
+        run(sys.executable, ROOT / 'render_compas_activo.py', 'verano', '--segmento', ly, pdf, midi, wav, video)
         media = json.loads(run('ffprobe', '-v', 'error', '-show_entries',
                                'stream=codec_type:format=duration', '-of', 'json', video))
         if {stream['codec_type'] for stream in media['streams']} != {'audio', 'video'}:

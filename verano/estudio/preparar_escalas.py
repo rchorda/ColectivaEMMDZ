@@ -6,11 +6,12 @@ from pathlib import Path
 from array import array
 import argparse
 import json, math, re, subprocess, tempfile, wave
+import sys
 
 HERE=Path(__file__).resolve().parent
 ROOT=HERE.parents[1]
 SOURCE=HERE.parent/'verano.ly'
-RANGES=[(10,19),(21,28),(32,37),(38,40),(64,66),(101,108),(113,114)]
+RANGES=[(10,19),(21,28),(32,37),(38,40),(64,66),(101,108),(113,116)]
 RATE=44100
 PULSOS = 3
 SUBDIVISIONES = 4
@@ -151,7 +152,8 @@ def main():
    run('bash',ROOT/'render_wav.sh',folder/(base+'.midi'),tmp)
    run('sox','-m',tmp/(base+'.wav'),clickfile,'-b','16',out/(base+'.wav'),'gain','-n','-3')
    check_click(out/(base+'.wav'),bpm)
-   run('bash',ROOT/'render_mp4.sh',folder/(base+'.pdf'))
+   run(sys.executable, ROOT/'render_compas_activo.py', 'verano', '--segmento', ly,
+       folder/(base+'.pdf'), folder/(base+'.midi'), out/(base+'.wav'), out/(base+'.mp4'))
    meta=json.loads(run('ffprobe','-v','error','-show_entries','stream=codec_type,duration:format=duration','-of','json',out/(base+'.mp4')))
    assert {s['codec_type'] for s in meta['streams']}=={'audio','video'}
    print(base,'PDF 1 página; MP4',meta['format']['duration'],'s',flush=True)

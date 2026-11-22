@@ -1,3 +1,0 @@
-file 'c113-c114_000.png'
-duration 7.405714
-file 'c113-c114_000.png'

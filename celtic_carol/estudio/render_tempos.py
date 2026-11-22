@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Crea MP4 al 50 % y 75 % desde las fuentes de los cinco ejercicios.
+"""Crea los MP4 de tempo reducido declarados para los cinco ejercicios.
 
 Uso: python3 render_tempos.py [c029-c032 c052-c059 c060-c063 c064-c067 c068-c075]
 Recompila y sintetiza cada tempo: mantiene alturas, dinámicas y articulaciones.
@@ -27,7 +27,6 @@ SEGMENTS = {
     "c060-c063": (120, 12), "c064-c067": (120, 12),
     "c068-c075": (120, 12),
 }
-RATIOS = ((Fraction(1, 2), "t050"), (Fraction(3, 4), "t075"))
 RATE = 44100
 
 
@@ -138,7 +137,9 @@ def render(base, ratio, suffix):
     folder = HERE / base
     baseline, _ = midi_events(folder / f"{base}.midi")
     name = f"{base}_{suffix}"
-    source = variant_source((folder / f"{base}.ly").read_text(), bpm, ratio, base)
+    annotated_variant = folder / f"{name}.ly"
+    source = (annotated_variant.read_text() if annotated_variant.is_file() else
+              variant_source((folder / f"{base}.ly").read_text(), bpm, ratio, base))
     with tempfile.TemporaryDirectory(prefix=f"{name}-") as temporary:
         work = Path(temporary)
         score = work / f"{name}.ly"
@@ -170,8 +171,9 @@ def render(base, ratio, suffix):
         mixed = work / "mezcla.wav"
         run("sox", "-m", work / f"{name}.wav", click, "-b", "16", mixed, "gain", "-n", "-3")
         mixed.replace(work / f"{name}.wav")
-        run("bash", ROOT / "render_mp4.sh", work / f"{name}.pdf", work)
         video = work / f"{name}.mp4"
+        run(sys.executable, ROOT / "render_compas_activo.py", "celtic-carol", "--segmento",
+            score, work / f"{name}.pdf", midi, work / f"{name}.wav", video)
         media = json.loads(subprocess.check_output([
             "ffprobe", "-v", "error", "-show_entries", "stream=codec_type,duration,width,height",
             "-of", "json", str(video)]))
@@ -196,9 +198,12 @@ def main():
     selected = args.segments or list(SEGMENTS)
     if any(name not in SEGMENTS for name in selected):
         parser.error("Segmentos admitidos: " + ", ".join(SEGMENTS))
+    manifest = json.loads((HERE / "segments.json").read_text())
+    segments = {entry["id"]: entry for entry in manifest["segments"]}
     for base in dict.fromkeys(selected):
-        for ratio, suffix in RATIOS:
-            render(base, ratio, suffix)
+        for video in segments[base]["videos"]:
+            if video["suffix"]:
+                render(base, Fraction(str(video["ratio"])), video["suffix"].removeprefix("_"))
 
 
 if __name__ == "__main__":

@@ -59,7 +59,9 @@ def render(base):
         # La fuente ya incluye el compás de preparación: no desplazar el MIDI.
         run("sox", "-m", work / f"{base}.wav", click,
             "-b", "16", out / f"{base}.wav", "gain", "-n", "-3")
-    run("bash", ROOT / "render_mp4.sh", folder / f"{base}.pdf")
+    run(sys.executable, ROOT / "render_compas_activo.py", "celtic-carol", "--segmento",
+        folder / f"{base}.ly", folder / f"{base}.pdf", folder / f"{base}.midi",
+        out / f"{base}.wav", out / f"{base}.mp4")
 
 
 def main():

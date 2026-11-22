@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""Renderiza los vídeos completos con el compás activo sobre el PDF."""
+"""Renderiza obras y segmentos de estudio con el compás activo sobre el PDF."""
 
 import argparse
 from collections import defaultdict
 from fractions import Fraction
-from itertools import pairwise
+from itertools import accumulate, pairwise
 import json
 from pathlib import Path
 import re
@@ -118,33 +118,40 @@ def raster_barline(gray, x, center, step, tolerance):
     best = max(candidates, key=lambda col: (sum(255 - px[col, y] for y in ys), -abs(col-middle)))
     if sum(px[best, y] < 215 for y in ys) >= len(ys) * .65:
         return best
-    # En la entrada de Verano la etiqueta de la claqueta ocupa más en PDF que en SVG.
-    for col in range(middle + 7, middle + tolerance + 1):
-        if sum(px[col, y] < 215 for y in ys) >= len(ys) * .85:
-            return col
+    # En el PDF, una etiqueta puede redistribuir el espacio de la entrada.
+    for distance in range(7, tolerance + 1):
+        for col in (middle + distance, middle - distance):
+            if 0 <= col < gray.width and sum(px[col, y] < 215 for y in ys) >= len(ys) * .85:
+                return col
     raise ValueError(f"No se localizó la barra del PDF junto a x={middle}, y={center:g}")
 
 
-def measure_regions(work, svg, image, systems):
+def engraved_barlines(columns):
+    edges = []
+    for x in sorted(columns):
+        if edges and x - edges[-1] < 1:
+            edges[-1] = x
+        else:
+            edges.append(x)
+    return edges
+
+
+def measure_regions(work, svg, image, systems, *, segment=False):
     width, _, lines, barlines = score_geometry(svg)
     gray = image.convert("L")
     rows = raster_staff_lines(gray)
     if len(rows) != len(lines) or len(lines) != 5 * (len(systems) - 1):
         raise ValueError(f"Número de sistemas inesperado en {svg.name}")
-    compressed = {bar: start for start, end in MULTIRESTS[work] for bar in range(start + 1, end + 1)}
+    multirests = () if segment else MULTIRESTS[work]
+    compressed = {bar: start for start, end in multirests for bar in range(start + 1, end + 1)}
     for index, ((start, end), (y, left)) in enumerate(zip(pairwise(systems), lines[2::5])):
         center = rows[5 * index + 2]
         step = (rows[5 * index + 4] - rows[5 * index]) / 4
-        edges = []
-        for x in sorted(barlines[y]):
-            if edges and x - edges[-1] < 1:
-                edges[-1] = x
-            else:
-                edges.append(x)
+        edges = engraved_barlines(barlines[y])
         visible_bars = [bar for bar in range(start, end) if bar not in compressed]
         if len(edges) != len(visible_bars):
             raise ValueError(f"{svg.name}, compases {start}–{end-1}: {len(edges)} barras para {len(visible_bars)} compases impresos")
-        tolerance = 25 if work == "verano" and start == 0 else 6
+        tolerance = round(image.width * .025) if segment or (work == "verano" and start == 0) else 6
         edges = [raster_barline(gray, x / width * image.width, center, step, tolerance) for x in edges]
         first = round((left + (11.8 if work != "intermezzo" and start == 0 else 3.1)) / width * image.width)
         if first >= edges[0] or edges != sorted(set(edges)):
@@ -152,7 +159,7 @@ def measure_regions(work, svg, image, systems):
         rects = dict(zip(visible_bars, zip([first, *edges[:-1]], edges)))
         for bar in range(start, end):
             x1, x2 = rects[compressed.get(bar, bar)]
-            label = any(low <= bar <= high for low, high in MULTIRESTS[work])
+            label = any(low <= bar <= high for low, high in multirests)
             coords = (x1, round(center - 6.3 * step), x2, round(center + 6.3 * step))
             yield bar, coords, label
 
@@ -175,37 +182,66 @@ def mark_measure(page, coords, bar, label):
     return frame.convert("RGB")
 
 
-def render_video(work, source, pdf, midi, wav, output):
+def segment_layout(source, svg_pages):
+    match = re.fullmatch(r"c(\d+)-c(\d+)(?:_t\d+)?", source.stem)
+    meters = set(re.findall(r"\\time\s+(\d+)/(\d+)", source.read_text()))
+    if not match or len(meters) != 1:
+        raise ValueError(f"No se pudo identificar el intervalo y la métrica de {source.name}")
+    first, last = map(int, match.groups())
+    numerator, denominator = map(int, meters.pop())
+    quarter_beats = Fraction(4 * numerator, denominator)
+    # La entrada ocupa un compás completo, incluso cuando contiene anacrusa.
+    current = first - 1
+    pages = []
+    for svg in svg_pages:
+        _, _, lines, barlines = score_geometry(svg)
+        sizes = [len(engraved_barlines(barlines[y])) for y, _ in lines[2::5]]
+        if not sizes or not all(sizes):
+            raise ValueError(f"Hay sistemas sin barras de compás en {svg.name}")
+        boundaries = tuple(accumulate(sizes, initial=current))
+        pages.append(boundaries)
+        current = boundaries[-1]
+    if current != last + 1:
+        raise ValueError(f"La partitura {source.name} acaba antes del compás {current}, se esperaba {last+1}")
+    return pages, lambda bar: (bar - first + 1) * quarter_beats
+
+
+def render_video(work, source, pdf, midi, wav, output, *, segment=False):
     events, tempos = midi_events(midi)
     if not tempos or tempos[0][0] != 0:
         raise ValueError(f"Falta el tempo inicial de {midi.name}")
     duration = float(run("ffprobe", "-v", "error", "-show_entries", "format=duration",
                          "-of", "csv=p=0", wav))
-    last_bar = SYSTEMS[work][-1][-1]
-    score_end = seconds_at(start_beat(work, last_bar), tempos)
-    last_event = seconds_at(events[-1][0], tempos)
-    if not 0 <= score_end - last_event < 6 or not 0 < duration - score_end < 8:
-        raise ValueError(f"El WAV y el mapa de compases no coinciden para {source.name}")
-
     output.parent.mkdir(parents=True, exist_ok=True)
     with TemporaryDirectory(prefix=".compas-", dir=output.parent) as temp:
         folder = Path(temp)
         run("lilypond", "-dbackend=svg", "-dno-point-and-click", "-o", folder / "mapa", source)
-        dpi = "130" if work == "verano" else "200"
+        dpi = "130" if work == "verano" and not segment else "200"
         run("pdftoppm", "-r", dpi, "-png", pdf, folder / "pagina")
         pdf_pages = sorted(folder.glob("pagina-*.png"))
         svg_pages = sorted(folder.glob("mapa*.svg"))
-        if len(pdf_pages) != len(svg_pages) or len(svg_pages) != len(SYSTEMS[work]):
+        if segment:
+            layout, beat = segment_layout(source, svg_pages)
+        else:
+            layout = SYSTEMS[work]
+            def beat(bar):
+                return start_beat(work, bar)
+        if len(pdf_pages) != len(svg_pages) or len(svg_pages) != len(layout):
             raise ValueError(f"Número de páginas inesperado en {source.name}")
+        last_bar = layout[-1][-1]
+        score_end = seconds_at(beat(last_bar), tempos)
+        last_event = seconds_at(events[-1][0], tempos)
+        if not 0 <= score_end - last_event < 6 or not 0 < duration - score_end < 8:
+            raise ValueError(f"El WAV y el mapa de compases no coinciden para {source.name}")
 
         frames = ["ffconcat version 1.0"]
-        for image_path, svg, systems in zip(pdf_pages, svg_pages, SYSTEMS[work]):
+        for image_path, svg, systems in zip(pdf_pages, svg_pages, layout):
             with Image.open(image_path) as raw:
                 page = raw.convert("RGBA")
-            for bar, coords, label in measure_regions(work, svg, page, systems):
-                start = seconds_at(start_beat(work, bar), tempos)
+            for bar, coords, label in measure_regions(work, svg, page, systems, segment=segment):
+                start = seconds_at(beat(bar), tempos)
                 end = (duration if bar + 1 == last_bar
-                       else seconds_at(start_beat(work, bar + 1), tempos))
+                       else seconds_at(beat(bar + 1), tempos))
                 filename = f"compas-{bar:03}.png"
                 mark_measure(page, coords, bar, label).save(folder / filename, compress_level=1)
                 frames.extend((f"file '{filename}'", "option framerate 1000", f"duration {float(end-start):.6f}"))
@@ -258,7 +294,14 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("obra", choices=TEMPOS)
     parser.add_argument("bpm", nargs="*", type=int)
+    parser.add_argument("--segmento", nargs=5, type=lambda value: Path(value).resolve(),
+                        metavar=("LY", "PDF", "MIDI", "WAV", "MP4"))
     args = parser.parse_args()
+    if args.segmento:
+        if args.bpm:
+            parser.error("El tempo del segmento se toma de su MIDI")
+        render_video(args.obra, *args.segmento, segment=True)
+        return
     if set(args.bpm) - set(TEMPOS[args.obra]):
         parser.error(f"Tempos disponibles para {args.obra}: {TEMPOS[args.obra]}")
     for bpm in dict.fromkeys(args.bpm or TEMPOS[args.obra]):

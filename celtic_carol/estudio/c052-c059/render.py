@@ -63,8 +63,9 @@ def main():
         run("sox", "-m", work / f"{BASE}.wav", count_in,
             "-b", "16", mixed, "gain", "-n", "-3")
         run("sox", mixed, out / f"{BASE}.wav")
-    # El camino PDF reutiliza el WAV final y no elimina la claqueta.
-    run("bash", ROOT / "render_mp4.sh", HERE / f"{BASE}.pdf")
+    run(sys.executable, ROOT / "render_compas_activo.py", "celtic-carol", "--segmento",
+        HERE / f"{BASE}.ly", HERE / f"{BASE}.pdf", HERE / f"{BASE}.midi",
+        out / f"{BASE}.wav", out / f"{BASE}.mp4")
 
 
 if __name__ == "__main__":

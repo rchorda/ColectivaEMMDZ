@@ -220,7 +220,7 @@ musica = \absolute {
   sol4 sol sol | % 110
   sol4 sol sol | % 111
   sol4 sol sol | \break % 112
-  \mark \markup \box "Estudio 113-114"
+  \mark \markup \box "Estudio 113-116"
   sol16[ sol'\f la' sib'] do''[ re'' mib'' fas''] sol''[ la'' sib'' la''] | % 113
   sol''16[ fa''? mib'' re''] do''[ sib' la' sol'] fas'[ mi'! re' do'] |  % 114
   sib16[ sol sib sol] sib[ sol sib sol] sib[ sol sib sol] | % 115

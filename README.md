@@ -175,7 +175,7 @@ Esta reescritura conserva la duración real de las dos corcheas originales
 a negra con puntillo = 120. Las 38 notas mantienen sus alturas, tiempos reales
 y velocidades MIDI. La preparación ocupa 2 s,
 la música termina a los 18 s y el WAV dura 20,91 s con la cola de sonido.
-El vídeo muestra la partitura completa en una página, sin cursor por notas.
+El vídeo muestra la partitura completa del ejercicio en una página y resalta el compás activo.
 
 Para regenerar todos sus medios, incluida la mezcla de claqueta:
 
@@ -236,9 +236,11 @@ python3 celtic_carol/estudio/render_12_8.py c068-c075
 ### Vídeos a tempo reducido
 
 Cada segmento dispone de vídeos al 50 % (`_t050.mp4`) y 75 % (`_t075.mp4`).
+El segmento 64–67 también dispone de una [versión al 25 %](celtic_carol/estudio/c064-c067/out/c064-c067_t025.mp4).
 Se recompila la partitura con el tempo visible correcto y se vuelve a
 sintetizar el MIDI, conservando alturas, articulaciones y velocidades.
 La claqueta y la entrada anacrúsica se escalan junto con el pasaje.
+El resaltado sigue el compás activo desde la preparación.
 Los valores de la tabla corresponden a la negra con puntillo:
 
 | Compases | 1/2 del tempo original | 3/4 del tempo original |
@@ -249,7 +251,7 @@ Los valores de la tabla corresponden a la negra con puntillo:
 | 64–67 | [60](celtic_carol/estudio/c064-c067/out/c064-c067_t050.mp4) | [90](celtic_carol/estudio/c064-c067/out/c064-c067_t075.mp4) |
 | 68–75 | [60](celtic_carol/estudio/c068-c075/out/c068-c075_t050.mp4) | [90](celtic_carol/estudio/c068-c075/out/c068-c075_t075.mp4) |
 
-Regeneración de los diez vídeos, o de las dos velocidades de un segmento:
+Regeneración de las variantes de tempo, con selección opcional de segmentos:
 
 ```bash
 python3 celtic_carol/estudio/render_tempos.py
@@ -261,7 +263,7 @@ los MP4 en `out/`. Requiere los MIDI originales actualizados: compara todos
 los eventos de canal antes de renderizar. Verifica el tempo en microsegundos
 por negra y corrige el redondeo observado en LilyPond 2.24.4 para negra con
 puntillo = 45 (negra = 67,5), sin cambiar los eventos musicales.
-Los diez vídeos tienen comprobación de pistas y duración, golpes de claqueta
+Las variantes tienen comprobación de pistas y duración, golpes de claqueta
 en audio decodificado y revisión visual del tempo y la partitura. Escucha
 pendiente. Las colas de sonido se sintetizan de nuevo y no se estiran con
 el tempo, por lo que la duración total no es un múltiplo exacto del MP4 original.

@@ -55,7 +55,13 @@ WAV final, para que el camino `.ly` no vuelva a sintetizarlo y lo sobrescriba:
 
 ## Vídeo y verificaciones
 
-El MP4 actual es un pase de páginas con el WAV. Sin tiempos explícitos reparte
+Los renderizadores de las ediciones completas y los segmentos de Celtic Carol
+y Verano usan `render_compas_activo.py` para resaltar el compás activo. En los
+segmentos, la numeración y el tempo se vinculan a los sistemas grabados y al
+MIDI, incluido el compás de entrada. El recuadro del 51 de Celtic Carol cubre
+la claqueta y la anacrusa antes de pasar al 52.
+
+El MP4 de `render_mp4.sh` es un pase de páginas con el WAV. Sin tiempos explícitos reparte
 la duración equitativamente entre páginas; esto no equivale a sincronización
 musical. Para varias páginas, calcula sus tiempos reales teniendo en cuenta
 entrada, compases y cambios de tempo y pásalos mediante el cuarto argumento
@@ -72,7 +78,8 @@ realizadas y deja la comprobación auditiva como pendiente.
 ## Variantes de tempo
 
 Para los cinco ejercicios actuales de Celtic Carol, `render_tempos.py` en
-`celtic_carol/estudio/` genera vídeos al 50 % y 75 %. Sin argumentos procesa
+`celtic_carol/estudio/` genera vídeos al 50 % y 75 %, y al 25 % para 64–67.
+Sin argumentos procesa
 los cinco; admite sus nombres de carpeta para limitar la selección.
 Recompila fuentes temporales, modifica el tempo visible, vuelve a sintetizar
 el MIDI y adapta la claqueta, incluida la entrada del 51. Conserva solo los
