@@ -130,7 +130,10 @@ def main():
     # La indicación se aplica al primer evento de nota o silencio, no a una directiva.
     modified=re.sub(r'((?:sol|do|re|mi|fa|la|si|r)(?:es|is|b|s)?[\',]*\d*)',r'\1\\f',first,count=1)
     src=src.replace(first,modified,1)
-   ly=folder/(base+'.ly'); ly.write_text(src)
+   ly=folder/(base+'.ly')
+   # Las fuentes existentes contienen las digitaciones y posiciones de estudio.
+   if not ly.exists():
+    ly.write_text(src)
    log=run('lilypond','-I',folder,'-o',folder/base,ly)
    (folder/'compilacion.log').write_text(log)
    info=run('pdfinfo',folder/(base+'.pdf'))

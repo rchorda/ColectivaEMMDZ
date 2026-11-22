@@ -58,6 +58,8 @@ def render(name, source_bpm, bpm, suffix):
                                'stream=codec_type:format=duration', '-of', 'json', video))
         if {stream['codec_type'] for stream in media['streams']} != {'audio', 'video'}:
             raise ValueError(f'Faltan pistas en {stem}')
+        shutil.copy2(ly, folder / ly.name)
+        shutil.copy2(pdf, folder / pdf.name)
         shutil.copy2(video, folder / 'out' / video.name)
         print(f'{stem}: negra = {bpm}, {len(events)} eventos MIDI coincidentes, '
               f'12 golpes de claqueta, MP4 {media["format"]["duration"]} s', flush=True)
@@ -67,8 +69,11 @@ def main():
     manifest = json.loads((HERE / 'segments.json').read_text())
     segments = {entry['id']: entry for entry in manifest['segments']}
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('segments', choices=list(segments), nargs='*', metavar='SEGMENTO')
+    parser.add_argument('segments', nargs='*', metavar='SEGMENTO')
     args = parser.parse_args()
+    for name in args.segments:
+        if name not in segments:
+            parser.error(f'Segmento desconocido: {name}')
     for name in dict.fromkeys(args.segments or segments):
         entry = segments[name]
         source_bpm = entry['tempo']['bpm']

@@ -1,5 +1,7 @@
 # ColectivaEMMDZ
 
+[Prompt de digitación de estudio para violín](skills/lilypond-estudio/references/digitacion-de-estudio.md) · [Cambios de posición](skills/lilypond-estudio/references/cambios-de-posicion.md)
+
 ## Organización de las partituras
 
 Cada obra tiene una carpeta en la raíz. Incluye las fuentes LilyPond, las

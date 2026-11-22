@@ -9,6 +9,13 @@
 \header { title = "Verano" subtitle = "Estudio · compases 64–66" tagline = ##f }
 #(set-global-staff-size 17)
 \paper { #(set-paper-size "a5landscape") page-count = 1 indent = 0\mm ragged-last = ##f }
+inicioEscala = {
+  \once \override NoteHead.color = #(x11-color 'ForestGreen)
+  \once \override Fingering.color = #(x11-color 'ForestGreen)
+}
+cambioCuerda = { \once \override Fingering.color = #blue }
+subir = ^\markup \with-color #red \char #8593
+bajar = ^\markup \with-color #red \char #8595
 \score {
   \new Staff \with { midiInstrument = "violin" } \absolute {
     \clef treble \key sib \major \time 3/4 \tempo "Presto" 4 = 120
@@ -20,9 +27,9 @@
     \override Score.BarNumber.break-visibility = ##(#t #t #t)
     \set Score.barNumberVisibility = #all-bar-numbers-visible
     \dynamicUp
-  mib''16\f[ mib' fa' sol'] lab'[ si'! do'' re''] mib''8 r8 | % 64
-  r16 mib'16\upbow[ fa' sol'] lab'[ si'! do'' re''] mib''8 r8 | % 65
-  r16 mib'16\upbow[ fa' sol'] lab'[ si'! do'' re''] mib''8 r8 |  % 66
+  mib''16\f-4[ \inicioEscala \cambioCuerda mib'-1 fa' sol'] lab'-\tweak color #red -4\bajar[ \cambioCuerda si'!-1\subir do'' re''] mib''8-4 r8 | % 64
+  r16 \inicioEscala \cambioCuerda mib'16\upbow-1[ fa' sol'] lab'-\tweak color #red -4\bajar[ \cambioCuerda si'!-1\subir do'' re''] mib''8-4 r8 | % 65
+  r16 \inicioEscala \cambioCuerda mib'16\upbow-1[ fa' sol'] lab'-\tweak color #red -4\bajar[ \cambioCuerda si'!-1\subir do'' re''] mib''8-4 r8 | % 66
     \once \omit Score.BarNumber
     \bar "|."
   }
