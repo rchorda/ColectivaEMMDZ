@@ -109,7 +109,11 @@
       "videos": [
         {
           "suffix": "_t025",
-          "ratio": 0.25
+          "ratio": 0.25,
+          "resources": {
+            "pdf": "c064-c067_t025.pdf",
+            "source": "c064-c067_t025.ly"
+          }
         },
         {
           "suffix": "_t050",
