@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "workSource": "../verano.ly",
-  "downloadBase": "https://raw.githubusercontent.com/rchorda/ColectivaEMMDZ/df9a71968d2d7e580a6720953c8f03a10979e287/verano/",
+  "downloadBase": "https://raw.githubusercontent.com/rchorda/ColectivaEMMDZ/141fda7218a231fc90971f6172976ad09904bb90/verano/",
   "notes": "Ejercicios preparados mediante copias controladas. Si cambia la obra completa, hay que revisar los fragmentos antes de regenerarlos.",
   "segments": [
     {
@@ -22,23 +22,43 @@
       "videos": [
         {
           "suffix": "_t080",
-          "ratio": 0.6666666666666666
+          "ratio": 0.6666666666666666,
+          "resources": {
+            "pdf": "c010-c019_t080.pdf",
+            "source": "c010-c019_t080.ly"
+          }
         },
         {
           "suffix": "_t090",
-          "ratio": 0.75
+          "ratio": 0.75,
+          "resources": {
+            "pdf": "c010-c019_t090.pdf",
+            "source": "c010-c019_t090.ly"
+          }
         },
         {
           "suffix": "_t100",
-          "ratio": 0.8333333333333334
+          "ratio": 0.8333333333333334,
+          "resources": {
+            "pdf": "c010-c019_t100.pdf",
+            "source": "c010-c019_t100.ly"
+          }
         },
         {
           "suffix": "_t110",
-          "ratio": 0.9166666666666666
+          "ratio": 0.9166666666666666,
+          "resources": {
+            "pdf": "c010-c019_t110.pdf",
+            "source": "c010-c019_t110.ly"
+          }
         },
         {
           "suffix": "",
-          "ratio": 1.0
+          "ratio": 1.0,
+          "resources": {
+            "pdf": "c010-c019.pdf",
+            "source": "c010-c019.ly"
+          }
         }
       ]
     },
@@ -60,23 +80,43 @@
       "videos": [
         {
           "suffix": "_t080",
-          "ratio": 0.6666666666666666
+          "ratio": 0.6666666666666666,
+          "resources": {
+            "pdf": "c021-c028_t080.pdf",
+            "source": "c021-c028_t080.ly"
+          }
         },
         {
           "suffix": "_t090",
-          "ratio": 0.75
+          "ratio": 0.75,
+          "resources": {
+            "pdf": "c021-c028_t090.pdf",
+            "source": "c021-c028_t090.ly"
+          }
         },
         {
           "suffix": "_t100",
-          "ratio": 0.8333333333333334
+          "ratio": 0.8333333333333334,
+          "resources": {
+            "pdf": "c021-c028_t100.pdf",
+            "source": "c021-c028_t100.ly"
+          }
         },
         {
           "suffix": "_t110",
-          "ratio": 0.9166666666666666
+          "ratio": 0.9166666666666666,
+          "resources": {
+            "pdf": "c021-c028_t110.pdf",
+            "source": "c021-c028_t110.ly"
+          }
         },
         {
           "suffix": "",
-          "ratio": 1.0
+          "ratio": 1.0,
+          "resources": {
+            "pdf": "c021-c028.pdf",
+            "source": "c021-c028.ly"
+          }
         }
       ]
     },
@@ -98,23 +138,43 @@
       "videos": [
         {
           "suffix": "_t080",
-          "ratio": 0.6666666666666666
+          "ratio": 0.6666666666666666,
+          "resources": {
+            "pdf": "c038-c040_t080.pdf",
+            "source": "c038-c040_t080.ly"
+          }
         },
         {
           "suffix": "_t090",
-          "ratio": 0.75
+          "ratio": 0.75,
+          "resources": {
+            "pdf": "c038-c040_t090.pdf",
+            "source": "c038-c040_t090.ly"
+          }
         },
         {
           "suffix": "_t100",
-          "ratio": 0.8333333333333334
+          "ratio": 0.8333333333333334,
+          "resources": {
+            "pdf": "c038-c040_t100.pdf",
+            "source": "c038-c040_t100.ly"
+          }
         },
         {
           "suffix": "_t110",
-          "ratio": 0.9166666666666666
+          "ratio": 0.9166666666666666,
+          "resources": {
+            "pdf": "c038-c040_t110.pdf",
+            "source": "c038-c040_t110.ly"
+          }
         },
         {
           "suffix": "",
-          "ratio": 1.0
+          "ratio": 1.0,
+          "resources": {
+            "pdf": "c038-c040.pdf",
+            "source": "c038-c040.ly"
+          }
         }
       ]
     },
@@ -136,23 +196,43 @@
       "videos": [
         {
           "suffix": "_t080",
-          "ratio": 0.6666666666666666
+          "ratio": 0.6666666666666666,
+          "resources": {
+            "pdf": "c064-c066_t080.pdf",
+            "source": "c064-c066_t080.ly"
+          }
         },
         {
           "suffix": "_t090",
-          "ratio": 0.75
+          "ratio": 0.75,
+          "resources": {
+            "pdf": "c064-c066_t090.pdf",
+            "source": "c064-c066_t090.ly"
+          }
         },
         {
           "suffix": "_t100",
-          "ratio": 0.8333333333333334
+          "ratio": 0.8333333333333334,
+          "resources": {
+            "pdf": "c064-c066_t100.pdf",
+            "source": "c064-c066_t100.ly"
+          }
         },
         {
           "suffix": "_t110",
-          "ratio": 0.9166666666666666
+          "ratio": 0.9166666666666666,
+          "resources": {
+            "pdf": "c064-c066_t110.pdf",
+            "source": "c064-c066_t110.ly"
+          }
         },
         {
           "suffix": "",
-          "ratio": 1.0
+          "ratio": 1.0,
+          "resources": {
+            "pdf": "c064-c066.pdf",
+            "source": "c064-c066.ly"
+          }
         }
       ]
     },
@@ -174,23 +254,43 @@
       "videos": [
         {
           "suffix": "_t080",
-          "ratio": 0.6666666666666666
+          "ratio": 0.6666666666666666,
+          "resources": {
+            "pdf": "c101-c108_t080.pdf",
+            "source": "c101-c108_t080.ly"
+          }
         },
         {
           "suffix": "_t090",
-          "ratio": 0.75
+          "ratio": 0.75,
+          "resources": {
+            "pdf": "c101-c108_t090.pdf",
+            "source": "c101-c108_t090.ly"
+          }
         },
         {
           "suffix": "_t100",
-          "ratio": 0.8333333333333334
+          "ratio": 0.8333333333333334,
+          "resources": {
+            "pdf": "c101-c108_t100.pdf",
+            "source": "c101-c108_t100.ly"
+          }
         },
         {
           "suffix": "_t110",
-          "ratio": 0.9166666666666666
+          "ratio": 0.9166666666666666,
+          "resources": {
+            "pdf": "c101-c108_t110.pdf",
+            "source": "c101-c108_t110.ly"
+          }
         },
         {
           "suffix": "",
-          "ratio": 1.0
+          "ratio": 1.0,
+          "resources": {
+            "pdf": "c101-c108.pdf",
+            "source": "c101-c108.ly"
+          }
         }
       ]
     },
@@ -212,23 +312,119 @@
       "videos": [
         {
           "suffix": "_t080",
-          "ratio": 0.6666666666666666
+          "ratio": 0.6666666666666666,
+          "resources": {
+            "pdf": "c113-c114_t080.pdf",
+            "source": "c113-c114_t080.ly"
+          }
         },
         {
           "suffix": "_t090",
-          "ratio": 0.75
+          "ratio": 0.75,
+          "resources": {
+            "pdf": "c113-c114_t090.pdf",
+            "source": "c113-c114_t090.ly"
+          }
         },
         {
           "suffix": "_t100",
-          "ratio": 0.8333333333333334
+          "ratio": 0.8333333333333334,
+          "resources": {
+            "pdf": "c113-c114_t100.pdf",
+            "source": "c113-c114_t100.ly"
+          }
         },
         {
           "suffix": "_t110",
-          "ratio": 0.9166666666666666
+          "ratio": 0.9166666666666666,
+          "resources": {
+            "pdf": "c113-c114_t110.pdf",
+            "source": "c113-c114_t110.ly"
+          }
         },
         {
           "suffix": "",
-          "ratio": 1.0
+          "ratio": 1.0,
+          "resources": {
+            "pdf": "c113-c114.pdf",
+            "source": "c113-c114.ly"
+          }
+        }
+      ]
+    },
+    {
+      "id": "c001-c130-completa",
+      "folder": "completa",
+      "startBar": 1,
+      "endBarExclusive": 131,
+      "part": "Obra completa · Violín",
+      "meter": "3/4",
+      "tempo": {
+        "unit": "negra",
+        "bpm": 120
+      },
+      "preparation": "Un compás de entrada con doce golpes de semicorchea y acentos en cada negra.",
+      "files": {
+        "pdf": "verano-estudio-120.pdf",
+        "source": "verano-estudio-120.ly",
+        "midi": "verano-estudio-120.midi",
+        "wav": "verano-estudio-120.wav"
+      },
+      "videos": [
+        {
+          "ratio": 0.6666666666666666,
+          "label": "Negra = 80",
+          "path": "verano-estudio-80.mp4",
+          "resources": {
+            "pdf": "verano-estudio-80.pdf",
+            "source": "verano-estudio-80.ly",
+            "midi": "verano-estudio-80.midi",
+            "wav": "verano-estudio-80.wav"
+          }
+        },
+        {
+          "ratio": 0.75,
+          "label": "Negra = 90",
+          "path": "verano-estudio-90.mp4",
+          "resources": {
+            "pdf": "verano-estudio-90.pdf",
+            "source": "verano-estudio-90.ly",
+            "midi": "verano-estudio-90.midi",
+            "wav": "verano-estudio-90.wav"
+          }
+        },
+        {
+          "ratio": 0.8333333333333334,
+          "label": "Negra = 100",
+          "path": "verano-estudio-100.mp4",
+          "resources": {
+            "pdf": "verano-estudio-100.pdf",
+            "source": "verano-estudio-100.ly",
+            "midi": "verano-estudio-100.midi",
+            "wav": "verano-estudio-100.wav"
+          }
+        },
+        {
+          "ratio": 0.9166666666666666,
+          "label": "Negra = 110",
+          "path": "verano-estudio-110.mp4",
+          "resources": {
+            "pdf": "verano-estudio-110.pdf",
+            "source": "verano-estudio-110.ly",
+            "midi": "verano-estudio-110.midi",
+            "wav": "verano-estudio-110.wav"
+          }
+        },
+        {
+          "ratio": 1.0,
+          "label": "Negra = 120",
+          "path": "verano-estudio-120.mp4",
+          "resources": {
+            "pdf": "verano-estudio-120.pdf",
+            "source": "verano-estudio-120.ly",
+            "midi": "verano-estudio-120.midi",
+            "wav": "verano-estudio-120.wav"
+          }
         }
       ]
     }
