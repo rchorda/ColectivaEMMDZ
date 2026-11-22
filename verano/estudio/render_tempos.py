@@ -78,7 +78,7 @@ def main():
         entry = segments[name]
         source_bpm = entry['tempo']['bpm']
         for video in entry['videos']:
-            if video['suffix']:
+            if video.get('suffix'):
                 bpm = round(source_bpm * video['ratio'])
                 render(name, source_bpm, bpm, video['suffix'])
 
