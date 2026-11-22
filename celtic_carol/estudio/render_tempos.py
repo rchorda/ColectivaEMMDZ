@@ -106,14 +106,14 @@ def variant_source(source, bpm, ratio, base):
     return text
 
 
-def count_in(path, bpm, eighths):
-    step = 60 / (bpm * 3)
-    samples = array("h", [0]) * (round(eighths * step * RATE) * 2)
-    for beat in range(eighths):
-        main = beat % 3 == 0
+def count_in(path, bpm, clicks, *, subdivisions=3):
+    step = 60 / (bpm * subdivisions)
+    samples = array("h", [0]) * (round(clicks * step * RATE) * 2)
+    for beat in range(clicks):
+        main = beat % subdivisions == 0
         frequency = 1500 if main else 1050
-        amplitude = .42 if beat == 0 else ((.38 if eighths == 6 else .34) if main
-                                          else (.20 if eighths == 6 else .17))
+        amplitude = .42 if beat == 0 else ((.38 if clicks == 6 else .34) if main
+                                          else (.20 if clicks == 6 else .17))
         start = round(beat * step * RATE)
         for offset in range(round(.065 * RATE)):
             time = offset / RATE

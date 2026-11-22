@@ -126,17 +126,17 @@ def raster_barline(gray, x, center, step, tolerance):
     raise ValueError(f"No se localizó la barra del PDF junto a x={middle}, y={center:g}")
 
 
-def engraved_barlines(columns):
+def engraved_barlines(columns, join_gap=1):
     edges = []
     for x in sorted(columns):
-        if edges and x - edges[-1] < 1:
+        if edges and x - edges[-1] < join_gap:
             edges[-1] = x
         else:
             edges.append(x)
     return edges
 
 
-def measure_regions(work, svg, image, systems, *, segment=False):
+def measure_regions(work, svg, image, systems, *, segment=False, join_gap=1):
     width, _, lines, barlines = score_geometry(svg)
     gray = image.convert("L")
     rows = raster_staff_lines(gray)
@@ -147,7 +147,7 @@ def measure_regions(work, svg, image, systems, *, segment=False):
     for index, ((start, end), (y, left)) in enumerate(zip(pairwise(systems), lines[2::5])):
         center = rows[5 * index + 2]
         step = (rows[5 * index + 4] - rows[5 * index]) / 4
-        edges = engraved_barlines(barlines[y])
+        edges = engraved_barlines(barlines[y], join_gap)
         visible_bars = [bar for bar in range(start, end) if bar not in compressed]
         if len(edges) != len(visible_bars):
             raise ValueError(f"{svg.name}, compases {start}–{end-1}: {len(edges)} barras para {len(visible_bars)} compases impresos")
@@ -182,6 +182,22 @@ def mark_measure(page, coords, bar, label):
     return frame.convert("RGB")
 
 
+def engraved_layout(svg_pages, first, end, join_gap=1):
+    current = first
+    pages = []
+    for svg in svg_pages:
+        _, _, lines, barlines = score_geometry(svg)
+        sizes = [len(engraved_barlines(barlines[y], join_gap)) for y, _ in lines[2::5]]
+        if not sizes or not all(sizes):
+            raise ValueError(f"Hay sistemas sin barras de compás en {svg.name}")
+        boundaries = tuple(accumulate(sizes, initial=current))
+        pages.append(boundaries)
+        current = boundaries[-1]
+    if current != end:
+        raise ValueError(f"El último límite grabado es {current}; se esperaba {end}")
+    return pages
+
+
 def segment_layout(source, svg_pages):
     match = re.fullmatch(r"c(\d+)-c(\d+)(?:_t\d+)?", source.stem)
     meters = set(re.findall(r"\\time\s+(\d+)/(\d+)", source.read_text()))
@@ -191,27 +207,17 @@ def segment_layout(source, svg_pages):
     numerator, denominator = map(int, meters.pop())
     quarter_beats = Fraction(4 * numerator, denominator)
     # La entrada ocupa un compás completo, incluso cuando contiene anacrusa.
-    current = first - 1
-    pages = []
-    for svg in svg_pages:
-        _, _, lines, barlines = score_geometry(svg)
-        sizes = [len(engraved_barlines(barlines[y])) for y, _ in lines[2::5]]
-        if not sizes or not all(sizes):
-            raise ValueError(f"Hay sistemas sin barras de compás en {svg.name}")
-        boundaries = tuple(accumulate(sizes, initial=current))
-        pages.append(boundaries)
-        current = boundaries[-1]
-    if current != last + 1:
-        raise ValueError(f"La partitura {source.name} acaba antes del compás {current}, se esperaba {last+1}")
-    return pages, lambda bar: (bar - first + 1) * quarter_beats
+    return engraved_layout(svg_pages, first - 1, last + 1), lambda bar: (bar - first + 1) * quarter_beats
 
 
-def render_video(work, source, pdf, midi, wav, output, *, segment=False):
+def render_video(work, source, pdf, midi, wav, output, *, segment=False, playback=None):
+    """Graba los resaltados en orden musical. playback termina en (None, negra_final)."""
     events, tempos = midi_events(midi)
     if not tempos or tempos[0][0] != 0:
         raise ValueError(f"Falta el tempo inicial de {midi.name}")
     duration = float(run("ffprobe", "-v", "error", "-show_entries", "format=duration",
                          "-of", "csv=p=0", wav))
+    explicit_playback = playback is not None
     output.parent.mkdir(parents=True, exist_ok=True)
     with TemporaryDirectory(prefix=".compas-", dir=output.parent) as temp:
         folder = Path(temp)
@@ -220,7 +226,15 @@ def render_video(work, source, pdf, midi, wav, output, *, segment=False):
         run("pdftoppm", "-r", dpi, "-png", pdf, folder / "pagina")
         pdf_pages = sorted(folder.glob("pagina-*.png"))
         svg_pages = sorted(folder.glob("mapa*.svg"))
-        if segment:
+        join_gap = 1
+        if playback is not None:
+            bars = {bar for bar, _ in playback[:-1]}
+            if bars != set(range(len(bars))) or playback[-1][0] is not None:
+                raise ValueError("La secuencia debe cubrir los compases grabados y declarar su límite")
+            # La barra de repetición tiene un trazo doble más separado que las demás.
+            join_gap = 1.15
+            layout = engraved_layout(svg_pages, 0, len(bars), join_gap)
+        elif segment:
             layout, beat = segment_layout(source, svg_pages)
         else:
             layout = SYSTEMS[work]
@@ -229,22 +243,31 @@ def render_video(work, source, pdf, midi, wav, output, *, segment=False):
         if len(pdf_pages) != len(svg_pages) or len(svg_pages) != len(layout):
             raise ValueError(f"Número de páginas inesperado en {source.name}")
         last_bar = layout[-1][-1]
-        score_end = seconds_at(beat(last_bar), tempos)
+        if playback is None:
+            playback = [(bar, beat(bar)) for bar in range(layout[0][0], last_bar)]
+            playback.append((None, beat(last_bar)))
+        if playback[0][1] != 0 or any(left[1] >= right[1] for left, right in pairwise(playback)):
+            raise ValueError("La secuencia de compases debe avanzar desde la entrada")
+        score_end = seconds_at(playback[-1][1], tempos)
         last_event = seconds_at(events[-1][0], tempos)
         if not 0 <= score_end - last_event < 6 or not 0 < duration - score_end < 8:
             raise ValueError(f"El WAV y el mapa de compases no coinciden para {source.name}")
 
-        frames = ["ffconcat version 1.0"]
+        frame_files = {}
         for image_path, svg, systems in zip(pdf_pages, svg_pages, layout):
             with Image.open(image_path) as raw:
                 page = raw.convert("RGBA")
-            for bar, coords, label in measure_regions(work, svg, page, systems, segment=segment):
-                start = seconds_at(beat(bar), tempos)
-                end = (duration if bar + 1 == last_bar
-                       else seconds_at(beat(bar + 1), tempos))
+            for bar, coords, label in measure_regions(
+                    work, svg, page, systems, segment=segment or explicit_playback, join_gap=join_gap):
                 filename = f"compas-{bar:03}.png"
                 mark_measure(page, coords, bar, label).save(folder / filename, compress_level=1)
-                frames.extend((f"file '{filename}'", "option framerate 1000", f"duration {float(end-start):.6f}"))
+                frame_files[bar] = filename
+        frames = ["ffconcat version 1.0"]
+        for (bar, start_at), (next_bar, end_at) in pairwise(playback):
+            filename = frame_files[bar]
+            start = seconds_at(start_at, tempos)
+            end = duration if next_bar is None else seconds_at(end_at, tempos)
+            frames.extend((f"file '{filename}'", "option framerate 1000", f"duration {float(end-start):.6f}"))
         frames.extend((f"file '{filename}'", "option framerate 1000"))
         concat = folder / "marcas.txt"
         concat.write_text("\n".join(frames) + "\n")

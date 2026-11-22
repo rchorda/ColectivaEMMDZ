@@ -160,9 +160,10 @@ antes de republicarlo. Adjunta al chat de Cloud las fotos que quieras cotejar.
 
 [Celtic Carol completo a negra con puntillo = 60, 90 y 120](celtic_carol/estudio/completa/README.md).
 
-También están disponibles los vídeos completos de [Verano](verano/estudio/completa/README.md)
-e [Intermezzo](intermezzo/estudio/completa/README.md). Los tres estudios completos
-resaltan el compás activo, incluidos los silencios múltiples donde figuran.
+También están disponibles los vídeos completos de [Verano](verano/estudio/completa/README.md),
+[Intermezzo](intermezzo/estudio/completa/README.md) y
+[Träumerei](traumerei_violin_i/estudio/completa/README.md). El recuadro resalta el compás
+activo y sigue las repeticiones o los silencios múltiples donde figuran.
 El renderizador `render_compas_activo.py` usa LilyPond, Poppler, FFmpeg y Pillow.
 
 El primer ejercicio generado es [Celtic Carol, compases 52–59](celtic_carol/estudio/c052-c059/c052-c059.pdf),
