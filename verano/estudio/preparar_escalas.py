@@ -1,15 +1,16 @@
 #!/usr/bin/env python3
-"""Copia controlada de seis pasajes concretos de verano.ly; no es extractor universal.
+"""Copia controlada de pasajes concretos de verano.ly.
 Compila los ejercicios y mezcla una claqueta de 3/4 subdividida en semicorcheas.
 """
 from pathlib import Path
 from array import array
+import argparse
 import json, math, re, subprocess, tempfile, wave
 
 HERE=Path(__file__).resolve().parent
 ROOT=HERE.parents[1]
 SOURCE=HERE.parent/'verano.ly'
-RANGES=[(10,19),(21,28),(38,40),(64,66),(101,108),(113,114)]
+RANGES=[(10,19),(21,28),(32,37),(38,40),(64,66),(101,108),(113,114)]
 RATE=44100
 PULSOS = 3
 SUBDIVISIONES = 4
@@ -63,18 +64,26 @@ def check_click(path, bpm):
         raise ValueError(f'{path}: subdivisión o acentos de claqueta incorrectos: {peaks}')
 
 def main():
+ ranges = {f'c{a:03d}-c{b:03d}': (a, b) for a, b in RANGES}
+ parser = argparse.ArgumentParser(description=__doc__)
+ parser.add_argument('segments', nargs='*', metavar='SEGMENTO')
+ args = parser.parse_args()
+ for name in args.segments:
+  if name not in ranges:
+   parser.error(f'Segmento desconocido: {name}')
+ selected = [ranges[name] for name in dict.fromkeys(args.segments or ranges)]
  original=SOURCE.read_text()
  tempo=re.search(r'\\tempo\s+"Presto"\s+4\s*=\s*(\d+)',original)
  if tempo is None: raise ValueError('No se encontró el tempo de Verano')
  bpm=int(tempo[1])
- lines=original.splitlines()
  bars={}
- for line in lines:
-  match=re.search(r'\|\s*(?:\\break\s*)?%\s*(\d+)\s*$',line)
+ # En esta fuente, las líneas de continuación de un compás llevan cuatro espacios.
+ for bar in re.findall(r'^ {2}\S[^\n]*(?:\n {4}\S[^\n]*)*', original, re.M):
+  match=re.search(r'\|\s*(?:\\(?:pageBreak|break)\s*)?%\s*(\d+)\s*$',bar)
   if match:
    number=int(match.group(1))
    if number in bars: raise ValueError(f'Compás duplicado {number}')
-   bars[number]=line
+   bars[number]=bar
  for a,b in RANGES:
   if any(n not in bars for n in range(a,b+1)): raise ValueError(f'Compases no identificados en {a}–{b}')
   if any('R2.' in bars[n] or '\\repeat' in bars[n] for n in range(a,b+1)): raise ValueError('Revisión musical adicional necesaria')
@@ -89,7 +98,7 @@ def main():
  run('lilypond','-o',HERE/'verano_pasajes_marcados',HERE/'verano_pasajes_marcados.ly')
  with tempfile.TemporaryDirectory(prefix='verano-estudio-') as tmp:
   tmp=Path(tmp); clickfile=tmp/'claqueta.wav'; click(clickfile,bpm)
-  for a,b in RANGES:
+  for a,b in selected:
    base=f'c{a:03d}-c{b:03d}'; folder=HERE/base; out=folder/'out'; out.mkdir(parents=True,exist_ok=True)
    notes=[]
    for n in range(a,b+1):

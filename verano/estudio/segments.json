@@ -121,6 +121,65 @@
       ]
     },
     {
+      "id": "c032-c037",
+      "startBar": 32,
+      "endBarExclusive": 38,
+      "part": "Violín",
+      "meter": "3/4",
+      "tempo": {
+        "bpm": 120,
+        "unit": "negra"
+      },
+      "preparation": "Un compás de entrada en 3/4 con 12 golpes de semicorchea, acentuados en cada negra.",
+      "pickup": "",
+      "notes": [
+        "Negra = 120 es el tempo base de estudio. La partitura original indica Presto.",
+        "Primera posición en los compases 32–34, con cruces entre re y la. A partir del 35 se puede seguir en I sobre la cuerda de la o pasar a II para mantener los cruces. La vuelta a I está en el compás 38 de la partitura principal."
+      ],
+      "videos": [
+        {
+          "suffix": "_t080",
+          "ratio": 0.6666666666666666,
+          "resources": {
+            "pdf": "c032-c037_t080.pdf",
+            "source": "c032-c037_t080.ly"
+          }
+        },
+        {
+          "suffix": "_t090",
+          "ratio": 0.75,
+          "resources": {
+            "pdf": "c032-c037_t090.pdf",
+            "source": "c032-c037_t090.ly"
+          }
+        },
+        {
+          "suffix": "_t100",
+          "ratio": 0.8333333333333334,
+          "resources": {
+            "pdf": "c032-c037_t100.pdf",
+            "source": "c032-c037_t100.ly"
+          }
+        },
+        {
+          "suffix": "_t110",
+          "ratio": 0.9166666666666666,
+          "resources": {
+            "pdf": "c032-c037_t110.pdf",
+            "source": "c032-c037_t110.ly"
+          }
+        },
+        {
+          "suffix": "",
+          "ratio": 1.0,
+          "resources": {
+            "pdf": "c032-c037.pdf",
+            "source": "c032-c037.ly"
+          }
+        }
+      ]
+    },
+    {
       "id": "c038-c040",
       "startBar": 38,
       "endBarExclusive": 41,

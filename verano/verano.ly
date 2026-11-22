@@ -100,15 +100,24 @@ musica = \absolute {
   re''16[ sib' sol' re'] re''[ sib' sol' re'] re''[ sib' sol' re'] | % 30
   sol'16[ re' sib sol] sol'[ re' sib sol] sol'[ re' sib sol] | \break % 31
   sol'16-3[ si'!16-1 sol' si'] sol'[ si' sol' si'] sol'[ si' sol' si'] | % 32
-  sol'16-3[ do'' sol' do''] sol'[ do'' sol' do''] sol'[ do'' sol' do''] | % 33
-  sol'16-3[ dos'' sol' dos''] sol'[ dos'' sol' dos''] sol'[ dos'' sol' dos''] | \pageBreak % 34
-  la'16-0[ re''-3 la' re''] la'[ re'' la' re''] la'[ re'' la' re''] | % 35
+  sol'16-3[ do''-2 sol' do''] sol'[ do'' sol' do''] sol'[ do'' sol' do''] | % 33
+  sol'16-3[ dos''-2 sol' dos''] sol'[ dos'' sol' dos''] sol'[ dos'' sol' dos''] | \break % 34
+  % Compases 35–37: primera posición arriba y alternativa en segunda debajo.
+  % En la alternativa, el la va en la cuerda de re y el re o do sostenido en la de la.
+  la'16-0_\markup \center-column { \with-color #blue \finger "3" \bold "II" }[
+    re''-3_\markup \with-color #blue \finger "2" la' re'']
+    la'[ re'' la' re''] la'[ re'' la' re''] | % 35
   % Página fotografiada 13: continuación, compases 36–84.
   % Digitaciones y arcos a lápiz incluidos donde se distinguen.
   \barNumberCheck #36
-  la'16[ re'' la' re''] la'[ re'' la' re''] la'[ re'' la' re''] | % 36
-  la'16[ dos'' la' dos''] la'[ dos'' la' dos''] la'[ dos'' la' dos''] | \break % 37
-  re''16[ re' mi'! fa'] sol'[ la' si'! dos''] re''[ la' si' dos''] |  % 38
+  la'16-0_\markup \with-color #blue \finger "3"[
+    re''-3_\markup \with-color #blue \finger "2" la' re'']
+    la'[ re'' la' re''] la'[ re'' la' re''] | % 36
+  la'16-0_\markup \with-color #blue \finger "3"[
+    dos''-2_\markup \with-color #blue \finger "1" la' dos'']
+    la'[ dos'' la' dos''] la'[ dos'' la' dos''] | \pageBreak % 37
+  re''16-3_\markup \bold "I"[ re'-0 mi'!-1 fa']
+    sol'[ la' si'! dos''] re''[ la' si' dos''] | % 38
   re''16[ mi''! fa'' sol''] la''[ re''-1 mi'' fa''-3] sol''-4[ la''-1 si''! dos'''] | % 39
   re'''4 r4 r4 | \break % 40
   re'4\p re' re' | % 41
