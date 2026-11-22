@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "workSource": "../traumerei_violin_i.ly",
+  "segments": [
+    {
+      "id": "c001-c024-completa",
+      "folder": "completa",
+      "startBar": 1,
+      "endBarExclusive": 25,
+      "part": "Obra completa · Violín I",
+      "meter": "4/4",
+      "tempo": {
+        "unit": "negra",
+        "bpm": 72
+      },
+      "preparation": "Suenan cuatro pulsos de claqueta antes de la anacrusa, con acento en el primero.",
+      "pickup": "La anacrusa dura una negra.",
+      "notes": [
+        "El recuadro amarillo sigue el compás que suena. Tras la primera casilla vuelve al compás 1 y en la segunda vuelta pasa por la segunda casilla antes de seguir al 9.",
+        "La partitura incluye digitaciones y cambios entre I y III posición. El dedo 2 del mi bemol del compás 7 es provisional."
+      ],
+      "downloadBase": "https://raw.githubusercontent.com/rchorda/ColectivaEMMDZ/9d3c0c86738af012b84e9e9d230b737b27a525e4/traumerei_violin_i/",
+      "files": {
+        "pdf": "traumerei-estudio-72.pdf",
+        "source": "traumerei-estudio-72.ly",
+        "midi": "traumerei-estudio-72.midi",
+        "wav": "traumerei-estudio-72.wav"
+      },
+      "videos": [
+        {
+          "ratio": 0.5,
+          "label": "Negra = 36",
+          "path": "traumerei-estudio-36.mp4",
+          "resources": {
+            "pdf": "traumerei-estudio-36.pdf"
+          }
+        },
+        {
+          "ratio": 0.75,
+          "label": "Negra = 54",
+          "path": "traumerei-estudio-54.mp4",
+          "resources": {
+            "pdf": "traumerei-estudio-54.pdf"
+          }
+        },
+        {
+          "ratio": 1.0,
+          "label": "Negra = 72",
+          "path": "traumerei-estudio-72.mp4"
+        }
+      ]
+    }
+  ]
+}
