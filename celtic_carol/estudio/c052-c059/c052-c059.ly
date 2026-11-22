@@ -37,7 +37,7 @@
   ragged-last = ##f
   ragged-bottom = ##t
   print-page-number = ##f
-  system-system-spacing.basic-distance = #22
+  system-system-spacing.basic-distance = #18
 }
 
 #(define (celtic-dynamic-volume name)
@@ -45,6 +45,8 @@
                    ("mp" . 0.54) ("mf" . 0.68) ("f" . 0.92)
                    ("ff" . 0.96)) name)
       (default-dynamic-absolute-volume name)))
+
+subir = ^\markup { \with-color #red \char #8593 }
 
 global = {
   \clef treble
@@ -58,7 +60,7 @@ entrada = \absolute {
   \once \omit Score.BarNumber
   \tag #'layout {
     r4.^\markup { \small \bold "Preparación en 6/8" }
-    r4 mi''16\upbow( fa'') |
+    r4 mi''16-0\upbow( fa''-1) |
   }
   \tag #'midi {
     r4.\mf\> r4 mi''16\upbow( fa'')\! |
@@ -69,21 +71,21 @@ entrada = \absolute {
 fragmento = \absolute {
   \set Score.currentBarNumber = #52
   \barNumberCheck #52
-  sol''4.\p\downbow sol''8.\upbow( fa''32 sol'' fa''16 mi''-0) | % 52
+  sol''4.-2\p\downbow sol''8.-2\upbow( fa''32-1 \once \override NoteHead.color = #(x11-color 'ForestGreen) sol''-\tweak color #(x11-color 'ForestGreen) -2 fa''16-1 mi''-0) | % 52
   \barNumberCheck #53
-  re''4( si'8) sol'8( la' si') | % 53
+  re''4-\tweak color #blue -3( si'8-1) sol'8-\tweak color #blue -3( la'-\tweak color #blue -0 si'-1) | % 53
   \barNumberCheck #54
-  do''4( la'8) la'8( sols' la') | % 54
+  do''4-2( la'8-0) la'8-0( sols'-\tweak color #blue -3\subir la'-\tweak color #blue -0) | % 54
   \barNumberCheck #55
-  si'4\glissando( sols'8) mi'4.\< | \break % 55
+  si'4-\tweak color #blue -3_\markup \bold "III"\glissando( sols'8-\tweak color #red -3\subir_\markup \bold "I") mi'4.-1\< | \break % 55
   \barNumberCheck #56
-  sol''?4.\mp\downbow sol''4( fa''16 mi'') | % 56
+  sol''?4.-\tweak color #blue -2\mp\downbow sol''4-2( fa''16-1 mi''-0) | % 56
   \barNumberCheck #57
-  re''4( si'8) sol'8( la' si') | % 57
+  re''4-\tweak color #blue -3( si'8-1) sol'8-\tweak color #blue -3( la'-\tweak color #blue -0 si'-1) | % 57
   \barNumberCheck #58
-  do''8( si' la') sols'( fas' sols') | % 58
+  do''8-2( si'-1 la'-0) sols'-\tweak color #blue -3\subir( fas'-\tweak color #red -2\subir sols'-\tweak color #red -3\subir) | % 58
   \barNumberCheck #59
-  la'4.\< la'4.
+  la'4.-\tweak color #blue -0\< la'4.-0
   \tag #'layout { <>\! }
   \tag #'midi { <>\mf } | % 59: cierre de estudio
   \barNumberCheck #60
@@ -112,6 +114,7 @@ fragmento = \absolute {
     \small "Mi-fa: dos semicorcheas en la última corchea, con su duración original."
     \small "Adaptación del 51: corcheas a 120 = semicorcheas a 60 (negra con puntillo)."
     \small "Cierre de estudio: el crescendo del 59 alcanza mf al final del fragmento."
+    \small "Azul: cambio de cuerda. Verde: inicio de escala. Flecha roja: un semitono por encima de la armadura."
   }
 }
 

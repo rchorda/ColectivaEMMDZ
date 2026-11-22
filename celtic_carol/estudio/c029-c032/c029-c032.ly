@@ -40,6 +40,8 @@
                    ("ff" . 0.96)) name)
       (default-dynamic-absolute-volume name)))
 
+subir = ^\markup { \with-color #red \char #8593 }
+
 global = {
   \clef treble
   \time 12/8
@@ -57,13 +59,13 @@ entrada = \absolute {
 fragmento = \absolute {
   \set Score.currentBarNumber = #29
   \barNumberCheck #29
-  la''8\ff-^ la''-^ la''-^ la''16\upbow\f->( sol'' fa'' mi''-0 re''8-.) mi''4-> re''8\upbow-> ~ re'' do''4\upbow-> | % 29
+  la''8-3\ff-^ la''-3-^ la''-3-^ \once \override NoteHead.color = #(x11-color 'ForestGreen) la''16-\tweak color #(x11-color 'ForestGreen) -3\upbow\f->( sol''-2 fa''-1 mi''-0 re''8-\tweak color #blue -3-.) mi''4-\tweak color #blue -0-> re''8-\tweak color #blue -3\upbow-> ~ re'' do''4-2\upbow-> | % 29
   \barNumberCheck #30
-  do''8\downbow-. la'-. re''-. la'-. mi''-. la'-. do''16\downbow( si' la' sol' mi'8-.) do'8\upbow( si la) | \break % 30
+  do''8-2\downbow-. la'-0-. re''-3-. la'-0-. mi''-\tweak color #blue -0-. la'-\tweak color #blue -0-. \once \override NoteHead.color = #(x11-color 'ForestGreen) do''16-\tweak color #(x11-color 'ForestGreen) -2\downbow( si'-1 la'-0 sol'-\tweak color #blue -3 mi'8-1-.) do'8-\tweak color #blue -3\upbow( si-2 la-1) | \break % 30
   \barNumberCheck #31
-  la''8\ff-^ la''-^ la''-^ la''16\upbow\f->( sol'' fa'' mi'' re''8-.) mi''4-> re''8\upbow-> ~ re'' do''4\upbow-> | % 31
+  la''8-\tweak color #blue -3\ff-^ la''-3-^ la''-3-^ \once \override NoteHead.color = #(x11-color 'ForestGreen) la''16-\tweak color #(x11-color 'ForestGreen) -3\upbow\f->( sol''-2 fa''-1 mi''-0 re''8-\tweak color #blue -3-.) mi''4-\tweak color #blue -0-> re''8-\tweak color #blue -3\upbow-> ~ re'' do''4-2\upbow-> | % 31
   \barNumberCheck #32
-  do''8\downbow-. la'-. re''-. la'-. mi''-4-. la''\upbow-. sols''\downbow( mi''-0 si'') la''4-> r8 | % 32
+  do''8-2\downbow-. la'-0-. re''-3-. la'-0-. mi''-4-. la''-\tweak color #blue -3\upbow-. sols''-\tweak color #red -2\subir\downbow( mi''-0 si''-4) la''4-3-> r8 | % 32
   \barNumberCheck #33
   \bar "|."
 }
@@ -83,6 +85,7 @@ fragmento = \absolute {
   \vspace #0.6
   \small "Entrada: cuatro pulsos de negra con puntillo, con subdivisión en corcheas."
   \small "Claqueta solo al inicio. Selección [29,33): compases 29–32, ambos incluidos."
+  \small "Azul: cambio de cuerda. Verde: inicio de escala. Flecha roja: un semitono por encima de la armadura."
 }
 
 \score {

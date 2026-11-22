@@ -40,6 +40,8 @@
 
 semitono = -\tweak self-alignment-X #LEFT _\markup { \teeny "½ t." }
 
+subir = ^\markup { \with-color #red \char #8593 }
+
 global = {
   \clef treble
   \time 12/8
@@ -58,21 +60,21 @@ entrada = \absolute {
 fragmento = \absolute {
   \set Score.currentBarNumber = #68
   \barNumberCheck #68
-  la''8\f-^ la'-. la''-^ fa''16\upbow->( sol'' fa'' mi'' re''8-.) mi''4-> re''8\upbow-> ~ re'' do''4\upbow-> | % 68
+  la''8-3\f-^ la'-\tweak color #blue -0-. la''-\tweak color #blue -3-^ fa''16-1\upbow->( \once \override NoteHead.color = #(x11-color 'ForestGreen) sol''-\tweak color #(x11-color 'ForestGreen) -2 fa''-1 mi''-0 re''8-\tweak color #blue -3-.) mi''4-\tweak color #blue -0-> re''8-\tweak color #blue -3\upbow-> ~ re'' do''4-2\upbow-> | % 68
   \barNumberCheck #69
-  do''8\downbow-. la'-. re''-. la'-. mi''-. la'-. do''16\downbow( re'' do'' la'-0 mi'8-.) do'8( si la) | \break % 69
+  do''8-2\downbow-. la'-0-. re''-3-. la'-0-. mi''-\tweak color #blue -0-. la'-\tweak color #blue -0-. do''16-2\downbow( re''-3 do''-2 la'-0 mi'8-\tweak color #blue -1-.) do'8-\tweak color #blue -3( si-2 la-1) | \break % 69
   \barNumberCheck #70
-  la''8-^ la'-. la''-^ fa''16\upbow->( sol'' fa'' mi'' re''8-.) mi''4-> re''8\upbow-> ~ re'' do''4\upbow-> |  % 70
+  la''8-\tweak color #blue -3-^ la'-\tweak color #blue -0-. la''-\tweak color #blue -3-^ fa''16-1\upbow->( \once \override NoteHead.color = #(x11-color 'ForestGreen) sol''-\tweak color #(x11-color 'ForestGreen) -2 fa''-1 mi''-0 re''8-\tweak color #blue -3-.) mi''4-\tweak color #blue -0-> re''8-\tweak color #blue -3\upbow-> ~ re'' do''4-2\upbow-> |  % 70
   \barNumberCheck #71
-  do''8\downbow-. la'-. re''-. la'-. mi''-. la'-. sols''\downbow( mi'' si'') la''4-> r8 | % 71
+  do''8-2\downbow-. la'-0-. re''-3-. la'-0-. mi''-\tweak color #blue -0-. la'-\tweak color #blue -0-. sols''-\tweak color #blue -2\subir\downbow( mi''-0 si''-4) la''4-3-> r8 | % 71
   \barNumberCheck #72
-  do''4.\mf\downbow si'8( do'' la') mi'4 la'8\upbow-4 ~ la' mi'\upbow-. ( la'\upbow-.) | \break % 72
+  do''4.-\tweak color #blue -2\mf\downbow si'8-1( do''-2 la'-0) mi'4-\tweak color #blue -1 la'8\upbow-4 ~ la' mi'-1\upbow-. ( la'-\tweak color #blue -0\upbow-.) | \break % 72
   \barNumberCheck #73
-  do''8( si' do'') re''( \grace { do''16 re'' } do''8 si') la'4( mi'8) la'4( si'8) |  % 73
+  do''8-2( si'-1 do''-2) re''-3( \grace { do''16-2 re''-3 } do''8-2 si'-1) la'4-0( mi'8-\tweak color #blue -1) la'4-\tweak color #blue -0( si'8-1) |  % 73
   \barNumberCheck #74
-  do''4.\downbow si'8( do'' la') mi'4 la'8\upbow-4 ~ la' mi'\upbow-.( la'-.) | % 74
+  do''4.-2\downbow si'8-1( do''-2 la'-0) mi'4-\tweak color #blue -1 la'8\upbow-4 ~ la' mi'-1\upbow-.( la'-\tweak color #blue -0-.) | % 74
   \barNumberCheck #75
-  do''8( si' do'') re''( do'' si') la'4( mi'8) la'( si' la') | % 75
+  do''8-2( si'-1 do''-2) re''-3( do''-2 si'-1) la'4-0( mi'8-\tweak color #blue -1) la'-\tweak color #blue -0( si'-1 la'-0) | % 75
   \barNumberCheck #76
   \bar "|."
 }
@@ -92,6 +94,7 @@ fragmento = \absolute {
   \vspace #0.6
   \small "Entrada: cuatro pulsos de negra con puntillo, con subdivisión en corcheas."
   \small "Claqueta solo al inicio. Selección [68,76): compases 68–75, ambos incluidos."
+  \small "Azul: cambio de cuerda. Verde: inicio de escala. Flecha roja: un semitono por encima de la armadura."
 }
 
 \score {

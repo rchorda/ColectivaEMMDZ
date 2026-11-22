@@ -37,6 +37,8 @@
                    ("ff" . 0.96)) name)
       (default-dynamic-absolute-volume name)))
 
+subir = ^\markup { \with-color #red \char #8593 }
+
 global = {
   \clef treble
   \time 12/8
@@ -55,13 +57,13 @@ entrada = \absolute {
 fragmento = \absolute {
   \set Score.currentBarNumber = #60
   \barNumberCheck #60
-  do''8\mf\downbow( si' la' mi' la' si') do''-2->( la') re''-3->( la') mi''-4->( la') | % 60
+  do''8-2\mf\downbow( si'-1 la'-0 mi'-\tweak color #blue -1 la'-\tweak color #blue -0 si'-1) do''-2->( la'-0) re''-3->( la'-0) mi''-4->( la'-0) | % 60
   \barNumberCheck #61
-  si'8-1( sol'-3 re' si-2 re' sol'-3) si'-1( sol'-3 si'-1 re''-3 do''-2 si'-1) | \break % 61
+  si'8-1( sol'-\tweak color #blue -3 re'-0 si-\tweak color #blue -2 re'-\tweak color #blue -0 sol'-3) si'-\tweak color #blue -1( sol'-\tweak color #blue -3 si'-\tweak color #blue -1 re''-3 do''-2 si'-1) | \break % 61
   \barNumberCheck #62
-  do''8-2( la') re''-3( la') mi''-4( la') la''( mi'' la''-1) do'''4. | % 62
+  do''8-2( la'-0) re''-3( la'-0) mi''-4( la'-0) la''-\tweak color #blue -3( mi''-0 la''_\markup \bold "III"-1) do'''4.-3 | % 62
   \barNumberCheck #63
-  si''8\upbow( do''' si'') la''( si'' la'') sols''2.\upbow-2 | % 63
+  si''8-2\upbow( do'''-3 si''-2) la''-1( si''-2 la''-1) sols''2.\subir_\markup \bold "I"\upbow-2 | % 63
   \barNumberCheck #64
   \bar "|."
 }
@@ -81,6 +83,7 @@ fragmento = \absolute {
   \vspace #0.6
   \small "Entrada: cuatro pulsos de negra con puntillo, con subdivisión en corcheas."
   \small "Claqueta solo al inicio. Selección [60,64): compases 60–63, ambos incluidos."
+  \small "Azul: cambio de cuerda. Flecha roja: un semitono por encima de la armadura."
 }
 
 \score {

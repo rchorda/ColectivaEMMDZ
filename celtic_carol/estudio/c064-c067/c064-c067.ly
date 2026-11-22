@@ -40,6 +40,8 @@
 
 semitono = -\tweak self-alignment-X #LEFT _\markup { \teeny "½ t." }
 
+subir = ^\markup { \with-color #red \char #8593 }
+
 global = {
   \clef treble
   \time 12/8
@@ -58,13 +60,13 @@ entrada = \absolute {
 fragmento = \absolute {
   \set Score.currentBarNumber = #64
   \barNumberCheck #64
-  la'8\mf\downbow-0( mi''-0 la'' si'') do''\upbow mi''\downbow la''\upbow-1->( mi''-0) si''->( mi'') do'''-3->( mi''-0) | % 64
+  la'8\mf\downbow-0( mi''-\tweak color #blue -0 la''-3 si''-4) do''-\tweak color #blue -2\upbow mi''-\tweak color #blue -0\downbow la''_\markup \bold "III"\upbow-1->( mi''-0) si''-2->( mi''-0) do'''-3->( mi''-0) | % 64
   \barNumberCheck #65
-  sol'8-3( re'' sol'' la'') si'-3 re''-1 sol''\upbow->( re'') la''->( re'') si''->( re'''-2) | \break % 65
+  sol'8_\markup \bold "I"-\tweak color #blue -3( re''-\tweak color #blue -3 sol''-\tweak color #blue -2 la''-3) si'_\markup \bold "III"-\tweak color #blue -3 re''-\tweak color #blue -1 sol''-4\upbow->( re''-1) la''-\tweak color #blue -1->( re''-\tweak color #blue -1) si''-\tweak color #blue -2->( re'''_\markup \bold "V"-2) | \break % 65
   \barNumberCheck #66
-  fa'''8\downbow\semitono( mi''' re''') do'''-3\semitono( si'' la'') sols''\downbow( fa''?\semitono mi'') re''( do''\semitono si') | % 66
+  \once \override NoteHead.color = #(x11-color 'ForestGreen) fa'''8-\tweak color #(x11-color 'ForestGreen) -4\downbow\semitono( mi'''-3 re'''-2) do'''_\markup \bold "III"-3\semitono( si''-2 la''-1) sols''-\tweak color #red -2\subir_\markup \bold "I"\downbow( fa''?-1\semitono mi''-0) re''-\tweak color #blue -3( do''-2\semitono si'-1) | % 66
   \barNumberCheck #67
-  la'2.\< mi''2. \tag #'layout { <>\! } \tag #'midi { <>\f } | % 67
+  la'2.-0\< mi''2.-\tweak color #blue -0 \tag #'layout { <>\! } \tag #'midi { <>\f } | % 67
   \barNumberCheck #68
   \bar "|."
 }
@@ -85,6 +87,7 @@ fragmento = \absolute {
   \small "Entrada: cuatro pulsos de negra con puntillo, con subdivisión en corcheas."
   \small "Cierre de estudio: el crescendo del 67 alcanza f al final del fragmento."
   \small "Claqueta solo al inicio. Selección [64,68): compases 64–67, ambos incluidos."
+  \small "Azul: cambio de cuerda. Verde: inicio de escala. Flecha roja: un semitono por encima de la armadura."
 }
 
 \score {

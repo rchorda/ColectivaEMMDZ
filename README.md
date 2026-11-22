@@ -191,6 +191,13 @@ con un compás de claqueta de cuatro pulsos subdivididos en corcheas:
 | `[64,68)` | 64–67 | [Partitura](celtic_carol/estudio/c064-c067/c064-c067.pdf) | [Audio](celtic_carol/estudio/c064-c067/out/c064-c067.wav) | [Vídeo](celtic_carol/estudio/c064-c067/out/c064-c067.mp4) |
 | `[68,76)` | 68–75 | [Partitura](celtic_carol/estudio/c068-c075/c068-c075.pdf) | [Audio](celtic_carol/estudio/c068-c075/out/c068-c075.wav) | [Vídeo](celtic_carol/estudio/c068-c075/out/c068-c075.mp4) |
 
+Las cinco partituras de estudio conservan las cifras de la fuente y añaden
+digitaciones de referencia, cruces de cuerda en azul y números romanos donde
+cambia la mano. En el compás 55 se propone hacer el glissando con el dedo 3
+en la cuerda de re, de III en el si a I en el sol sostenido. En 62–63 y
+64–66, las posiciones añadidas se apoyan en las digitaciones escritas y en el
+recorrido de cuerda propuesto. Los estudios 29–32 y 68–75 se tocan en I.
+
 En los ejercicios 60–63 y 64–67 se comprobaron respectivamente 41 y 38 notas frente al MIDI de la fuente,
 con igualdad de alturas, tiempos y velocidades. Ambos tienen 2 s de entrada,
 8 s de música y una duración WAV de 12,906 s incluida la cola. El segundo
