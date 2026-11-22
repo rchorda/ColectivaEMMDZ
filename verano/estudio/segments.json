@@ -485,6 +485,10 @@
             "wav": "verano-estudio-120.wav"
           }
         }
+      ],
+      "downloadBase": "https://raw.githubusercontent.com/rchorda/ColectivaEMMDZ/4dacdeb8da7e63e19c1dd5837d2f0029636563ad/verano/",
+      "notes": [
+        "El recuadro amarillo sigue el compás activo, incluidos los silencios múltiples."
       ]
     }
   ]

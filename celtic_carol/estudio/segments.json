@@ -158,6 +158,65 @@
           "ratio": 1
         }
       ]
+    },
+    {
+      "id": "c001-c112-completa",
+      "folder": "completa",
+      "startBar": 1,
+      "endBarExclusive": 113,
+      "part": "Obra completa · Violín 1",
+      "meter": "12/8 y 6/8",
+      "tempo": {
+        "unit": "negra con puntillo",
+        "bpm": 120
+      },
+      "preparation": "Un compás de claqueta en 12/8 con doce corcheas y cuatro pulsos acentuados.",
+      "notes": [
+        "El recuadro amarillo sigue el compás activo, incluidos los silencios múltiples.",
+        "El Half time de los compases 52–59 y el ritardando final se escalan con el tempo elegido."
+      ],
+      "downloadBase": "https://raw.githubusercontent.com/rchorda/ColectivaEMMDZ/4dacdeb8da7e63e19c1dd5837d2f0029636563ad/celtic_carol/",
+      "files": {
+        "pdf": "celtic-carol-estudio-120.pdf",
+        "source": "celtic-carol-estudio-120.ly",
+        "midi": "celtic-carol-estudio-120.midi",
+        "wav": "celtic-carol-estudio-120.wav"
+      },
+      "videos": [
+        {
+          "ratio": 0.5,
+          "label": "Negra con puntillo = 60",
+          "path": "celtic-carol-estudio-60.mp4",
+          "resources": {
+            "pdf": "celtic-carol-estudio-60.pdf",
+            "source": "celtic-carol-estudio-60.ly",
+            "midi": "celtic-carol-estudio-60.midi",
+            "wav": "celtic-carol-estudio-60.wav"
+          }
+        },
+        {
+          "ratio": 0.75,
+          "label": "Negra con puntillo = 90",
+          "path": "celtic-carol-estudio-90.mp4",
+          "resources": {
+            "pdf": "celtic-carol-estudio-90.pdf",
+            "source": "celtic-carol-estudio-90.ly",
+            "midi": "celtic-carol-estudio-90.midi",
+            "wav": "celtic-carol-estudio-90.wav"
+          }
+        },
+        {
+          "ratio": 1.0,
+          "label": "Negra con puntillo = 120",
+          "path": "celtic-carol-estudio-120.mp4",
+          "resources": {
+            "pdf": "celtic-carol-estudio-120.pdf",
+            "source": "celtic-carol-estudio-120.ly",
+            "midi": "celtic-carol-estudio-120.midi",
+            "wav": "celtic-carol-estudio-120.wav"
+          }
+        }
+      ]
     }
   ]
 }

@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "workSource": "../intermezzo.ly",
+  "segments": [
+    {
+      "id": "c001-c048-completa",
+      "folder": "completa",
+      "startBar": 1,
+      "endBarExclusive": 49,
+      "part": "Obra completa · Violín I",
+      "meter": "3/4",
+      "tempo": {
+        "unit": "negra",
+        "bpm": 72
+      },
+      "preparation": "El vídeo comienza con los cuatro compases de introducción de la partitura.",
+      "notes": [
+        "El recuadro amarillo sigue el compás activo desde la introducción. El intervalo 1–48 conserva la numeración de la transcripción."
+      ],
+      "downloadBase": "https://raw.githubusercontent.com/rchorda/ColectivaEMMDZ/4dacdeb8da7e63e19c1dd5837d2f0029636563ad/intermezzo/",
+      "files": {
+        "pdf": "../../intermezzo.pdf",
+        "source": "../../intermezzo.ly",
+        "midi": "../../intermezzo.midi",
+        "wav": "../../out/intermezzo.wav"
+      },
+      "videos": [
+        {
+          "ratio": 0.5,
+          "label": "Negra = 36",
+          "path": "intermezzo-estudio-36.mp4"
+        },
+        {
+          "ratio": 0.75,
+          "label": "Negra = 54",
+          "path": "intermezzo-estudio-54.mp4"
+        },
+        {
+          "ratio": 1.0,
+          "label": "Negra = 72",
+          "path": "intermezzo-estudio-72.mp4"
+        }
+      ],
+      "countIn": false
+    }
+  ]
+}
