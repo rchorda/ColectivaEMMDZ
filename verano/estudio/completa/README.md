@@ -1,6 +1,6 @@
 # Verano · Estudio de la obra completa
 
-130 compases en 3/4. Antes del compás 1 suenan doce semicorcheas de claqueta, con acento en cada negra. Los vídeos muestran las seis páginas de la edición de estudio; los cambios de página coinciden con los compases 20, 41, 67, 101 y 120.
+130 compases en 3/4. Antes del compás 1 suenan doce semicorcheas de claqueta, con acento en cada negra. Los vídeos resaltan el compás activo desde la entrada. Los cambios de página coinciden con los compases 20, 41, 67, 101 y 120. Durante los silencios múltiples, el número del compás cambia sobre el mismo símbolo.
 
 | Negra por minuto | Partitura | Vídeo con claqueta | Audio | MIDI | Fuente |
 | ---: | --- | --- | --- | --- | --- |
@@ -11,3 +11,5 @@
 | 120 | [PDF](verano-estudio-120.pdf) | [MP4](verano-estudio-120.mp4) | [WAV](verano-estudio-120.wav) | [MIDI](verano-estudio-120.midi) | [LilyPond](verano-estudio-120.ly) |
 
 La primera posición inicial queda implícita. Los números romanos indican el comienzo de cada posición nueva. Las marcas de los compases 70 y 87 son propuestas de estudio: los dedos originales del do grave y del si♭ en 70–71 apoyan la tercera posición, y la vuelta a primera en el si natural del 87 prepara el registro grave siguiente.
+
+Desde la raíz, `python3 render_compas_activo.py verano` regenera los cinco MP4 a partir de los PDF, MIDI y WAV de estudio. Se pueden indicar uno o varios tempos para limitar la regeneración.

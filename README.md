@@ -158,6 +158,13 @@ En Cloud, comprueba los binarios de renderizado en una tarea del entorno
 publicado. Si faltan, instálalos y prueba el flujo en la edición del entorno
 antes de republicarlo. Adjunta al chat de Cloud las fotos que quieras cotejar.
 
+[Celtic Carol completo a negra con puntillo = 60, 90 y 120](celtic_carol/estudio/completa/README.md).
+
+También están disponibles los vídeos completos de [Verano](verano/estudio/completa/README.md)
+e [Intermezzo](intermezzo/estudio/completa/README.md). Los tres estudios completos
+resaltan el compás activo, incluidos los silencios múltiples donde figuran.
+El renderizador `render_compas_activo.py` usa LilyPond, Poppler, FFmpeg y Pillow.
+
 El primer ejercicio generado es [Celtic Carol, compases 52–59](celtic_carol/estudio/c052-c059/c052-c059.pdf),
 con [WAV](celtic_carol/estudio/c052-c059/out/c052-c059.wav) y
 [MP4](celtic_carol/estudio/c052-c059/out/c052-c059.mp4). Incluye las dos últimas
