@@ -19,7 +19,8 @@
       "endBarExclusive": 84,
       "part": "Violín I",
       "notes": [
-        "Digitaciones de estudio y cambios entre I y III posición. Se conserva el dedo 1 del si y la indicación de III en el la de la escala del compás 66."
+        "Digitaciones de estudio y cambios entre I y III posición. Se conserva el dedo 1 del si y la indicación de III en el la de la escala del compás 66.",
+        "Los tres vídeos resaltan el compás activo. El PDF de la partitura general anotada está disponible al elegir la tercera variante."
       ],
       "meter": "4/4",
       "tempo": {
@@ -50,9 +51,13 @@
         {
           "ratio": 1,
           "label": "Partitura general con audio solista",
-          "path": "../../out/shallow-vpo-solo-violin-i.mp4"
+          "path": "../../out/shallow-vpo-solo-violin-i.mp4",
+          "resources": {
+            "pdf": "shallow-estudio-cuarteto.pdf"
+          }
         }
-      ]
+      ],
+      "downloadBase": "https://raw.githubusercontent.com/rchorda/ColectivaEMMDZ/2a00a56eacb0fe05d1e2da2083c6be27eba15cf5/shallow/"
     },
     {
       "id": "c001-c083-violin-ii",
@@ -61,7 +66,8 @@
       "endBarExclusive": 84,
       "part": "Violín II",
       "notes": [
-        "Digitaciones de estudio, incluidas las dobles cuerdas, y paso por III posición en los compases 43–50."
+        "Digitaciones de estudio, incluidas las dobles cuerdas, y paso por III posición en los compases 43–50.",
+        "Los tres vídeos resaltan el compás activo. El PDF de la partitura general anotada está disponible al elegir la tercera variante."
       ],
       "meter": "4/4",
       "tempo": {
@@ -92,9 +98,13 @@
         {
           "ratio": 1,
           "label": "Partitura general con audio solista",
-          "path": "../../out/shallow-vpo-solo-violin-ii.mp4"
+          "path": "../../out/shallow-vpo-solo-violin-ii.mp4",
+          "resources": {
+            "pdf": "shallow-estudio-cuarteto.pdf"
+          }
         }
-      ]
+      ],
+      "downloadBase": "https://raw.githubusercontent.com/rchorda/ColectivaEMMDZ/2a00a56eacb0fe05d1e2da2083c6be27eba15cf5/shallow/"
     },
     {
       "id": "c001-c083-viola",
