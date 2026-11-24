@@ -18,6 +18,9 @@
       "startBar": 1,
       "endBarExclusive": 84,
       "part": "Violín I",
+      "notes": [
+        "Digitaciones de estudio y cambios entre I y III posición. Se conserva el dedo 1 del si y la indicación de III en el la de la escala del compás 66."
+      ],
       "meter": "4/4",
       "tempo": {
         "bpm": 96,
@@ -30,7 +33,8 @@
         "wav": "out/shallow-estudio-violin-i-vpo.wav"
       },
       "dependencies": [
-        "../../shallow-musica.ly"
+        "../../shallow-musica.ly",
+        "shallow-digitaciones.ily"
       ],
       "videos": [
         {
@@ -56,6 +60,9 @@
       "startBar": 1,
       "endBarExclusive": 84,
       "part": "Violín II",
+      "notes": [
+        "Digitaciones de estudio, incluidas las dobles cuerdas, y paso por III posición en los compases 43–50."
+      ],
       "meter": "4/4",
       "tempo": {
         "bpm": 96,
@@ -68,7 +75,8 @@
         "wav": "out/shallow-estudio-violin-ii-vpo.wav"
       },
       "dependencies": [
-        "../../shallow-musica.ly"
+        "../../shallow-musica.ly",
+        "shallow-digitaciones.ily"
       ],
       "videos": [
         {
@@ -106,7 +114,8 @@
         "wav": "out/shallow-estudio-viola-vpo.wav"
       },
       "dependencies": [
-        "../../shallow-musica.ly"
+        "../../shallow-musica.ly",
+        "shallow-digitaciones.ily"
       ],
       "videos": [
         {
@@ -144,7 +153,8 @@
         "wav": "out/shallow-estudio-chelo-vpo.wav"
       },
       "dependencies": [
-        "../../shallow-musica.ly"
+        "../../shallow-musica.ly",
+        "shallow-digitaciones.ily"
       ],
       "videos": [
         {
