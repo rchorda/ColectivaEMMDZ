@@ -162,6 +162,7 @@
     {
       "id": "c001-c112-completa",
       "folder": "completa",
+      "dependencies": ["esquema-digitacion.ily"],
       "startBar": 1,
       "endBarExclusive": 113,
       "part": "Obra completa · Violín 1",
@@ -175,7 +176,7 @@
         "El recuadro amarillo sigue el compás activo, incluidos los silencios múltiples.",
         "El Half time de los compases 52–59 y el ritardando final se escalan con el tempo elegido."
       ],
-      "downloadBase": "https://raw.githubusercontent.com/rchorda/ColectivaEMMDZ/4dacdeb8da7e63e19c1dd5837d2f0029636563ad/celtic_carol/",
+      "downloadBase": "https://raw.githubusercontent.com/rchorda/ColectivaEMMDZ/6aad77dbb2bf78723231dcd23611ca2dc2e80084/celtic_carol/",
       "files": {
         "pdf": "celtic-carol-estudio-120.pdf",
         "source": "celtic-carol-estudio-120.ly",

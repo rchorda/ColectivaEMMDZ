@@ -1,0 +1,25 @@
+{
+  "armadura": -1,
+  "recorrido": "Fa mayor · Cifras escritas y referencia para Si natural en III",
+  "notas": [
+    [1, "La", "Mi5", 4],
+    [1, "Mi", "Fa5", 1],
+    [1, "Mi", "Sol5", 2],
+    [1, "Mi", "La5", 3],
+    [1, "Mi", "Sib5", 4],
+    [3, "Re", "Do5", 4],
+    [3, "La", "Re5", 1, "cruce"],
+    [3, "La", "Fa5", 3],
+    [3, "Mi", "La5", 1],
+    [3, "Mi", "Sib5", 2],
+    [3, "Mi", "Si5", 2],
+    [3, "Mi", "Do6", 3],
+    [3, "Mi", "Re6", 4],
+    [5, "La", "Sib5", 4, "cruce"],
+    [5, "Mi", "Do6", 1],
+    [5, "Mi", "Re6", 2, "cruce"],
+    [5, "Mi", "Fa6", 4],
+    [7, "Mi", "Fa6", 2],
+    [7, "Mi", "La6", 4]
+  ]
+}

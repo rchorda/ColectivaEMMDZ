@@ -7,6 +7,7 @@ from fractions import Fraction
 from itertools import accumulate, pairwise
 import json
 from pathlib import Path
+from shutil import copy2
 import re
 from runpy import run_path
 import subprocess
@@ -328,21 +329,25 @@ def render_edition(work, bpm):
         return
 
     reference = ROOT / "intermezzo/intermezzo"
+    study = base.parent / f"{work}-estudio-72.ly"
     score, count = re.subn(r'(\\tempo "Andante sostenuto" 4 = )72\b',
-                           lambda match: match[1] + str(bpm), reference.with_suffix(".ly").read_text())
+                           lambda match: match[1] + str(bpm), study.read_text())
     if count != 1:
         raise ValueError("No se encontró el tempo de Intermezzo")
     with TemporaryDirectory(prefix="intermezzo-compas-") as temp:
         edition = Path(temp) / base.name
         source = edition.with_suffix(".ly")
         source.write_text(score)
-        run("lilypond", "-o", edition, source)
+        run("lilypond", "-I", base.parent, "-o", edition, source)
         midi = edition.with_suffix(".midi")
         events, tempos = midi_events(midi)
         if events != midi_events(reference.with_suffix(".midi"))[0] or tempos[0] != (0, int(Fraction(60_000_000, bpm))):
             raise ValueError(f"Eventos o tempo inesperados en {source.name}")
         run("bash", ROOT / "render_wav.sh", midi, edition.parent)
-        render_video(work, source, edition.with_suffix(".pdf"), midi, edition.with_suffix(".wav"), output)
+        pdf = edition.with_suffix(".pdf")
+        render_video(work, source, pdf, midi, edition.with_suffix(".wav"), output,
+                     include_dir=base.parent)
+        copy2(pdf, base.with_suffix(".pdf"))
 
 
 def main():

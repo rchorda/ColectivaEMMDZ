@@ -1,5 +1,6 @@
 \version "2.24.0"
 \language "espanol"
+\include "esquema-digitacion.ily"
 % Fuente: ../../verano.ly; voz única de violín; intervalo [32,38).
 % Copia controlada. Cotejar con la partitura principal si cambia el pasaje.
 % Clave de sol, si bemol mayor, 3/4, negra = 90 y dinámica f.
@@ -65,8 +66,4 @@ subir = ^\markup \with-color #red \char #8593
   \midi { }
 }
 
-\markup \small \column {
-  "Arriba: primera posición. En los compases 32–34 se alternan re y la. Desde el 35, todo en la cuerda de la."
-  "Debajo, desde el 35: alternativa en segunda posición. El la va en la cuerda de re."
-  "Las cifras azules marcan los cruces y las flechas rojas, un semitono por encima de la armadura."
-}
+\markup \esquemaDigitacion

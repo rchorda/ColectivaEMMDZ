@@ -1,0 +1,15 @@
+{
+  "armadura": -2,
+  "recorrido": "32–34 I · 35–37 I o II, según la digitación elegida",
+  "notas": [
+    [1, "Re", "Sol4", 3, "cruce"],
+    [1, "La", "La4", 0],
+    [1, "La", "Si4", 1, "cruce"],
+    [1, "La", "Do5", 2, "cruce"],
+    [1, "La", "Do#5", 2, "cruce"],
+    [1, "La", "Re5", 3],
+    [2, "Re", "La4", 3, "alternativa", "cruce"],
+    [2, "La", "Do#5", 1, "alternativa", "cruce"],
+    [2, "La", "Re5", 2, "alternativa", "cruce"]
+  ]
+}

@@ -1,6 +1,7 @@
 % Maquetación principal elegida: bloques musicales de longitud variable.
 \version "2.24.0"
 \language "espanol"
+\include "esquema-digitacion.ily"
 #(set-global-staff-size 17)
 
 \paper {
@@ -262,6 +263,8 @@ musica = \absolute {
     }
   }
   }
+
+\markup \esquemaDigitacion
 
 \score {
   <<

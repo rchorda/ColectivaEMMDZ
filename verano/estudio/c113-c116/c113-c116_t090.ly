@@ -1,5 +1,6 @@
 \version "2.24.0"
 \language "espanol"
+\include "esquema-digitacion.ily"
 % Fuente: ../../verano.ly; voz única de violín; intervalo [113,117).
 % Copia controlada: regenerar los medios NO actualiza las notas desde la obra.
 % Clave de sol, si bemol mayor, 3/4, negra = 90 y dinámica f.
@@ -39,3 +40,5 @@ subir = ^\markup \with-color #red \char #8593
   }
   \layout {} \midi {}
 }
+
+\markup \esquemaDigitacion

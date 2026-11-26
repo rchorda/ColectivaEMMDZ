@@ -30,7 +30,7 @@ def render(name, source_bpm, bpm, suffix):
         work = Path(temp)
         ly = work / f'{stem}.ly'
         ly.write_text(source)
-        log = run('lilypond', '-I', work, '-o', work / stem, ly)
+        log = run('lilypond', '-I', work, '-I', folder, '-o', work / stem, ly)
         if 'warning:' in log.lower():
             raise ValueError(f'Advertencia LilyPond en {stem}: {log}')
 
@@ -53,7 +53,8 @@ def render(name, source_bpm, bpm, suffix):
         mix.replace(wav)
         check_click(wav, bpm)
         video = work / f'{stem}.mp4'
-        run(sys.executable, ROOT / 'render_compas_activo.py', 'verano', '--segmento', ly, pdf, midi, wav, video)
+        run(sys.executable, ROOT / 'render_compas_activo.py', 'verano', '--segmento', ly, pdf, midi, wav, video,
+            '--include-dir', folder)
         media = json.loads(run('ffprobe', '-v', 'error', '-show_entries',
                                'stream=codec_type:format=duration', '-of', 'json', video))
         if {stream['codec_type'] for stream in media['streams']} != {'audio', 'video'}:

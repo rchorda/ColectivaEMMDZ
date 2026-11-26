@@ -1,0 +1,25 @@
+{
+  "armadura": -2,
+  "recorrido": "21–23 I · 24–25 III · 26–27 I · 28 III",
+  "notas": [
+    [1, "Re", "Re4", 0],
+    [1, "La", "La4", 0, "cruce", "escala"],
+    [1, "La", "Sib4", 1, "cruce", "escala"],
+    [1, "La", "Do5", 2],
+    [1, "La", "Re5", 3],
+    [1, "La", "Mib5", 4],
+    [1, "Mi", "Mi5", 0, "cruce"],
+    [1, "Mi", "Fa#5", 1, "cruce"],
+    [1, "Mi", "Sol5", 2],
+    [1, "Mi", "La5", 3],
+    [1, "Mi", "Sib5", 4],
+    [3, "La", "Re5", 1, "cruce", "escala"],
+    [3, "La", "Mi5", 2],
+    [3, "La", "Fa#5", 3],
+    [3, "La", "Sol5", 4],
+    [3, "Mi", "La5", 1, "cruce"],
+    [3, "Mi", "Sib5", 2],
+    [3, "Mi", "Do6", 3],
+    [3, "Mi", "Re6", 4]
+  ]
+}

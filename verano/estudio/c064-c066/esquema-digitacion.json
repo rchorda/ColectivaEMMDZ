@@ -1,0 +1,14 @@
+{
+  "armadura": -2,
+  "recorrido": "64–66 I",
+  "notas": [
+    [1, "Re", "Mib4", 1, "cruce", "escala"],
+    [1, "Re", "Fa4", 2],
+    [1, "Re", "Sol4", 3],
+    [1, "Re", "Lab4", 4],
+    [1, "La", "Si4", 1, "cruce"],
+    [1, "La", "Do5", 2],
+    [1, "La", "Re5", 3],
+    [1, "La", "Mib5", 4]
+  ]
+}
