@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "workSource": "../verano.ly",
-  "downloadBase": "https://raw.githubusercontent.com/rchorda/ColectivaEMMDZ/7fc49611f29e40f6f6cbe52440a6324ff115e604/verano/",
+  "downloadBase": "https://raw.githubusercontent.com/rchorda/ColectivaEMMDZ/516dfa4ebb4f7be99e31ba948bbcaadaa2bf98f6/verano/",
   "notes": "Ejercicios preparados mediante copias controladas. Si cambia la obra completa, hay que revisar los fragmentos antes de regenerarlos.",
   "segments": [
     {
@@ -487,7 +487,7 @@
           }
         }
       ],
-      "downloadBase": "https://raw.githubusercontent.com/rchorda/ColectivaEMMDZ/4dacdeb8da7e63e19c1dd5837d2f0029636563ad/verano/",
+      "downloadBase": "https://raw.githubusercontent.com/rchorda/ColectivaEMMDZ/516dfa4ebb4f7be99e31ba948bbcaadaa2bf98f6/verano/",
       "notes": [
         "El recuadro amarillo sigue el compás activo, incluidos los silencios múltiples."
       ]
