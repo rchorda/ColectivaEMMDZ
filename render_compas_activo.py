@@ -98,7 +98,7 @@ def score_geometry(svg):
     return width, height, lines, barlines
 
 
-def raster_staff_lines(image):
+def raster_staff_lines(image, expected_count, step):
     """Ubica las líneas del PDF: el backend SVG puede variar el espaciado vertical."""
     px = image.load()
     xs = range(image.width * 55 // 100, image.width * 90 // 100, 4)
@@ -109,7 +109,23 @@ def raster_staff_lines(image):
                 rows[-1].append(y)
             else:
                 rows.append([y])
-    return [sum(row) / len(row) for row in rows]
+    centers = [sum(row) / len(row) for row in rows]
+    if len(centers) <= expected_count:
+        return centers
+
+    # Una regla horizontal de un pie puede parecer una línea aislada.
+    # Nos quedamos con grupos de cinco a la distancia del pentagrama del SVG.
+    staff = []
+    tolerance = max(1.5, 0.15 * step)
+    index = 0
+    while index + 5 <= len(centers):
+        group = centers[index:index + 5]
+        if all(abs(right - left - step) <= tolerance for left, right in pairwise(group)):
+            staff.extend(group)
+            index += 5
+        else:
+            index += 1
+    return staff
 
 
 def raster_barline(gray, x, center, step, tolerance):
@@ -141,10 +157,13 @@ def engraved_barlines(columns, join_gap=1):
 def measure_regions(work, svg, image, systems, *, segment=False, join_gap=1, staves=1):
     width, _, lines, barlines = score_geometry(svg)
     gray = image.convert("L")
-    rows = raster_staff_lines(gray)
     lines_per_system = 5 * staves
-    if len(rows) != len(lines) or len(lines) != lines_per_system * (len(systems) - 1):
+    if len(lines) < 5 or len(lines) != lines_per_system * (len(systems) - 1):
         raise ValueError(f"Número de sistemas inesperado en {svg.name}")
+    svg_step = (lines[4][0] - lines[0][0]) / 4
+    rows = raster_staff_lines(gray, len(lines), svg_step * image.width / width)
+    if len(rows) != len(lines):
+        raise ValueError(f"No coinciden las líneas de pentagrama del PDF y el SVG en {svg.name}")
     multirests = () if segment else MULTIRESTS[work]
     compressed = {bar: start for start, end in multirests for bar in range(start + 1, end + 1)}
     for index, ((start, end), (y, left)) in enumerate(zip(pairwise(systems), lines[2::lines_per_system])):
@@ -216,7 +235,7 @@ def segment_layout(source, svg_pages):
 
 
 def render_video(work, source, pdf, midi, audio, output, *, segment=False, playback=None,
-                 book=None, staves=1):
+                 book=None, staves=1, include_dir=None):
     """Graba los resaltados en orden musical. playback termina en (None, negra_final)."""
     events, tempos = midi_events(midi)
     if not tempos or tempos[0][0] != 0:
@@ -227,7 +246,10 @@ def render_video(work, source, pdf, midi, audio, output, *, segment=False, playb
     output.parent.mkdir(parents=True, exist_ok=True)
     with TemporaryDirectory(prefix=".compas-", dir=output.parent) as temp:
         folder = Path(temp)
-        run("lilypond", "-dbackend=svg", "-dno-point-and-click", "-o", folder / "mapa", source)
+        includes = ["-I", source.parent]
+        if include_dir:
+            includes.extend(["-I", include_dir])
+        run("lilypond", *includes, "-dbackend=svg", "-dno-point-and-click", "-o", folder / "mapa", source)
         dpi = "130" if work == "verano" and not segment else "200"
         run("pdftoppm", "-r", dpi, "-png", pdf, folder / "pagina")
         pdf_pages = sorted(folder.glob("pagina-*.png"))
@@ -329,11 +351,13 @@ def main():
     parser.add_argument("bpm", nargs="*", type=int)
     parser.add_argument("--segmento", nargs=5, type=lambda value: Path(value).resolve(),
                         metavar=("LY", "PDF", "MIDI", "WAV", "MP4"))
+    parser.add_argument("--include-dir", type=lambda value: Path(value).resolve(),
+                        help="carpeta de inclusiones del segmento cuando el LY es temporal")
     args = parser.parse_args()
     if args.segmento:
         if args.bpm:
             parser.error("El tempo del segmento se toma de su MIDI")
-        render_video(args.obra, *args.segmento, segment=True)
+        render_video(args.obra, *args.segmento, segment=True, include_dir=args.include_dir)
         return
     if set(args.bpm) - set(TEMPOS[args.obra]):
         parser.error(f"Tempos disponibles para {args.obra}: {TEMPOS[args.obra]}")

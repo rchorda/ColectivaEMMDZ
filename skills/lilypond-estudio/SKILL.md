@@ -1,6 +1,6 @@
 ---
 name: lilypond-estudio
-description: "Prepara segmentos de estudio de partituras LilyPond con claqueta de entrada y salidas PDF, MIDI, WAV y MP4. Úsala para extraer compases, añadir digitaciones o marcar cambios de posición en copias de estudio de violín, o regenerar sus materiales en ColectivaEMMDZ y proyectos con un flujo equivalente."
+description: "Prepara segmentos de estudio de partituras LilyPond con claqueta de entrada y salidas PDF, MIDI, WAV y MP4. Úsala para extraer compases, añadir digitaciones, generar esquemas de posiciones o marcar cambios de posición en copias de estudio de violín, o regenerar sus materiales en ColectivaEMMDZ y proyectos con un flujo equivalente."
 ---
 
 # LilyPond: segmentos de estudio
@@ -81,7 +81,9 @@ helper reutilizable solo cuando el alcance y la estructura lo permitan.
 ## Digitación y cambios de posición
 
 - Si el encargo incluye añadir o revisar digitaciones de violín, lee
-  [Digitación de estudio](references/digitacion-de-estudio.md).
+  [Digitación de estudio](references/digitacion-de-estudio.md). Este flujo incluye
+  un generador de esquemas para el pie de la partitura, con un diagrama por
+  cada posición usada.
 - Si incluye marcar o revisar cambios de posición, lee
   [Cambios de posición](references/cambios-de-posicion.md).
 - Si se piden ambas cosas, resuelve primero la digitación y úsala para situar

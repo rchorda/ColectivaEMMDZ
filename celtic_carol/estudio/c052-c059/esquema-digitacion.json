@@ -1,0 +1,18 @@
+{
+  "armadura": 0,
+  "recorrido": "Mi–Fa de entrada · I    |    52–54 · I    |    55 · III → I    |    56–59 · I",
+  "notas": [
+    [1, "Re", "Mi4", 1],
+    [1, "Re", "Fa#4", 2],
+    [1, "Re", "Sol4", 3, "cruce"],
+    [1, "Re", "Sol#4", 3, "cruce"],
+    [1, "La", "La4", 0, "cruce"],
+    [1, "La", "Si4", 1],
+    [1, "La", "Do5", 2],
+    [1, "La", "Re5", 3, "cruce"],
+    [1, "Mi", "Mi5", 0],
+    [1, "Mi", "Fa5", 1],
+    [1, "Mi", "Sol5", 2, "cruce", "escala"],
+    [3, "Re", "Si4", 3, "cruce"]
+  ]
+}

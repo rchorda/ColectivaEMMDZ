@@ -25,6 +25,12 @@ el dedo 3 en la cuerda de re, de III a I. En el 87 se propone deslizar el
 dedo 1 en la cuerda de la, de I a II. Entre 90 y 91 se propone deslizar
 el dedo 3 en la de re, de I a II.
 
+Las tres partituras comparten el esquema de I, II, III y V al pie de la
+última página. Si cambia la digitación, actualiza
+[`esquema-digitacion.json`](esquema-digitacion.json) y regenera la inclusión
+con `--columnas 4` siguiendo las
+[instrucciones de la skill](../../../skills/lilypond-estudio/references/digitacion-de-estudio.md).
+
 La fuente a 120 es la copia anotada de referencia. Regenera las tres versiones
 desde la raíz con:
 

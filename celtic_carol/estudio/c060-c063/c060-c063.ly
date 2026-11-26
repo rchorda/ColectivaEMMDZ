@@ -1,5 +1,6 @@
 \version "2.24.0"
 \language "espanol"
+\include "esquema-digitacion.ily"
 
 % Fuente: ../../celtic_carol.ly, Violín 1. Petición [60,64).
 % Copia controlada de 60–63; regenerar medios NO resincroniza las notas.
@@ -28,7 +29,8 @@
   ragged-last = ##f
   ragged-bottom = ##t
   print-page-number = ##f
-  system-system-spacing.basic-distance = #22
+  system-system-spacing.basic-distance = #18
+  score-markup-spacing.basic-distance = #8
 }
 
 #(define (celtic-dynamic-volume name)
@@ -79,12 +81,7 @@ fragmento = \absolute {
   }
 }
 
-\markup \column {
-  \vspace #0.6
-  \small "Entrada: cuatro pulsos de negra con puntillo, con subdivisión en corcheas."
-  \small "Claqueta solo al inicio. Selección [60,64): compases 60–63, ambos incluidos."
-  \small "Azul: cambio de cuerda. Flecha roja: un semitono por encima de la armadura."
-}
+\markup \esquemaDigitacion
 
 \score {
   \new Staff { \global r1. \fragmento }

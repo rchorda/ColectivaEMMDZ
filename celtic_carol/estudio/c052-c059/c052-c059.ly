@@ -1,5 +1,6 @@
 \version "2.24.0"
 \language "espanol"
+\include "esquema-digitacion.ily"
 
 % Fuente: ../../celtic_carol.ly, Violín 1, intervalo principal [52,60).
 % Entrada anacrúsica: las dos últimas corcheas del 51 (mi''–fa'').
@@ -37,7 +38,8 @@
   ragged-last = ##f
   ragged-bottom = ##t
   print-page-number = ##f
-  system-system-spacing.basic-distance = #18
+  system-system-spacing.basic-distance = #14
+  score-markup-spacing.basic-distance = #8
 }
 
 #(define (celtic-dynamic-volume name)
@@ -107,16 +109,7 @@ fragmento = \absolute {
   }
 }
 
-\markup {
-  \column {
-    \vspace #0.6
-    \small "Claqueta: seis corcheas, acentos en 1 y 4; tempo del 52 desde la entrada."
-    \small "Mi-fa: dos semicorcheas en la última corchea, con su duración original."
-    \small "Adaptación del 51: corcheas a 120 = semicorcheas a 60 (negra con puntillo)."
-    \small "Cierre de estudio: el crescendo del 59 alcanza mf al final del fragmento."
-    \small "Azul: cambio de cuerda. Verde: inicio de escala. Flecha roja: un semitono por encima de la armadura."
-  }
-}
+\markup \esquemaDigitacion
 
 \score {
   \new Staff {

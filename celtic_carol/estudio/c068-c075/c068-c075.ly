@@ -1,5 +1,6 @@
 \version "2.24.0"
 \language "espanol"
+\include "esquema-digitacion.ily"
 
 % Fuente: ../../celtic_carol.ly, Violín 1. Petición [68,76).
 % Copia controlada de 68–75; regenerar medios NO resincroniza las notas.
@@ -90,12 +91,7 @@ fragmento = \absolute {
   }
 }
 
-\markup \column {
-  \vspace #0.6
-  \small "Entrada: cuatro pulsos de negra con puntillo, con subdivisión en corcheas."
-  \small "Claqueta solo al inicio. Selección [68,76): compases 68–75, ambos incluidos."
-  \small "Azul: cambio de cuerda. Verde: inicio de escala. Flecha roja: un semitono por encima de la armadura."
-}
+\markup \esquemaDigitacion
 
 \score {
   \new Staff { \global r1. \fragmento }

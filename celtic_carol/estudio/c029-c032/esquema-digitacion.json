@@ -1,0 +1,22 @@
+{
+  "armadura": 0,
+  "recorrido": "29–32 · I posición",
+  "notas": [
+    [1, "Sol", "La3", 1],
+    [1, "Sol", "Si3", 2],
+    [1, "Sol", "Do4", 3, "cruce"],
+    [1, "Re", "Mi4", 1],
+    [1, "Re", "Sol4", 3, "cruce"],
+    [1, "La", "La4", 0, "cruce"],
+    [1, "La", "Si4", 1],
+    [1, "La", "Do5", 2, "escala"],
+    [1, "La", "Re5", 3, "cruce"],
+    [1, "La", "Mi5", 4],
+    [1, "Mi", "Mi5", 0, "cruce"],
+    [1, "Mi", "Fa5", 1],
+    [1, "Mi", "Sol5", 2],
+    [1, "Mi", "Sol#5", 2],
+    [1, "Mi", "La5", 3, "cruce", "escala"],
+    [1, "Mi", "Si5", 4]
+  ]
+}

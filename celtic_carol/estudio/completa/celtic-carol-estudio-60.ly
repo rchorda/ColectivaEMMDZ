@@ -1,5 +1,6 @@
 \version "2.24.0"
 \language "espanol"
+\include "esquema-digitacion.ily"
 
 \header {
   title = "Celtic Carol"
@@ -248,6 +249,8 @@ tempoFinal = {
   >>
   \layout { }
 }
+
+\markup \scale #'(0.83 . 0.83) \esquemaDigitacion
 
 \score {
   \new Staff <<

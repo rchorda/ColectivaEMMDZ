@@ -91,18 +91,13 @@ def midi_events(path):
     return sorted(events), sorted(tempos)
 
 
-def variant_source(source, bpm, ratio, base):
+def variant_source(source, bpm, ratio):
     pattern = r'(\\tempo\s+"[^"\n]*"\s+4\.\s*=\s*)\d+'
     text, count = re.subn(pattern, lambda match: match[1] + str(bpm), source)
     if count != 1:
         raise ValueError("Se esperaba una sola indicación de tempo con negra con puntillo")
     text = text.replace('  tagline = ##f',
                         f'  subsubtitle = "Tempo de estudio: {ratio} del original"\n  tagline = ##f')
-    if base == "c052-c059":
-        text = text.replace('Mi-fa: dos semicorcheas en la última corchea, con su duración original.',
-                            'Mi-fa: dos semicorcheas en la última corchea; entrada al tempo de estudio.')
-        text = text.replace('Adaptación del 51: corcheas a 120 = semicorcheas a 60 (negra con puntillo).',
-                            f'Entrada del 51 adaptada: corcheas a {bpm * 2} = semicorcheas a {bpm} (negra con puntillo).')
     return text
 
 
@@ -139,12 +134,12 @@ def render(base, ratio, suffix):
     name = f"{base}_{suffix}"
     annotated_variant = folder / f"{name}.ly"
     source = (annotated_variant.read_text() if annotated_variant.is_file() else
-              variant_source((folder / f"{base}.ly").read_text(), bpm, ratio, base))
+              variant_source((folder / f"{base}.ly").read_text(), bpm, ratio))
     with tempfile.TemporaryDirectory(prefix=f"{name}-") as temporary:
         work = Path(temporary)
         score = work / f"{name}.ly"
         score.write_text(source)
-        run("lilypond", "-I", work, "-o", work / name, score)
+        run("lilypond", "-I", work, "-I", folder, "-o", work / name, score)
         midi = work / f"{name}.midi"
         events, tempos = midi_events(midi)
         if events != baseline:
@@ -173,7 +168,7 @@ def render(base, ratio, suffix):
         mixed.replace(work / f"{name}.wav")
         video = work / f"{name}.mp4"
         run(sys.executable, ROOT / "render_compas_activo.py", "celtic-carol", "--segmento",
-            score, work / f"{name}.pdf", midi, work / f"{name}.wav", video)
+            score, work / f"{name}.pdf", midi, work / f"{name}.wav", video, "--include-dir", folder)
         media = json.loads(subprocess.check_output([
             "ffprobe", "-v", "error", "-show_entries", "stream=codec_type,duration,width,height",
             "-of", "json", str(video)]))
