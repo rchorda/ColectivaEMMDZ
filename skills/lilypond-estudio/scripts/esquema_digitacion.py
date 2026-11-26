@@ -221,18 +221,69 @@ def generate(data, columns, name="esquemaDigitacion"):
             f"{name} = \\markup \\override #'(baseline-skip . 1.9) \\column {{\n  {content}\n}}\n")
 
 
+def generate_miniatures(data, name="miniaturaDigitacion"):
+    signature = key_signature(data["armadura"])
+    cells = read_cells(data["notas"], signature)
+    key_pitches = {(NATURAL[note] + alteration) % 12 for note, alteration in signature.items()}
+    diagrams = []
+    for position in sorted({pos for pos, _, _ in cells}):
+        strings = []
+        for string, (open_pitch, degree) in STRINGS.items():
+            dots = {
+                pitch_at_degree(degree + position + finger, signature) - open_pitch: "negro"
+                for finger in range(4)
+            }
+            if position == 1 and open_pitch % 12 in key_pitches:
+                dots[0] = "negro"
+            for (pos, cuerda, offset), cell in cells.items():
+                if pos == position and cuerda == string:
+                    if cell.delta:
+                        dots[offset] = "rojo"
+                    elif offset == 0:
+                        dots[offset] = "negro"
+            strings.append(dots)
+
+        start = min(min(dots) for dots in strings)
+        end = max(max(dots) for dots in strings)
+        step = min(0.58, 4.1 / max(1, end - start))
+        half_height = (end - start) * step / 2 + 0.27
+        elements = []
+        for column, dots in enumerate(strings):
+            x = 0.25 + 0.9 * column
+            elements.append(line(x, half_height, 0, -2 * half_height, 0.85))
+            for offset, color in sorted(dots.items()):
+                y = ((start + end) / 2 - offset) * step
+                elements.append(translated(
+                    x, y, colored(color, r"\draw-circle #0.20 #0 ##t")
+                ))
+        content = "\n    ".join(elements)
+        diagrams.append(
+            fr"{name}{roman(position)} = \markup"
+            + f"\n  \\with-dimensions #'(0 . 3.2) #'(-{half_height:g} . {half_height:g})"
+            + f"\n  \\overlay {{\n    {content}\n  }}"
+            + f'\n{name}Marca{roman(position)} = _\\markup \\line {{ '
+              f'\\vcenter \\bold "{roman(position)}" \\{name}{roman(position)} }}'
+        )
+    return "% Miniaturas generadas por esquema_digitacion.py.\n" + "\n\n".join(diagrams) + "\n"
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("datos", type=Path, help="ficha JSON del pasaje")
     parser.add_argument("salida", type=Path, help="inclusión LilyPond .ily")
     parser.add_argument("--columnas", type=int, choices=(1, 2, 3, 4), default=3)
-    parser.add_argument("--nombre", default="esquemaDigitacion", help="variable LilyPond de la inclusión")
+    parser.add_argument("--miniatura", action="store_true", help="genera una miniatura por posición")
+    parser.add_argument("--nombre", help="variable LilyPond o prefijo de las miniaturas")
     args = parser.parse_args()
-    if not re.fullmatch(r"[a-zA-Z]+", args.nombre):
+    if args.nombre and not re.fullmatch(r"[a-zA-Z]+", args.nombre):
         parser.error("--nombre debe contener solo letras ASCII")
     try:
         data = json.loads(args.datos.read_text(encoding="utf-8"))
-        args.salida.write_text(generate(data, args.columnas, args.nombre), encoding="utf-8")
+        if args.miniatura:
+            output = generate_miniatures(data, args.nombre or "miniaturaDigitacion")
+        else:
+            output = generate(data, args.columnas, args.nombre or "esquemaDigitacion")
+        args.salida.write_text(output, encoding="utf-8")
     except (OSError, ValueError, KeyError, TypeError) as error:
         parser.exit(1, f"{args.datos}: {error}\n")
 

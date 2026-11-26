@@ -53,7 +53,8 @@
       ],
       "countIn": false,
       "dependencies": [
-        "esquema-digitacion.ily"
+        "esquema-digitacion.ily",
+        "miniatura-digitacion.ily"
       ]
     }
   ]

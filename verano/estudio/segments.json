@@ -414,7 +414,10 @@
     {
       "id": "c001-c130-completa",
       "folder": "completa",
-      "dependencies": ["esquema-digitacion.ily"],
+      "dependencies": [
+        "esquema-digitacion.ily",
+        "miniatura-digitacion.ily"
+      ],
       "startBar": 1,
       "endBarExclusive": 131,
       "part": "Obra completa · Violín",

@@ -66,3 +66,19 @@ Cada flecha roja representa un semitono respecto a la armadura.
    posiciones usadas y que las cifras y colores sean legibles. Usa la misma
    inclusión en las variantes de tempo. Actualiza la ficha y vuelve a
    generarla cuando cambien digitaciones o armadura.
+
+### Miniatura junto al número romano
+
+Para un esquema al lado de la indicación de posición, añade `--miniatura` al
+comando del generador y usa una inclusión distinta. Cada variable lleva el
+sufijo romano de su posición, como `\miniaturaDigitacionI` o
+`\miniaturaDigitacionII`. Tras la nota donde empieza la posición, usa `\miniaturaDigitacionMarcaI`,
+`\miniaturaDigitacionMarcaII` o la marca correspondiente. La variable sin
+`Marca` permite combinar la miniatura con una indicación ya compuesta.
+
+Las cuatro líneas representan Sol, Re, La y Mi de izquierda a derecha.
+La distancia vertical entre puntos sigue los semitonos. Los puntos negros
+muestran los cuatro apoyos de la armadura por cuerda y, en primera, las
+cuerdas al aire propias de la armadura. Los puntos rojos marcan las
+alteraciones del pasaje en esa cuerda y posición. Comprueba que la miniatura
+y las cifras se leen sin solaparse en la partitura a tamaño real.

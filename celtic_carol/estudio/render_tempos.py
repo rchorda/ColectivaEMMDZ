@@ -177,6 +177,7 @@ def render(base, ratio, suffix):
         out = folder / "out"
         out.mkdir(exist_ok=True)
         shutil.copy2(video, out / video.name)
+        shutil.copy2(work / f"{name}.pdf", folder / f"{name}.pdf")
         note_ons = [(t, args) for t, status, args in events if status & 240 == 144 and args[1] > 0]
         print("VERIFICADO " + json.dumps({
             "file": str(out / video.name), "ratio": str(ratio), "bpm_dotted_quarter": bpm,

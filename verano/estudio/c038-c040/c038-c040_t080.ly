@@ -1,6 +1,7 @@
 \version "2.24.0"
 \language "espanol"
 \include "esquema-digitacion.ily"
+\include "miniatura-digitacion.ily"
 % Fuente: ../../verano.ly; voz única de violín; intervalo [38,41).
 % Copia controlada: regenerar los medios NO actualiza las notas desde la obra.
 % Clave de sol, si bemol mayor, 3/4, negra = 80 y dinámica f.
@@ -27,8 +28,8 @@ subir = ^\markup \with-color #red \char #8593
     \override Score.BarNumber.break-visibility = ##(#t #t #t)
     \set Score.barNumberVisibility = #all-bar-numbers-visible
     \dynamicUp
-  re''16\f[ \inicioEscala \cambioCuerda re'-0 mi'!-\tweak color #red -1\subir fa'] sol'[ \cambioCuerda la'-0 si'!-\tweak color #red -1\subir dos''-\tweak color #red -2\subir] re''[ \inicioEscala la'-0 si'-\tweak color #red -1\subir dos''-\tweak color #red -2\subir] | % 38
-  re''16[ \cambioCuerda mi''!-0\subir fa'' sol''] la''[ \inicioEscala \cambioCuerda re''-1_\markup { \bold "III" } mi''-\tweak color #red -2\subir fa''-3] sol''-4[ \cambioCuerda la''-1 si''!-\tweak color #red -2\subir dos'''-\tweak color #red -3\subir] | % 39
+  re''16\f\miniaturaDigitacionMarcaI[ \inicioEscala \cambioCuerda re'-0 mi'!-\tweak color #red -1\subir fa'] sol'[ \cambioCuerda la'-0 si'!-\tweak color #red -1\subir dos''-\tweak color #red -2\subir] re''[ \inicioEscala la'-0 si'-\tweak color #red -1\subir dos''-\tweak color #red -2\subir] | % 38
+  re''16[ \cambioCuerda mi''!-0\subir fa'' sol''] la''[ \inicioEscala \cambioCuerda re''-1\miniaturaDigitacionMarcaIII mi''-\tweak color #red -2\subir fa''-3] sol''-4[ \cambioCuerda la''-1 si''!-\tweak color #red -2\subir dos'''-\tweak color #red -3\subir] | % 39
   re'''4-4 r4 r4 | % 40
     \once \omit Score.BarNumber
     \bar "|."

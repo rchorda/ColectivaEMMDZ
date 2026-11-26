@@ -2,6 +2,7 @@
 \version "2.24.0"
 \language "espanol"
 \include "esquema-digitacion.ily"
+\include "miniatura-digitacion.ily"
 #(set-global-staff-size 17)
 
 \paper {
@@ -43,8 +44,8 @@ cuartoOpcional = ^\markup \with-color #blue \finger "(4)"
 cambioCuerda = { \once \override Fingering.color = #blue }
 subir = ^\markup \with-color #red \char #8593
 
-primera = _\markup { \bold "I" }
-tercera = _\markup { \bold "III" }
+primera = \miniaturaDigitacionMarcaI
+tercera = \miniaturaDigitacionMarcaIII
 alterada = { \once \override Fingering.color = #red }
 bajar = ^\markup \with-color #red \char #8595
 musica = \absolute {
@@ -65,7 +66,7 @@ musica = \absolute {
     \line { \bold "G" \italic "¡Ay, que por desgracia sus temores son ciertos!" }
     \line { \italic "Truena y relampaguea el cielo, y el granizo troncha" }
   }
-  sol'16\f[ \cambioCuerda sol-0 sol sol] sol[ sol sol sol] sol[ sol sol sol] | % 1
+  sol'16\f\miniaturaDigitacionMarcaI[ \cambioCuerda sol-0 sol sol] sol[ sol sol sol] sol[ sol sol sol] | % 1
   \cambioCuerda fa'16-2[ \cambioCuerda sol-0 sol sol] sol[ sol sol sol] sol[ sol sol sol] | \break % 2
   \mark \markup { \italic "las cabezas de las espigas y de los erguidos tallos." }
   \cambioCuerda mib'16-1[ \cambioCuerda sol-0 sol sol] sol[ sol sol sol] sol[ sol sol sol] | % 3
@@ -88,7 +89,7 @@ musica = \absolute {
   \cambioCuerda do'16-3[ do' do' do'] do'[ do' do' do'] do'[ do' do' do'] | % 13
   do'16[ \inicioEscala \cambioCuerda sib''-4 la'' sol''] fa''[ \cambioCuerda mib''-4 re'' do''] sib'[ la'\cuartoOpcional \cambioCuerda sol'-3 fa'] | % 14
   mib'16[ mib' mib' mib'] mib'[ mib' mib' mib'] mib'[ mib' mib' mib'] | \break % 15
-  mib'16[ \inicioEscala \cambioCuerda re'''-4_\markup { \bold "III" } do''' sib''] la''-1[ \cambioCuerda sol''-4 fas''-\tweak color #red -3\subir mi''!-\tweak color #red -2\subir] re''-1[ \cambioCuerda do''-4 sib' la'] | % 16
+  mib'16[ \inicioEscala \cambioCuerda re'''-4\miniaturaDigitacionMarcaIII do''' sib''] la''-1[ \cambioCuerda sol''-4 fas''-\tweak color #red -3\subir mi''!-\tweak color #red -2\subir] re''-1[ \cambioCuerda do''-4 sib' la'] | % 16
   sol'16-1[ sol' sol' sol'] sol'[ sol' sol' sol'] sol'[ sol' sol' sol'] | % 17
   sol'16[ \inicioEscala \cambioCuerda re'''-4 do''' sib''] la''-1[ \cambioCuerda sol''-4 fas''-\tweak color #red -3\subir mi''!-\tweak color #red -2\subir] re''-1[ \cambioCuerda do''-4 sib' la'] | % 18
   sol'16-1[ sol' sol' sol'] sol'[ sol' sol' sol'] sol'[ sol' sol' sol'] | \pageBreak % 19
@@ -127,7 +128,7 @@ musica = \absolute {
   la'16[ re'' la' re''] la'[ re'' la' re''] la'[ re'' la' re''] | % 36
   la'16[ \alterada dos''-2\subir la' \alterada dos''-2\subir] la'[ \alterada dos''-2\subir la' \alterada dos''-2\subir] la'[ \alterada dos''-2\subir la' \alterada dos''-2\subir] | \break % 37
   re''16[ \inicioEscala \cambioCuerda re'-0 mi'!-\tweak color #red -1\subir fa'] sol'[ \cambioCuerda la'-0 si'!-\tweak color #red -1\subir dos''-\tweak color #red -2\subir] re''[ \inicioEscala la'-0 si'-\tweak color #red -1\subir dos''-\tweak color #red -2\subir] |  % 38
-  re''16[ \cambioCuerda mi''!-0\subir fa'' sol''] la''[ \inicioEscala \cambioCuerda re''-1_\markup { \bold "III" } mi''-\tweak color #red -2\subir fa''-3] sol''-4[ \cambioCuerda la''-1 si''!-\tweak color #red -2\subir dos'''-\tweak color #red -3\subir] | % 39
+  re''16[ \cambioCuerda mi''!-0\subir fa'' sol''] la''[ \inicioEscala \cambioCuerda re''-1\miniaturaDigitacionMarcaIII mi''-\tweak color #red -2\subir fa''-3] sol''-4[ \cambioCuerda la''-1 si''!-\tweak color #red -2\subir dos'''-\tweak color #red -3\subir] | % 39
   re'''4-4 r4 r4 | \pageBreak % 40
   \cambioCuerda re'4\p-0\primera re' re' | % 41
   re'4 re' re' | % 42
@@ -213,7 +214,7 @@ musica = \absolute {
   \cambioCuerda do'16-3[ do' do' do'] do'[ do' do' do'] do'[ do' do' do'] | \break % 104
   do'16[ \inicioEscala \cambioCuerda sib''-4 la'' sol''] fa''[ \cambioCuerda mib''-4 re'' do''] sib'[ la'\cuartoOpcional \cambioCuerda sol'-3 fa'] |  % 105
   mib'16[ mib' mib' mib'] mib'[ mib' mib' mib'] mib'[ mib' mib' mib'] | % 106
-  mib'16[ \inicioEscala \cambioCuerda re'''-4_\markup { \bold "III" } do''' sib''] la''-1[ \cambioCuerda sol''-4 fas''-\tweak color #red -3\subir mi''!-\tweak color #red -2\subir] re''-1[ \cambioCuerda do''-4 sib' la'] | % 107
+  mib'16[ \inicioEscala \cambioCuerda re'''-4\miniaturaDigitacionMarcaIII do''' sib''] la''-1[ \cambioCuerda sol''-4 fas''-\tweak color #red -3\subir mi''!-\tweak color #red -2\subir] re''-1[ \cambioCuerda do''-4 sib' la'] | % 107
   sol'16-1[ sol' sol' sol'] sol'[ sol' sol' sol'] sol'[ sol' sol' sol'] | \break % 108
   \newSpacingSection
   \unset Score.proportionalNotationDuration

@@ -1,6 +1,7 @@
 \version "2.24.0"
 \language "espanol"
 \include "esquema-digitacion.ily"
+\include "miniatura-digitacion.ily"
 % Fuente: ../../verano.ly; voz única de violín; intervalo [32,38).
 % Copia controlada. Cotejar con la partitura principal si cambia el pasaje.
 % Clave de sol, si bemol mayor, 3/4, negra = 100 y dinámica f.
@@ -35,7 +36,7 @@ subir = ^\markup \with-color #red \char #8593
 
     \override Fingering.color = #blue
     \once \override Fingering.color = #black
-    sol'16\f-3[ si'!-1\subir sol'-3 si'-1]
+    sol'16\f-3\miniaturaDigitacionMarcaI[ si'!-1\subir sol'-3 si'-1]
     sol'-3[ si'-1 sol'-3 si'-1] sol'-3[ si'-1 sol'-3 si'-1] | % 32
     \barNumberCheck #33
     sol'16-3[ do''-2 sol'-3 do''-2]
@@ -46,7 +47,11 @@ subir = ^\markup \with-color #red \char #8593
     \revert Fingering.color
     \break
     \barNumberCheck #35
-    la'16-0_\markup \center-column { \tresAzul \bold "II" }[
+    la'16-0_\markup \combine
+      \tresAzul
+      \translate #'(-0.8 . -3.35)
+      \with-dimensions #'(0 . 0) #'(-1.9 . 1.9)
+      \line { \vcenter \bold "II" \miniaturaDigitacionII }[
       re''-3_\dosAzul la'_\tresAzul re''_\dosAzul]
     la'_\tresAzul[ re''_\dosAzul la'_\tresAzul re''_\dosAzul]
     la'_\tresAzul[ re''_\dosAzul la'_\tresAzul re''_\dosAzul] | % 35

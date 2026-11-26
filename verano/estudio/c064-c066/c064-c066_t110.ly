@@ -1,6 +1,7 @@
 \version "2.24.0"
 \language "espanol"
 \include "esquema-digitacion.ily"
+\include "miniatura-digitacion.ily"
 % Fuente: ../../verano.ly; voz única de violín; intervalo [64,67).
 % Copia controlada: regenerar los medios NO actualiza las notas desde la obra.
 % Clave de sol, si bemol mayor, 3/4, negra = 110 y dinámica f.
@@ -28,7 +29,7 @@ bajar = ^\markup \with-color #red \char #8595
     \override Score.BarNumber.break-visibility = ##(#t #t #t)
     \set Score.barNumberVisibility = #all-bar-numbers-visible
     \dynamicUp
-  mib''16\f-4[ \inicioEscala \cambioCuerda mib'-1 fa' sol'] lab'-\tweak color #red -4\bajar[ \cambioCuerda si'!-1\subir do'' re''] mib''8-4 r8 | % 64
+  mib''16\f-4\miniaturaDigitacionMarcaI[ \inicioEscala \cambioCuerda mib'-1 fa' sol'] lab'-\tweak color #red -4\bajar[ \cambioCuerda si'!-1\subir do'' re''] mib''8-4 r8 | % 64
   r16 \inicioEscala \cambioCuerda mib'16\upbow-1[ fa' sol'] lab'-\tweak color #red -4\bajar[ \cambioCuerda si'!-1\subir do'' re''] mib''8-4 r8 | % 65
   r16 \inicioEscala \cambioCuerda mib'16\upbow-1[ fa' sol'] lab'-\tweak color #red -4\bajar[ \cambioCuerda si'!-1\subir do'' re''] mib''8-4 r8 | % 66
     \once \omit Score.BarNumber

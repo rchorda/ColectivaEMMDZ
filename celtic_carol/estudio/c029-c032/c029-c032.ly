@@ -1,6 +1,7 @@
 \version "2.24.0"
 \language "espanol"
 \include "esquema-digitacion.ily"
+\include "miniatura-digitacion.ily"
 
 % Fuente: ../../celtic_carol.ly, Violín 1. Petición [29,33).
 % Copia controlada de 29–32; regenerar medios NO resincroniza las notas.
@@ -60,7 +61,7 @@ entrada = \absolute {
 fragmento = \absolute {
   \set Score.currentBarNumber = #29
   \barNumberCheck #29
-  la''8-3\ff-^ la''-3-^ la''-3-^ \once \override NoteHead.color = #(x11-color 'ForestGreen) la''16-\tweak color #(x11-color 'ForestGreen) -3\upbow\f->( sol''-2 fa''-1 mi''-0 re''8-\tweak color #blue -3-.) mi''4-\tweak color #blue -0-> re''8-\tweak color #blue -3\upbow-> ~ re'' do''4-2\upbow-> | % 29
+  la''8-3\ff\miniaturaDigitacionMarcaI-^ la''-3-^ la''-3-^ \once \override NoteHead.color = #(x11-color 'ForestGreen) la''16-\tweak color #(x11-color 'ForestGreen) -3\upbow\f->( sol''-2 fa''-1 mi''-0 re''8-\tweak color #blue -3-.) mi''4-\tweak color #blue -0-> re''8-\tweak color #blue -3\upbow-> ~ re'' do''4-2\upbow-> | % 29
   \barNumberCheck #30
   do''8-2\downbow-. la'-0-. re''-3-. la'-0-. mi''-\tweak color #blue -0-. la'-\tweak color #blue -0-. \once \override NoteHead.color = #(x11-color 'ForestGreen) do''16-\tweak color #(x11-color 'ForestGreen) -2\downbow( si'-1 la'-0 sol'-\tweak color #blue -3 mi'8-1-.) do'8-\tweak color #blue -3\upbow( si-2 la-1) | \break % 30
   \barNumberCheck #31

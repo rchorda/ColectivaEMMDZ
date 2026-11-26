@@ -1,6 +1,7 @@
 \version "2.24.0"
 \language "espanol"
 \include "esquema-digitacion.ily"
+\include "miniatura-digitacion.ily"
 % Fuente: ../../verano.ly; voz única de violín; intervalo [10,20).
 % Copia controlada: regenerar los medios NO actualiza las notas desde la obra.
 % Clave de sol, si bemol mayor, 3/4, negra = 100 y dinámica f.
@@ -28,13 +29,13 @@ subir = ^\markup \with-color #red \char #8593
     \override Score.BarNumber.break-visibility = ##(#t #t #t)
     \set Score.barNumberVisibility = #all-bar-numbers-visible
     \dynamicUp
-  r16\f \inicioEscala re''16-3\upbow[ do'' sib'] la'[ \cambioCuerda sol'-3 fas'-\tweak color #red -2\subir mi'!-\tweak color #red -1\subir] re'[ \cambioCuerda do'-3 sib la] | % 10
+  r16\f \inicioEscala re''16-3\upbow\miniaturaDigitacionMarcaI[ do'' sib'] la'[ \cambioCuerda sol'-3 fas'-\tweak color #red -2\subir mi'!-\tweak color #red -1\subir] re'[ \cambioCuerda do'-3 sib la] | % 10
   sol16[ sol sol sol] sol[ sol sol sol] sol[ sol sol sol] |  % 11
   sol16[ \inicioEscala \cambioCuerda sol''-2 fa'' \cambioCuerda mib''!-4] re''[ do'' sib' la'\cuartoOpcional] \cambioCuerda sol'-3[ fa' mib' re'\cuartoOpcional] | % 12
   \cambioCuerda do'16-3[ do' do' do'] do'[ do' do' do'] do'[ do' do' do'] | % 13
   do'16[ \inicioEscala \cambioCuerda sib''-4 la'' sol''] fa''[ \cambioCuerda mib''-4 re'' do''] sib'[ la'\cuartoOpcional \cambioCuerda sol'-3 fa'] | % 14
   mib'16[ mib' mib' mib'] mib'[ mib' mib' mib'] mib'[ mib' mib' mib'] |  % 15
-  mib'16[ \inicioEscala \cambioCuerda re'''-4_\markup { \bold "III" } do''' sib''] la''-1[ \cambioCuerda sol''-4 fas''-\tweak color #red -3\subir mi''!-\tweak color #red -2\subir] re''-1[ \cambioCuerda do''-4 sib' la'] | % 16
+  mib'16[ \inicioEscala \cambioCuerda re'''-4\miniaturaDigitacionMarcaIII do''' sib''] la''-1[ \cambioCuerda sol''-4 fas''-\tweak color #red -3\subir mi''!-\tweak color #red -2\subir] re''-1[ \cambioCuerda do''-4 sib' la'] | % 16
   sol'16-1[ sol' sol' sol'] sol'[ sol' sol' sol'] sol'[ sol' sol' sol'] | % 17
   sol'16[ \inicioEscala \cambioCuerda re'''-4 do''' sib''] la''-1[ \cambioCuerda sol''-4 fas''-\tweak color #red -3\subir mi''!-\tweak color #red -2\subir] re''-1[ \cambioCuerda do''-4 sib' la'] | % 18
   sol'16-1[ sol' sol' sol'] sol'[ sol' sol' sol'] sol'[ sol' sol' sol'] |  % 19

@@ -21,11 +21,17 @@
       "videos": [
         {
           "suffix": "_t050",
-          "ratio": 0.5
+          "ratio": 0.5,
+          "resources": {
+            "pdf": "c029-c032_t050.pdf"
+          }
         },
         {
           "suffix": "_t075",
-          "ratio": 0.75
+          "ratio": 0.75,
+          "resources": {
+            "pdf": "c029-c032_t075.pdf"
+          }
         },
         {
           "suffix": "",
@@ -51,11 +57,17 @@
       "videos": [
         {
           "suffix": "_t050",
-          "ratio": 0.5
+          "ratio": 0.5,
+          "resources": {
+            "pdf": "c052-c059_t050.pdf"
+          }
         },
         {
           "suffix": "_t075",
-          "ratio": 0.75
+          "ratio": 0.75,
+          "resources": {
+            "pdf": "c052-c059_t075.pdf"
+          }
         },
         {
           "suffix": "",
@@ -79,11 +91,17 @@
       "videos": [
         {
           "suffix": "_t050",
-          "ratio": 0.5
+          "ratio": 0.5,
+          "resources": {
+            "pdf": "c060-c063_t050.pdf"
+          }
         },
         {
           "suffix": "_t075",
-          "ratio": 0.75
+          "ratio": 0.75,
+          "resources": {
+            "pdf": "c060-c063_t075.pdf"
+          }
         },
         {
           "suffix": "",
@@ -117,11 +135,17 @@
         },
         {
           "suffix": "_t050",
-          "ratio": 0.5
+          "ratio": 0.5,
+          "resources": {
+            "pdf": "c064-c067_t050.pdf"
+          }
         },
         {
           "suffix": "_t075",
-          "ratio": 0.75
+          "ratio": 0.75,
+          "resources": {
+            "pdf": "c064-c067_t075.pdf"
+          }
         },
         {
           "suffix": "",
@@ -147,11 +171,17 @@
       "videos": [
         {
           "suffix": "_t050",
-          "ratio": 0.5
+          "ratio": 0.5,
+          "resources": {
+            "pdf": "c068-c075_t050.pdf"
+          }
         },
         {
           "suffix": "_t075",
-          "ratio": 0.75
+          "ratio": 0.75,
+          "resources": {
+            "pdf": "c068-c075_t075.pdf"
+          }
         },
         {
           "suffix": "",
@@ -162,7 +192,10 @@
     {
       "id": "c001-c112-completa",
       "folder": "completa",
-      "dependencies": ["esquema-digitacion.ily"],
+      "dependencies": [
+        "esquema-digitacion.ily",
+        "miniatura-digitacion.ily"
+      ],
       "startBar": 1,
       "endBarExclusive": 113,
       "part": "Obra completa · Violín 1",

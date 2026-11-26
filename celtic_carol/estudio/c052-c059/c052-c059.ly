@@ -1,6 +1,7 @@
 \version "2.24.0"
 \language "espanol"
 \include "esquema-digitacion.ily"
+\include "miniatura-digitacion.ily"
 
 % Fuente: ../../celtic_carol.ly, Violín 1, intervalo principal [52,60).
 % Entrada anacrúsica: las dos últimas corcheas del 51 (mi''–fa'').
@@ -73,13 +74,13 @@ entrada = \absolute {
 fragmento = \absolute {
   \set Score.currentBarNumber = #52
   \barNumberCheck #52
-  sol''4.-2\p\downbow sol''8.-2\upbow( fa''32-1 \once \override NoteHead.color = #(x11-color 'ForestGreen) sol''-\tweak color #(x11-color 'ForestGreen) -2 fa''16-1 mi''-0) | % 52
+  sol''4.-2\p\downbow\miniaturaDigitacionMarcaI sol''8.-2\upbow( fa''32-1 \once \override NoteHead.color = #(x11-color 'ForestGreen) sol''-\tweak color #(x11-color 'ForestGreen) -2 fa''16-1 mi''-0) | % 52
   \barNumberCheck #53
   re''4-\tweak color #blue -3( si'8-1) sol'8-\tweak color #blue -3( la'-\tweak color #blue -0 si'-1) | % 53
   \barNumberCheck #54
   do''4-2( la'8-0) la'8-0( sols'-\tweak color #blue -3\subir la'-\tweak color #blue -0) | % 54
   \barNumberCheck #55
-  si'4-\tweak color #blue -3_\markup \bold "III"\glissando( sols'8-\tweak color #red -3\subir_\markup \bold "I") mi'4.-1\< | \break % 55
+  si'4-\tweak color #blue -3\miniaturaDigitacionMarcaIII\glissando( sols'8-\tweak color #red -3\subir\miniaturaDigitacionMarcaI) mi'4.-1\< | \break % 55
   \barNumberCheck #56
   sol''?4.-\tweak color #blue -2\mp\downbow sol''4-2( fa''16-1 mi''-0) | % 56
   \barNumberCheck #57

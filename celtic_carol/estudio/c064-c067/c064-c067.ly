@@ -1,6 +1,7 @@
 \version "2.24.0"
 \language "espanol"
 \include "esquema-digitacion.ily"
+\include "miniatura-digitacion.ily"
 
 % Fuente: ../../celtic_carol.ly, Violín 1. Petición [64,68).
 % Copia controlada de 64–67; regenerar medios NO resincroniza las notas.
@@ -19,9 +20,10 @@
   tagline = ##f
 }
 
-#(set-global-staff-size 19)
+#(set-global-staff-size 17)
 \paper {
   #(set-paper-size "a5landscape")
+  page-count = 1
   top-margin = 8\mm
   bottom-margin = 8\mm
   left-margin = 10\mm
@@ -30,7 +32,8 @@
   ragged-last = ##f
   ragged-bottom = ##t
   print-page-number = ##f
-  system-system-spacing.basic-distance = #16
+  system-system-spacing.basic-distance = #14
+  score-markup-spacing.basic-distance = #8
 }
 
 #(define (celtic-dynamic-volume name)
@@ -61,11 +64,11 @@ entrada = \absolute {
 fragmento = \absolute {
   \set Score.currentBarNumber = #64
   \barNumberCheck #64
-  la'8\mf\downbow-0( mi''-\tweak color #blue -0 la''-3 si''-4) do''-\tweak color #blue -2\upbow mi''-\tweak color #blue -0\downbow la''_\markup \bold "III"\upbow-1->( mi''-0) si''-2->( mi''-0) do'''-3->( mi''-0) | % 64
+  la'8\mf\downbow-0\miniaturaDigitacionMarcaI( mi''-\tweak color #blue -0 la''-3 si''-4) do''-\tweak color #blue -2\upbow mi''-\tweak color #blue -0\downbow la''\miniaturaDigitacionMarcaIII\upbow-1->( mi''-0) si''-2->( mi''-0) do'''-3->( mi''-0) | % 64
   \barNumberCheck #65
-  sol'8_\markup \bold "I"-\tweak color #blue -3( re''-\tweak color #blue -3 sol''-\tweak color #blue -2 la''-3) si'_\markup \bold "III"-\tweak color #blue -3 re''-\tweak color #blue -1 sol''-4\upbow->( re''-1) la''-\tweak color #blue -1->( re''-\tweak color #blue -1) si''-\tweak color #blue -2->( re'''_\markup \bold "V"-2) | \break % 65
+  sol'8\miniaturaDigitacionMarcaI-\tweak color #blue -3( re''-\tweak color #blue -3 sol''-\tweak color #blue -2 la''-3) si'\miniaturaDigitacionMarcaIII-\tweak color #blue -3 re''-\tweak color #blue -1 sol''-4\upbow->( re''-1) la''-\tweak color #blue -1->( re''-\tweak color #blue -1) si''-\tweak color #blue -2->( re'''\miniaturaDigitacionMarcaV-2) | \break % 65
   \barNumberCheck #66
-  \once \override NoteHead.color = #(x11-color 'ForestGreen) fa'''8-\tweak color #(x11-color 'ForestGreen) -4\downbow\semitono( mi'''-3 re'''-2) do'''_\markup \bold "III"-3\semitono( si''-2 la''-1) sols''-\tweak color #red -2\subir_\markup \bold "I"\downbow( fa''?-1\semitono mi''-0) re''-\tweak color #blue -3( do''-2\semitono si'-1) | % 66
+  \once \override NoteHead.color = #(x11-color 'ForestGreen) fa'''8-\tweak color #(x11-color 'ForestGreen) -4\downbow\semitono( mi'''-3 re'''-2) do'''\miniaturaDigitacionMarcaIII-3\semitono( si''-2 la''-1) sols''-\tweak color #red -2\subir\miniaturaDigitacionMarcaI\downbow( fa''?-1\semitono mi''-0) re''-\tweak color #blue -3( do''-2\semitono si'-1) | % 66
   \barNumberCheck #67
   la'2.-0\< mi''2.-\tweak color #blue -0 \tag #'layout { <>\! } \tag #'midi { <>\f } | % 67
   \barNumberCheck #68

@@ -1,6 +1,7 @@
 \version "2.24.0"
 \language "espanol"
 \include "esquema-digitacion.ily"
+\include "miniatura-digitacion.ily"
 
 % Fuente: ../../celtic_carol.ly, Violín 1. Petición [60,64).
 % Copia controlada de 60–63; regenerar medios NO resincroniza las notas.
@@ -59,13 +60,13 @@ entrada = \absolute {
 fragmento = \absolute {
   \set Score.currentBarNumber = #60
   \barNumberCheck #60
-  do''8-2\mf\downbow( si'-1 la'-0 mi'-\tweak color #blue -1 la'-\tweak color #blue -0 si'-1) do''-2->( la'-0) re''-3->( la'-0) mi''-4->( la'-0) | % 60
+  do''8-2\mf\downbow\miniaturaDigitacionMarcaI( si'-1 la'-0 mi'-\tweak color #blue -1 la'-\tweak color #blue -0 si'-1) do''-2->( la'-0) re''-3->( la'-0) mi''-4->( la'-0) | % 60
   \barNumberCheck #61
   si'8-1( sol'-\tweak color #blue -3 re'-0 si-\tweak color #blue -2 re'-\tweak color #blue -0 sol'-3) si'-\tweak color #blue -1( sol'-\tweak color #blue -3 si'-\tweak color #blue -1 re''-3 do''-2 si'-1) | \break % 61
   \barNumberCheck #62
-  do''8-2( la'-0) re''-3( la'-0) mi''-4( la'-0) la''-\tweak color #blue -3( mi''-0 la''_\markup \bold "III"-1) do'''4.-3 | % 62
+  do''8-2( la'-0) re''-3( la'-0) mi''-4( la'-0) la''-\tweak color #blue -3( mi''-0 la''\miniaturaDigitacionMarcaIII-1) do'''4.-3 | % 62
   \barNumberCheck #63
-  si''8-2\upbow( do'''-3 si''-2) la''-1( si''-2 la''-1) sols''2.\subir_\markup \bold "I"\upbow-2 | % 63
+  si''8-2\upbow( do'''-3 si''-2) la''-1( si''-2 la''-1) sols''2.\subir\miniaturaDigitacionMarcaI\upbow-2 | % 63
   \barNumberCheck #64
   \bar "|."
 }
