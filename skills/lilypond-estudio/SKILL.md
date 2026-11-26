@@ -81,9 +81,11 @@ helper reutilizable solo cuando el alcance y la estructura lo permitan.
 ## Digitación y cambios de posición
 
 - Si el encargo incluye añadir o revisar digitaciones de violín, lee
-  [Digitación de estudio](references/digitacion-de-estudio.md). Este flujo incluye
-  un generador de esquemas para el pie de la partitura, con un diagrama por
-  cada posición usada.
+  [Digitación de estudio](references/digitacion-de-estudio.md).
+- En los nuevos pasajes con digitación de estudio, coloca por defecto una
+  miniatura junto a cada indicación de posición y conserva el esquema
+  detallado al pie, con un diagrama por cada posición usada. Genera ambos
+  formatos a partir de la misma ficha y aplícalos a todas las variantes de tempo.
 - Si incluye marcar o revisar cambios de posición, lee
   [Cambios de posición](references/cambios-de-posicion.md).
 - Si se piden ambas cosas, resuelve primero la digitación y úsala para situar

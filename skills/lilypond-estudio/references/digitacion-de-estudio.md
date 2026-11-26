@@ -12,14 +12,19 @@ Lee la clave, la afinación, la armadura vigente en cada punto y las indicacione
 6. Si se repite una escala con la misma posición y el mismo recorrido de cuerdas, reproduce las referencias de su primera aparición. Distingue las cifras copiadas de las originales al resumir los cambios.
 7. Revisa la copia compilada nota a nota. Comprueba el dedo de llegada, el color de cada flecha y la nota que lleva cada alternativa. Si se piden varias velocidades, deriva todas de la misma copia anotada y verifica las marcas en cada formato solicitado, incluida la página visible en los vídeos. Entrega los archivos y resume qué digitaciones proceden del original, cuáles has añadido o corregido y cuáles son opcionales.
 
-## Esquema de posiciones al pie de la partitura
+## Miniaturas de posición y esquema al pie
 
-Si el usuario pide un esquema o un pie de digitación, usa
-[`esquema_digitacion.py`](../scripts/esquema_digitacion.py). Prepara el esquema
-a partir del recorrido de cuerda y mano ya comprobado en la partitura anotada.
-Cada posición que se usa tiene su propio diagrama vertical de cuatro cuerdas,
-también si solo se toca una nota o una cuerda en ella. Cada fila equivale a un
-semitono. El 0 de cuerda al aire se asocia a la posición del tramo en que suena.
+En cada nuevo pasaje con digitación de estudio, añade por defecto una
+miniatura junto a cada indicación de posición impresa, tanto original como
+añadida. Incluye las indicaciones de una digitación alternativa cuando
+aparezcan en el pentagrama. Conserva también el esquema detallado al pie, con
+un diagrama vertical de cuatro cuerdas por cada posición usada, incluso
+si se toca una sola nota o cuerda en ella.
+
+Genera ambos formatos con [`esquema_digitacion.py`](../scripts/esquema_digitacion.py)
+a partir de la misma ficha, una vez comprobados el recorrido de la mano y
+los cambios de cuerda. Cada fila del esquema equivale a un semitono. El 0
+de cuerda al aire se asocia a la posición del tramo en que suena.
 
 Las líneas van en gris oscuro. Todos los nombres de nota comparten tamaño y
 negrita. Las notas de la armadura van en negro, las ajenas a la armadura que
@@ -44,16 +49,21 @@ Cada flecha roja representa un semitono respecto a la armadura.
    Conserva grafía y octava de la partitura y coteja la cuerda. Si se usan dos
    grafías enarmónicas en una misma cuerda y posición, haz diagramas separados
    para mostrar la grafía de cada tramo.
-3. Desde la raíz del proyecto, genera la inclusión de LilyPond con Python 3.
+3. Desde la raíz del proyecto, genera las dos inclusiones de LilyPond con Python 3.
    Este ejemplo usa los [datos de Celtic Carol, 64–67](../../../celtic_carol/estudio/c064-c067/esquema-digitacion.json).
 
    ```bash
    python3 skills/lilypond-estudio/scripts/esquema_digitacion.py \
      celtic_carol/estudio/c064-c067/esquema-digitacion.json \
      celtic_carol/estudio/c064-c067/esquema-digitacion.ily
+
+   python3 skills/lilypond-estudio/scripts/esquema_digitacion.py --miniatura \
+     celtic_carol/estudio/c064-c067/esquema-digitacion.json \
+     celtic_carol/estudio/c064-c067/miniatura-digitacion.ily
    ```
 
-4. Añade `\include "esquema-digitacion.ily"` al principio del `.ly` y
+4. Incluye `esquema-digitacion.ily` y `miniatura-digitacion.ily` al principio
+   del `.ly`. Coloca las miniaturas en el pentagrama y añade
    `\markup \esquemaDigitacion` después del último `\score` de impresión.
    Puede sustituir el texto explicativo del pie. Conserva en la fuente los
    comentarios necesarios para documentar claqueta y adaptaciones. Para reunir
@@ -61,20 +71,19 @@ Cada flecha roja representa un semitono respecto a la armadura.
    esquema con `--nombre`, por ejemplo `--nombre esquemaTramoFinal`.
 5. Si la página es estrecha, prueba `--columnas 2` o `--columnas 1`. Para
    cuatro posiciones en una fila, usa `--columnas 4` y ajusta el pie con
-   `\scale` si hace falta. Compila
-   el PDF y revisa que el pie quede bajo la música, que aparezcan todas las
-   posiciones usadas y que las cifras y colores sean legibles. Usa la misma
-   inclusión en las variantes de tempo. Actualiza la ficha y vuelve a
-   generarla cuando cambien digitaciones o armadura.
+   `\scale` si hace falta. Compila el PDF y comprueba que cada indicación de
+   posición tiene su miniatura, que el pie muestra todas las posiciones usadas
+   y que las cifras y los colores son legibles. Reutiliza ambas inclusiones
+   en las variantes de tempo y comprueba que ambos formatos aparecen en los
+   vídeos solicitados. Regenera las dos inclusiones cuando cambien la armadura
+   o las digitaciones.
 
 ### Miniatura junto al número romano
 
-Para un esquema al lado de la indicación de posición, añade `--miniatura` al
-comando del generador y usa una inclusión distinta. Cada variable lleva el
-sufijo romano de su posición, como `\miniaturaDigitacionI` o
-`\miniaturaDigitacionII`. Tras la nota donde empieza la posición, usa `\miniaturaDigitacionMarcaI`,
+Tras la nota donde se indica la posición, usa `\miniaturaDigitacionMarcaI`,
 `\miniaturaDigitacionMarcaII` o la marca correspondiente. La variable sin
-`Marca` permite combinar la miniatura con una indicación ya compuesta.
+`Marca`, como `\miniaturaDigitacionI`, contiene solo el diagrama y permite
+colocarlo junto a una indicación ya compuesta sin duplicar su número romano.
 
 Las cuatro líneas representan Sol, Re, La y Mi de izquierda a derecha.
 La distancia vertical entre puntos sigue los semitonos. Los puntos negros
