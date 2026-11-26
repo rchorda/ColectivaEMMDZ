@@ -18,7 +18,7 @@
         "El recuadro amarillo sigue el compás activo desde la introducción. El intervalo 1–48 conserva la numeración de la transcripción.",
         "El esquema recoge las cifras escritas y propone posiciones a partir de ellas. El Si natural tiene una referencia en tercera posición."
       ],
-      "downloadBase": "https://raw.githubusercontent.com/rchorda/ColectivaEMMDZ/516dfa4ebb4f7be99e31ba948bbcaadaa2bf98f6/intermezzo/",
+      "downloadBase": "https://raw.githubusercontent.com/rchorda/ColectivaEMMDZ/67f387baa6a21bb902283ef58bc5e196abd04a1f/intermezzo/",
       "files": {
         "pdf": "intermezzo-estudio-72.pdf",
         "source": "intermezzo-estudio-72.ly",
